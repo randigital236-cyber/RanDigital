@@ -1,232 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Ran Digital (RND)</title>
 
 <style>
 
-body{
-
+*{
 margin:0;
 padding:0;
-
+box-sizing:border-box;
 font-family:Arial,sans-serif;
+scroll-behavior:smooth;
+}
 
-background:#0d1117;
-
+body{
+background:#0b0f19;
 color:white;
-
 }
 
-
-.hero{
-
-padding:100px 20px;
-
-text-align:center;
-
-background:linear-gradient(
-135deg,
-#001f3f,
-#0074D9
-);
-
+header{
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#111827;
+position:sticky;
+top:0;
+z-index:1000;
 }
-
 
 .logo{
-
-width:120px;
-height:120px;
-
-margin:auto;
-
-background:white;
-
-color:#0074D9;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:35px;
-
+font-size:30px;
 font-weight:bold;
-
-margin-bottom:30px;
-
-box-shadow:
-
-0 0 30px #00aaff;
-
+color:#00bfff;
 }
 
-
-h1{
-
-font-size:50px;
-
-margin:10px;
-
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
 }
 
-.hero p{
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:50px;
+background:
+linear-gradient(
+135deg,
+#001d3d,
+#0077ff
+);
+}
 
+.hero-content h1{
+font-size:65px;
+margin-bottom:20px;
+}
+
+.hero-content p{
 font-size:20px;
-
+margin-bottom:35px;
 opacity:.9;
-
 }
-
 
 .btn{
 
-padding:15px 30px;
-
-background:#00a2ff;
-
-color:white;
-
-text-decoration:none;
-
-display:inline-block;
-
-margin:10px;
-
+padding:15px 35px;
 border-radius:50px;
-
+text-decoration:none;
+display:inline-block;
+margin:10px;
 font-weight:bold;
-
 transition:.4s;
-
 }
 
+.buy-btn{
+background:#00bfff;
+color:white;
+}
+
+.chart-btn{
+background:#161b22;
+color:white;
+border:1px solid #00bfff;
+}
 
 .btn:hover{
-
-transform:scale(1.1);
-
-background:#0074D9;
-
+transform:translateY(-5px);
 }
 
-
-
-.about,
-.tokenomics,
-.contract,
-.roadmap{
-
-padding:60px 20px;
-
+section{
+padding:100px 10%;
 text-align:center;
-
 }
 
+h2{
+margin-bottom:40px;
+font-size:40px;
+}
 
-.box{
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+}
 
-display:inline-block;
-
-width:220px;
-
-padding:25px;
-
-margin:15px;
-
-border-radius:20px;
+.card{
 
 background:#161b22;
+padding:30px;
+width:250px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(0,191,255,.2);
 
-box-shadow:
-
-0 0 20px rgba(
-0,162,255,.2
-);
-
+transition:.4s;
 }
 
+.card:hover{
+transform:translateY(-10px);
+}
+
+.contract-box{
+
+background:#161b22;
+padding:30px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
+}
 
 input{
-
-width:80%;
-
+width:100%;
 padding:15px;
-
-border-radius:10px;
-
 border:none;
-
-outline:none;
-
+border-radius:10px;
+margin:20px 0;
 }
-
 
 button{
 
-padding:15px 30px;
-
-background:#00a2ff;
-
+padding:15px 35px;
+background:#00bfff;
 border:none;
-
 border-radius:10px;
-
 color:white;
-
+font-size:16px;
 cursor:pointer;
-
-margin-top:20px;
-
-font-weight:bold;
-
 }
-
 
 button:hover{
 
-background:#0074D9;
-
+background:#0077ff;
 }
 
-
-.roadmap div{
-
-padding:15px;
-
-margin:15px auto;
-
-width:300px;
+.roadmap-item{
 
 background:#161b22;
-
+padding:20px;
+margin:20px auto;
 border-radius:15px;
-
+max-width:400px;
 }
-
 
 footer{
 
 padding:30px;
-
-text-align:center;
-
 background:black;
+text-align:center;
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+
+font-size:45px;
 
 }
 
+}
 
 </style>
 
@@ -234,8 +193,7 @@ background:black;
 
 <body>
 
-
-<section class="hero">
+<header>
 
 <div class="logo">
 
@@ -243,22 +201,34 @@ RND
 
 </div>
 
-<h1>
+<nav>
 
-Ran Digital
+<a href="#about">About</a>
 
-</h1>
+<a href="#tokenomics">Tokenomics</a>
+
+<a href="#roadmap">Roadmap</a>
+
+</nav>
+
+</header>
+
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Ran Digital (RND)</h1>
 
 <p>
-
 Community Driven Limited Supply Token On BNB Smart Chain
-
 </p>
 
 
 <a
-href="#"
-class="btn">
+class="btn buy-btn"
+target="_blank"
+href="https://pancakeswap.finance/swap?chain=bsc&chainOut=bsc&inputCurrency=BNB&outputCurrency=0xcF1FbF18bE9202865bcf88E6349B9D207F75942d&exactAmount=&exactField=INPUT">
 
 Buy On PancakeSwap
 
@@ -266,18 +236,20 @@ Buy On PancakeSwap
 
 
 <a
-href="#"
-class="btn">
+class="btn chart-btn"
+href="#">
 
 View Chart
 
 </a>
 
+</div>
+
 </section>
 
 
 
-<section class="about">
+<section id="about">
 
 <h2>
 
@@ -287,7 +259,7 @@ About Ran Digital
 
 <p>
 
-Ran Digital (RND) is a community-focused token built on BNB Smart Chain with a limited supply model and future ecosystem growth.
+Ran Digital (RND) is a next-generation community driven cryptocurrency built on Binance Smart Chain with limited supply and ecosystem growth.
 
 </p>
 
@@ -295,8 +267,7 @@ Ran Digital (RND) is a community-focused token built on BNB Smart Chain with a l
 
 
 
-
-<section class="tokenomics">
+<section id="tokenomics">
 
 <h2>
 
@@ -304,44 +275,39 @@ Tokenomics
 
 </h2>
 
+<div class="cards">
 
-<div class="box">
+<div class="card">
 
-<p>Total Supply</p>
+<h3>Total Supply</h3>
 
-<h3>
+<br>
 
 20,000 RND
 
-</h3>
+</div>
+
+
+<div class="card">
+
+<h3>Network</h3>
+
+<br>
+
+BNB Smart Chain
 
 </div>
 
 
+<div class="card">
 
-<div class="box">
+<h3>Liquidity</h3>
 
-<p>Network</p>
+<br>
 
-<h3>
-
-BNB Chain
-
-</h3>
+Locked 🔒
 
 </div>
-
-
-
-<div class="box">
-
-<p>Liquidity</p>
-
-<h3>
-
-Locked
-
-</h3>
 
 </div>
 
@@ -349,7 +315,7 @@ Locked
 
 
 
-<section class="contract">
+<section>
 
 <h2>
 
@@ -357,30 +323,27 @@ Contract Address
 
 </h2>
 
+<div class="contract-box">
 
 <input
 id="contract"
 readonly
-
 value="0xcF1FbF18bE9202865bcf88E6349B9D207F75942d">
 
-
-<br>
-
-
-<button
-onclick="copyAddress()">
+<button onclick="copyAddress()">
 
 Copy Contract
 
 </button>
 
+</div>
 
 </section>
 
 
 
-<section class="roadmap">
+
+<section id="roadmap">
 
 <h2>
 
@@ -389,33 +352,29 @@ Roadmap
 </h2>
 
 
-<div>
+<div class="roadmap-item">
 
 ✅ Token Launch
 
 </div>
 
-
-<div>
+<div class="roadmap-item">
 
 ✅ PancakeSwap Listing
 
 </div>
 
+<div class="roadmap-item">
 
-<div>
-
-🚀 Marketing
+🚀 Marketing Campaign
 
 </div>
 
-
-<div>
+<div class="roadmap-item">
 
 🚀 Ecosystem Expansion
 
 </div>
-
 
 </section>
 
@@ -428,7 +387,6 @@ Ran Digital © 2026
 </footer>
 
 
-
 <script>
 
 function copyAddress(){
@@ -439,26 +397,17 @@ document.getElementById(
 "contract"
 );
 
-copy.select();
-
-copy.setSelectionRange(
-0,
-99999
-);
-
 navigator.clipboard.writeText(
 copy.value
 );
 
 alert(
-"Contract Copied Successfully"
+"Contract copied successfully"
 );
 
 }
 
 </script>
 
-
 </body>
-
 </html>
