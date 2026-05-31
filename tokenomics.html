@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ran Digital (RND) | Tokenomics & Official Docs</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: #0a0c12;
+      color: #f0f3fa;
+      overflow-x: hidden;
+    }
+
+    /* ========= MODERN SIDEBAR (fixed) ========= */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 280px;
+      height: 100vh;
+      background: rgba(17, 22, 31, 0.96);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid rgba(0, 191, 255, 0.35);
+      padding: 32px 20px;
+      z-index: 1100;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      box-shadow: 8px 0 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo-area {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(0, 191, 255, 0.3);
+    }
+
+    .logo-icon {
+      font-size: 52px;
+      background: linear-gradient(145deg, #00e0ff, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .logo-area h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, #88d4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      margin: 6px 0;
+      color: #d1def0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.98rem;
+      border-radius: 60px;
+      transition: all 0.25s;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+    }
+
+    .sidebar a i {
+      width: 28px;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #6bb5ff;
+    }
+
+    .sidebar a:hover {
+      background: rgba(0, 191, 255, 0.12);
+      border-color: rgba(0, 191, 255, 0.5);
+      color: white;
+      transform: translateX(4px);
+    }
+
+    .sidebar a.active {
+      background: linear-gradient(95deg, #00b4ff20, #2a6df420);
+      border-left: 3px solid #00bfff;
+    }
+
+    /* Main content area */
+    .main-docs {
+      margin-left: 280px;
+      padding: 48px 56px;
+      min-height: 100vh;
+    }
+
+    /* Header section */
+    .docs-header {
+      margin-bottom: 48px;
+      border-bottom: 2px solid rgba(0, 191, 255, 0.3);
+      padding-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .docs-header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #fff, #7ad0ff, #2b9aff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .badge {
+      background: #0f172a;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      border: 1px solid #00bfff60;
+    }
+
+    /* Cards styling */
+    .doc-card {
+      background: #11161f;
+      border-radius: 32px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      border: 1px solid rgba(0, 191, 255, 0.2);
+      transition: all 0.3s;
+      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.4);
+    }
+
+    .doc-card:hover {
+      border-color: #00bfff80;
+      transform: translateY(-3px);
+      background: #131b28;
+    }
+
+    .doc-card h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #8ad4ff;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .doc-card h2 i {
+      font-size: 1.8rem;
+      color: #00bfff;
+    }
+
+    /* Stat grid */
+    .stat-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .stat-item {
+      background: #0c111b;
+      border-radius: 24px;
+      flex: 1 1 200px;
+      padding: 20px 16px;
+      text-align: center;
+      border: 1px solid #2a3a5a;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #00e4ff;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #b2c9f0;
+    }
+
+    /* Utility tags */
+    .utility-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .utility-tag {
+      background: #0b111e;
+      border: 1px solid #2f496e;
+      border-radius: 60px;
+      padding: 10px 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Contract highlight */
+    .contract-block {
+      background: #090e17;
+      padding: 20px 28px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      border: 1px solid #00bfff40;
+      margin: 16px 0 8px;
+    }
+
+    .contract-address {
+      font-family: monospace;
+      font-size: 1rem;
+      word-break: break-all;
+      color: #b9e2ff;
+    }
+
+    .copy-docs-btn {
+      background: #1a2538;
+      border: none;
+      border-radius: 40px;
+      padding: 10px 24px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .copy-docs-btn:hover {
+      background: #00bfff40;
+    }
+
+    /* Roadmap mini */
+    .roadmap-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .milestone {
+      background: #0c111e;
+      border-radius: 24px;
+      padding: 16px 20px;
+      flex: 1 1 180px;
+      border-left: 3px solid #00bfff;
+    }
+
+    footer {
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(0, 191, 255, 0.2);
+      color: #7c93b5;
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #00bfff40;
+        padding: 20px;
+      }
+      .main-docs {
+        margin-left: 0;
+        padding: 32px 24px;
+      }
+      .sidebar a {
+        display: inline-flex;
+        width: auto;
+        margin: 6px 8px;
+      }
+      .docs-header h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .main-docs {
+        padding: 20px 16px;
+      }
+      .doc-card {
+        padding: 20px;
+      }
+      .stat-number {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========= LEFT SIDEBAR (professional navigation for docs) ========= -->
+<div class="sidebar">
+  <div class="logo-area">
+    <div class="logo-icon">
+      <i class="fas fa-chart-line"></i>
+    </div>
+    <h2>Ran Digital</h2>
+    <p style="font-size: 0.7rem; margin-top: 6px; opacity: 0.7;">RND | Docs & Tokenomics</p>
+  </div>
+
+  <a href="index.html">
+    <i class="fas fa-home"></i> <span>🏠 Back to Home</span>
+  </a>
+  <a href="#supply" class="nav-docs">
+    <i class="fas fa-coins"></i> <span>Supply Overview</span>
+  </a>
+  <a href="#distribution" class="nav-docs">
+    <i class="fas fa-chart-pie"></i> <span>Distribution</span>
+  </a>
+  <a href="#utility" class="nav-docs">
+    <i class="fas fa-bolt"></i> <span>Token Utility</span>
+  </a>
+  <a href="#contract" class="nav-docs">
+    <i class="fas fa-file-contract"></i> <span>Smart Contract</span>
+  </a>
+  <a href="#roadmap-docs" class="nav-docs">
+    <i class="fas fa-road"></i> <span>Roadmap</span>
+  </a>
+  <a href="https://bscscan.com/token/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" rel="noopener">
+    <i class="fas fa-search"></i> <span>BscScan</span>
+  </a>
+  <a href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" rel="noopener">
+    <i class="fas fa-exchange-alt"></i> <span>PancakeSwap</span>
+  </a>
+  <div style="margin-top: 40px; padding: 12px; font-size: 0.7rem; text-align: center; border-top: 1px solid #2a3a55;">
+    <i class="fas fa-shield-alt"></i> Audited | LP Locked
+  </div>
+</div>
+
+<!-- ========= MAIN DOCS CONTENT ========= -->
+<div class="main-docs">
+  <div class="docs-header">
+    <h1><i class="fas fa-book-open"></i> Tokenomics & Official Docs</h1>
+    <div class="badge"><i class="fas fa-check-circle"></i> Verified BEP-20</div>
+  </div>
+
+  <!-- SUPPLY SECTION -->
+  <div id="supply" class="doc-card">
+    <h2><i class="fas fa-database"></i> Supply Information</h2>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-number">20,000</div>
+        <div class="stat-label">Total Supply</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">20,000</div>
+        <div class="stat-label">Max Supply (fixed)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">18</div>
+        <div class="stat-label">Decimals (BEP-20)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">BNB Chain</div>
+        <div class="stat-label">Network</div>
+      </div>
+    </div>
+    <p style="margin-top: 24px; font-size: 1rem; color: #ccdefa;">
+      <i class="fas fa-check-circle" style="color: #2ed15e;"></i> <strong>Hyper-scarce fixed supply:</strong> Only 20,000 RND tokens will ever exist. No mint function, no inflationary mechanisms. 
+      Built on Binance Smart Chain (BEP-20) for near-zero fees and high-speed transactions.
+    </p>
+  </div>
+
+  <!-- DISTRIBUTION SECTION -->
+  <div id="distribution" class="doc-card">
+    <h2><i class="fas fa-chart-pie"></i> Distribution & Allocation</h2>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Community & Liquidity</div>
+        <i class="fas fa-users" style="margin-top: 8px; color: #6bcbff;"></i>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0%</div>
+        <div class="stat-label">Team / Presale Tax</div>
+        <i class="fas fa-tag" style="color:#4ade80;"></i>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">🔒 Locked</div>
+        <div class="stat-label">Liquidity (2+ years)</div>
+        <i class="fas fa-lock" style="color: #f5a623;"></i>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Fair Launch</div>
+        <div class="stat-label">No Presale, No VC</div>
+      </div>
+    </div>
+    <p style="margin-top: 20px;">
+      Ran Digital launched with a 100% fair distribution. All tokens were added to liquidity pools with no private sales. 
+      <strong>Liquidity is locked for 2+ years</strong> and contract ownership is renounced, ensuring full community ownership and long-term stability.
+    </p>
+  </div>
+
+  <!-- UTILITY SECTION -->
+  <div id="utility" class="doc-card">
+    <h2><i class="fas fa-bolt"></i> Token Utility & Real-World Use</h2>
+    <div class="utility-tags">
+      <span class="utility-tag"><i class="fas fa-vote-yea"></i> DAO Governance</span>
+      <span class="utility-tag"><i class="fas fa-chart-line"></i> Staking Rewards (Future)</span>
+      <span class="utility-tag"><i class="fas fa-handshake"></i> Ecosystem Partnerships</span>
+      <span class="utility-tag"><i class="fas fa-globe"></i> Web3 dApp Integration</span>
+      <span class="utility-tag"><i class="fas fa-gem"></i> Scarcity-driven Value</span>
+      <span class="utility-tag"><i class="fas fa-crosshairs"></i> CEX Listing Fuel</span>
+    </div>
+    <p style="margin-top: 24px;">
+      RND is designed as a multi-utility asset: holders will participate in DAO voting to decide treasury allocations, future partnerships, and ecosystem expansion. 
+      Upcoming features include a staking dashboard, exclusive NFT access, and integration into a RND-powered launchpad. The fixed supply guarantees long-term appreciation aligned with community growth.
+    </p>
+  </div>
+
+  <!-- SMART CONTRACT SECTION -->
+  <div id="contract" class="doc-card">
+    <h2><i class="fas fa-file-code"></i> Smart Contract (BEP-20)</h2>
+    <div class="contract-block">
+      <code class="contract-address" id="contractAddress">0xcF1FbF18bE9202865bcf88E6349B9D207F75942d</code>
+      <button class="copy-docs-btn" id="copyContractDocsBtn"><i class="fas fa-copy"></i> Copy Address</button>
+    </div>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px;">
+      <a href="https://bscscan.com/token/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" style="color:#00bfff; text-decoration: none;"><i class="fas fa-external-link-alt"></i> View on BscScan</a>
+      <span><i class="fas fa-check-circle" style="color:#2ed15e;"></i> Verified Contract | Renounced Ownership</span>
+      <span><i class="fas fa-chart-simple"></i> 0% buy / 0% sell tax</span>
+    </div>
+    <p style="margin-top: 18px; font-size: 0.85rem; background:#0c111e; padding: 12px; border-radius: 20px;">
+      ✅ <strong>Security highlights:</strong> No hidden minting, no honeypot functions, liquidity locked via trusted locker, and ownership renounced.
+    </p>
+  </div>
+
+  <!-- ROADMAP SECTION (detailed) -->
+  <div id="roadmap-docs" class="doc-card">
+    <h2><i class="fas fa-road"></i> Official Roadmap</h2>
+    <div class="roadmap-mini">
+      <div class="milestone"><i class="fas fa-calendar-alt"></i> <strong>Q1 2026</strong><br>Token launch, fair distribution, smart contract audit, initial liquidity.</div>
+      <div class="milestone"><i class="fas fa-chart-line"></i> <strong>Q2 2026</strong><br>PancakeSwap official listing, CoinGecko/CMC applications, marketing wave.</div>
+      <div class="milestone"><i class="fas fa-users"></i> <strong>Q3 2026</strong><br>Community DAO launch, staking testnet, strategic partnerships.</div>
+      <div class="milestone"><i class="fas fa-bullseye"></i> <strong>2027</strong><br>CEX listings (LBank, BingX target), cross-chain expansion, RND utility dApps.</div>
+    </div>
+    <div class="disclaimer" style="margin-top: 28px; font-size: 0.7rem; opacity: 0.7; text-align: center;">
+      <i class="fas fa-chart-line"></i> Roadmap milestones are ambitious and may evolve based on community feedback & market conditions.
+    </div>
+  </div>
+
+  <!-- EXTRA: AUDIT & TRANSPARENCY CARD -->
+  <div class="doc-card" style="background: #0d131e;">
+    <h2><i class="fas fa-shield-virus"></i> Security & Transparency</h2>
+    <p><i class="fas fa-check-double"></i> ✅ Smart contract fully verified on BscScan.<br>
+    <i class="fas fa-ban"></i> ❌ No hidden taxes, no mint function, no honeypot.<br>
+    <i class="fas fa-water"></i> 🔒 Liquidity locked for 730 days + ownership renounced.<br>
+    <i class="fas fa-chart-line"></i> 📊 0% tax on buys & sells — ideal for long-term holding and trading.</p>
+    <div style="margin-top: 20px; background:#0a0f18; border-radius: 28px; padding: 14px; text-align: center;">
+      <i class="fas fa-file-alt"></i> <strong>Audit Report:</strong> Completed by SolidProof (available upon request in community channels)
+    </div>
+  </div>
+
+  <footer>
+    <i class="fas fa-copyright"></i> Ran Digital (RND) — Scarcity meets next‑gen DeFi. <br>
+    <span style="font-size: 0.7rem;">Always DYOR. This documentation is for informational purposes only.</span>
+  </footer>
+</div>
+
+<script>
+  // Copy contract functionality for docs page
+  const copyDocsBtn = document.getElementById('copyContractDocsBtn');
+  const contractAddr = "0xcF1FbF18bE9202865bcf88E6349B9D207F75942d";
+
+  if (copyDocsBtn) {
+    copyDocsBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(contractAddr).then(() => {
+        const originalHTML = copyDocsBtn.innerHTML;
+        copyDocsBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+          copyDocsBtn.innerHTML = originalHTML;
+        }, 1800);
+      }).catch(() => {
+        alert("Copy manually: " + contractAddr);
+      });
+    });
+  }
+
+  // Smooth scroll for sidebar links (docs internal anchors)
+  document.querySelectorAll('.sidebar a.nav-docs, .sidebar a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== "#" && targetId.startsWith("#")) {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Active link highlight on scroll
+  const sections = ['supply', 'distribution', 'utility', 'contract', 'roadmap-docs'];
+  const navItems = document.querySelectorAll('.sidebar a.nav-docs');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    for (let sec of sections) {
+      const element = document.getElementById(sec);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 200 && rect.bottom >= 100) {
+          current = sec;
+          break;
+        }
+      }
+    }
+    navItems.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href');
+      if (href === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
