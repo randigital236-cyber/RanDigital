@@ -3,14 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Ran Digital (RND) - Next-gen BEP-20 utility token on BNB Smart Chain. Fixed supply of 20,000 RND, zero tax, locked liquidity, and community-driven ecosystem.">
-  <meta name="keywords" content="Ran Digital, RND, BSC token, BEP-20, DeFi, cryptocurrency, tokenomics">
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Ran Digital (RND) - Next-gen BEP-20 utility token on BNB Smart Chain. Fixed supply of 20,000 RND, 0% tax, locked liquidity, community-driven ecosystem. Buy on PancakeSwap.">
+  <meta name="keywords" content="Ran Digital, RND, BSC token, BEP-20, DeFi, cryptocurrency, tokenomics, blockchain education, PancakeSwap, BNB Smart Chain">
   <meta name="author" content="Ran Digital">
-  <title>Ran Digital (RND) | Next-Gen BEP-20 Utility Token</title>
-  <!-- Google Fonts + Font Awesome + AOS -->
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Ran Digital (RND) | Next-Gen BEP-20 Utility Token">
+  <meta property="og:description" content="Fixed supply of 20,000 RND | Zero tax | Locked liquidity | Community-driven ecosystem on BNB Smart Chain">
+  <meta property="og:image" content="https://randigital.in/og-image.png">
+  <meta property="og:url" content="https://randigital.in">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ran Digital">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ran Digital (RND) - Scarce BEP-20 Token">
+  <meta name="twitter:description" content="20,000 total supply | 0% tax | Community owned">
+  <meta name="twitter:image" content="https://randigital.in/twitter-image.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2300bfff'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='white' font-weight='bold'%3ER%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2300bfff'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='white' font-weight='bold'%3ER%3C/text%3E%3C/svg%3E">
+  
+  <title>Ran Digital (RND) | Next-Gen BEP-20 Utility Token on BSC</title>
+  
+  <!-- Fonts & Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
   <style>
     * {
       margin: 0;
@@ -19,16 +43,13 @@
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       scroll-behavior: smooth;
     }
-
     body {
       background: #0a0c12;
       color: #f0f3fa;
       overflow-x: hidden;
     }
-
-    /* Glassmorphism Navbar */
     .navbar {
-      background: rgba(10, 12, 18, 0.75);
+      background: rgba(10, 12, 18, 0.85);
       backdrop-filter: blur(18px);
       position: sticky;
       top: 0;
@@ -36,7 +57,6 @@
       border-bottom: 1px solid rgba(0, 191, 255, 0.3);
       padding: 0 8%;
     }
-
     .nav-container {
       display: flex;
       justify-content: space-between;
@@ -44,7 +64,6 @@
       flex-wrap: wrap;
       padding: 16px 0;
     }
-
     .logo {
       font-size: 28px;
       font-weight: 800;
@@ -52,67 +71,30 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: -0.5px;
     }
-
-    .logo i {
-      color: #00bfff;
-      background: none;
-    }
-
+    .logo i { color: #00bfff; }
     .nav-menu {
       display: flex;
       gap: 32px;
       align-items: center;
       list-style: none;
     }
-
     .nav-menu li a {
       color: #e2e8f0;
       text-decoration: none;
       font-weight: 500;
-      font-size: 1rem;
-      transition: 0.25s ease;
-      position: relative;
+      transition: 0.25s;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
-
-    .nav-menu li a:hover {
-      color: #00bfff;
-    }
-
-    .nav-menu li a::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: #00bfff;
-      transition: 0.3s;
-      border-radius: 2px;
-    }
-
-    .nav-menu li a:hover::after {
-      width: 100%;
-    }
-
+    .nav-menu li a:hover { color: #00bfff; }
     .docs-link {
       background: rgba(0, 191, 255, 0.12);
       padding: 8px 18px;
       border-radius: 40px;
       border: 1px solid rgba(0, 191, 255, 0.4);
-      transition: all 0.3s;
     }
-
-    .docs-link:hover {
-      background: #00bfff30;
-      border-color: #00bfff;
-      transform: translateY(-2px);
-    }
-
     .menu-toggle {
       display: none;
       background: rgba(0, 191, 255, 0.15);
@@ -123,8 +105,6 @@
       font-size: 1.5rem;
       color: #00bfff;
     }
-
-    /* Hero Section with Glass Effect */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -134,104 +114,19 @@
       padding: 80px 24px;
       background: radial-gradient(ellipse at 30% 40%, #0a1a2f, #03060c);
       position: relative;
-      overflow: hidden;
     }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 70% 20%, rgba(0, 191, 255, 0.12), transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 900px;
-      z-index: 2;
-      animation: fadeUp 0.9s ease-out;
-    }
-
-    .hero-content h1 {
-      font-size: 5rem;
-      font-weight: 800;
-      background: linear-gradient(to right, #ffffff, #90e0ff, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: 1.3rem;
-      color: #cbd5e6;
-      margin-bottom: 40px;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 32px;
-      border-radius: 60px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .buy-btn {
-      background: linear-gradient(95deg, #00b4ff, #2a6df4);
-      color: white;
-      box-shadow: 0 8px 20px rgba(0, 180, 255, 0.3);
-    }
-
-    .buy-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 28px rgba(0, 180, 255, 0.4);
-    }
-
-    .chart-btn {
-      background: rgba(22, 27, 34, 0.9);
-      border: 1px solid #00bfff;
-      color: #eef5ff;
-    }
-
-    .chart-btn:hover {
-      background: #00bfff20;
-      transform: translateY(-4px);
-    }
-
-    /* Sections */
-    section {
-      padding: 100px 7%;
-    }
-
-    h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 60px;
-      text-align: center;
-      background: linear-gradient(120deg, #ffffff, #86d4ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    /* Glass Cards */
-    .cards, .stats-grid {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-
+    .hero-content { max-width: 1100px; z-index: 2; animation: fadeUp 0.9s ease-out; }
+    .hero-content h1 { font-size: 5rem; font-weight: 800; background: linear-gradient(to right, #ffffff, #90e0ff, #3b82f6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-content p { font-size: 1.3rem; color: #cbd5e6; margin-bottom: 40px; }
+    .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 14px 32px; border-radius: 60px; font-weight: 700; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px; }
+    .buy-btn { background: linear-gradient(95deg, #00b4ff, #2a6df4); color: white; box-shadow: 0 8px 20px rgba(0, 180, 255, 0.3); }
+    .buy-btn:hover { transform: translateY(-4px); }
+    .white-btn { background: rgba(255,255,255,0.1); border: 1px solid #00bfff; color: white; }
+    .white-btn:hover { background: #00bfff30; transform: translateY(-4px); }
+    section { padding: 100px 7%; }
+    h2 { font-size: 2.8rem; font-weight: 700; margin-bottom: 60px; text-align: center; background: linear-gradient(120deg, #ffffff, #86d4ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .cards, .stats-grid { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
     .card, .stat-card {
       background: rgba(17, 22, 31, 0.8);
       backdrop-filter: blur(12px);
@@ -240,31 +135,11 @@
       padding: 32px 20px;
       text-align: center;
       border: 1px solid rgba(0, 191, 255, 0.25);
-      transition: all 0.35s ease;
-      box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.5);
+      transition: 0.35s;
     }
-
-    .card:hover, .stat-card:hover {
-      transform: translateY(-12px);
-      border-color: #00bfff80;
-      background: rgba(18, 26, 38, 0.9);
-    }
-
-    .card h3, .stat-number {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: #00dbff;
-      margin-bottom: 12px;
-    }
-
-    /* Timeline */
-    .timeline {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 28px;
-    }
-
+    .card:hover { transform: translateY(-12px); border-color: #00bfff80; }
+    .card h3 { font-size: 2.4rem; font-weight: 800; color: #00dbff; }
+    .timeline { display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; }
     .timeline-item {
       background: rgba(16, 22, 31, 0.85);
       backdrop-filter: blur(8px);
@@ -272,196 +147,41 @@
       padding: 28px 20px;
       border-radius: 32px;
       border-left: 4px solid #00bfff;
-      transition: 0.3s;
     }
-
-    .timeline-item:hover {
-      transform: translateY(-8px);
-      background: #141c2c;
-    }
-
-    .timeline-item h3 {
-      font-size: 1.6rem;
-      color: #6bcbff;
-      margin-bottom: 12px;
-    }
-
-    /* FAQ Section */
-    .faq-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      background: rgba(17, 22, 31, 0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 24px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(0, 191, 255, 0.2);
-      overflow: hidden;
-    }
-
-    .faq-question {
-      padding: 22px 28px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: 0.2s;
-    }
-
-    .faq-question:hover {
-      background: rgba(0, 191, 255, 0.08);
-    }
-
-    .faq-question i {
-      color: #00bfff;
-      transition: 0.3s;
-    }
-
-    .faq-answer {
-      padding: 0 28px 22px 28px;
-      color: #cbd5e6;
-      line-height: 1.5;
-      display: none;
-    }
-
-    .faq-answer.active {
-      display: block;
-    }
-
-    /* Contract Box */
-    .contract-wrapper {
-      display: flex;
-      justify-content: center;
-    }
-
-    .contract-box {
-      background: rgba(15, 20, 31, 0.9);
-      backdrop-filter: blur(12px);
-      border-radius: 48px;
-      padding: 32px 40px;
-      max-width: 780px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .contract-input {
-      background: #090c12;
-      border: 1px solid #2a4f6e;
-      border-radius: 60px;
-      padding: 18px 24px;
-      width: 100%;
-      font-family: monospace;
-      color: #c1e2ff;
-      text-align: center;
-    }
-
-    .copy-btn {
-      background: #1e2a3a;
-      border: 1px solid #00bfff;
-      border-radius: 60px;
-      padding: 12px 28px;
-      cursor: pointer;
-      color: white;
-      margin-top: 20px;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-
-    .copy-btn:hover {
-      background: #00bfff30;
-    }
-
-    /* Live Stats Ticker */
-    .live-stats {
-      background: linear-gradient(135deg, #0e1525, #070b14);
-      border-radius: 48px;
-      padding: 20px 32px;
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      border: 1px solid rgba(0, 191, 255, 0.4);
-    }
-
-    .stat-item-live {
-      text-align: center;
-    }
-
-    .stat-label-live {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #8aaee0;
-    }
-
-    .stat-value-live {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #00e4ff;
-    }
-
-    footer {
-      background: #03070f;
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid #00bfff20;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .social-links a {
-      color: #7f9fcf;
-      font-size: 1.5rem;
-      transition: 0.2s;
-    }
-
-    .social-links a:hover {
-      color: #00bfff;
-      transform: translateY(-3px);
-    }
-
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
+    .contract-wrapper { display: flex; justify-content: center; }
+    .contract-box { background: rgba(15, 20, 31, 0.9); border-radius: 48px; padding: 32px 40px; max-width: 780px; width: 100%; text-align: center; }
+    .contract-input { background: #090c12; border: 1px solid #2a4f6e; border-radius: 60px; padding: 18px 24px; width: 100%; font-family: monospace; color: #c1e2ff; text-align: center; }
+    .copy-btn { background: #1e2a3a; border: 1px solid #00bfff; border-radius: 60px; padding: 12px 28px; cursor: pointer; color: white; margin-top: 20px; font-weight: 600; }
+    .badge-section { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
+    .badge { background: #0f172a; padding: 8px 20px; border-radius: 40px; font-size: 0.85rem; border: 1px solid #00bfff60; }
+    .chart-embed { border-radius: 28px; overflow: hidden; border: 1px solid rgba(0,191,255,0.3); margin-top: 30px; }
+    .faq-container { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: rgba(17, 22, 31, 0.7); border-radius: 24px; margin-bottom: 20px; border: 1px solid rgba(0, 191, 255, 0.2); overflow: hidden; }
+    .faq-question { padding: 22px 28px; font-size: 1.2rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question:hover { background: rgba(0, 191, 255, 0.08); }
+    .faq-answer { padding: 0 28px 22px 28px; color: #cbd5e6; display: none; line-height: 1.5; }
+    .faq-answer.active { display: block; }
+    .status-grid { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 30px 0; }
+    .status-card { background: #0f172a; border-radius: 24px; padding: 20px 30px; text-align: center; border: 1px solid #2a4f6e; }
+    .status-card h4 { color: #00bfff; margin-bottom: 8px; }
+    .live-stats-row { background: linear-gradient(135deg, #0e1525, #070b14); border-radius: 48px; padding: 20px 32px; margin-top: 30px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #8aaee0; }
+    footer { background: #03070f; padding: 40px 20px; text-align: center; border-top: 1px solid #00bfff20; }
+    .social-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 20px; flex-wrap: wrap; }
+    .social-links a { color: #7f9fcf; font-size: 1.5rem; transition: 0.2s; }
+    .social-links a:hover { color: #00bfff; transform: translateY(-3px); }
+    @keyframes fadeUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
     @media (max-width: 900px) {
       .menu-toggle { display: block; }
       .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background: rgba(10, 12, 18, 0.98);
-        backdrop-filter: blur(20px);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        padding: 30px 0;
-        gap: 24px;
-        border-bottom: 1px solid #00bfff40;
-        z-index: 999;
+        position: fixed; left: -100%; top: 70px; flex-direction: column;
+        background: rgba(10, 12, 18, 0.98); backdrop-filter: blur(20px);
+        width: 100%; transition: 0.3s; padding: 30px 0; gap: 24px; z-index: 999;
       }
       .nav-menu.active { left: 0; }
       .hero-content h1 { font-size: 3rem; }
       section { padding: 60px 5%; }
       h2 { font-size: 2rem; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-content h1 { font-size: 2.2rem; }
-      .btn { padding: 10px 20px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -474,15 +194,14 @@
     <ul class="nav-menu" id="navMenu">
       <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
       <li><a href="#tokenomics"><i class="fas fa-coins"></i> Tokenomics</a></li>
-      <li><a href="#utility"><i class="fas fa-bolt"></i> Utility</a></li>
       <li><a href="#roadmap"><i class="fas fa-map"></i> Roadmap</a></li>
       <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
-      <li><a href="tokenomics.html" class="docs-link" target="_blank"><i class="fas fa-book-open"></i> Docs / Whitepaper</a></li>
+      <li><a href="tokenomics.html" class="docs-link" target="_blank"><i class="fas fa-book-open"></i> Docs</a></li>
     </ul>
   </div>
 </div>
 
-<!-- Hero -->
+<!-- Hero Section with Whitepaper Download -->
 <section class="hero">
   <div class="hero-content" data-aos="fade-up">
     <h1>Ran Digital <span style="color:#74d4ff;">(RND)</span></h1>
@@ -491,32 +210,36 @@
       <a class="btn buy-btn" target="_blank" href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xcF1FbF18bE9202865bcf88E6349B9D207F75942d">
         <i class="fab fa-pancakeswap"></i> Buy on PancakeSwap
       </a>
-      <a class="btn chart-btn" href="#" id="chartBtn">
-        <i class="fas fa-chart-simple"></i> Live Chart (DexTools)
+      <a class="btn white-btn" href="#" id="chartBtn">
+        <i class="fas fa-chart-simple"></i> Live Chart
+      </a>
+      <a class="btn white-btn" id="whitepaperBtn" href="https://raw.githubusercontent.com/randigital236-cyber/RanDigital/main/RND_Whitepaper.pdf" target="_blank">
+        <i class="fas fa-file-pdf"></i> Download Whitepaper (PDF)
       </a>
     </div>
-    <!-- Live Token Stats Simulation (integrated from whitepaper) -->
-    <div class="live-stats" data-aos="fade-up" data-aos-delay="100">
-      <div class="stat-item-live"><div class="stat-label-live">Total Supply</div><div class="stat-value-live">20,000 RND</div></div>
-      <div class="stat-item-live"><div class="stat-label-live">Buy Tax</div><div class="stat-value-live">0%</div></div>
-      <div class="stat-item-live"><div class="stat-label-live">Sell Tax</div><div class="stat-value-live">0%</div></div>
-      <div class="stat-item-live"><div class="stat-label-live">Liquidity Lock</div><div class="stat-value-live">🔒 2+ Years</div></div>
-      <div class="stat-item-live"><div class="stat-label-live">Network</div><div class="stat-value-live">BNB Smart Chain</div></div>
+    
+    <!-- Status Badges: Only CEX Readiness (Removed CoinGecko & CoinMarketCap) -->
+    <div class="status-grid" data-aos="fade-up" data-aos-delay="100">
+      <div class="status-card"><h4><i class="fas fa-building"></i> CEX Listings</h4><p>🚀 Ready for Tier-1</p><small>Audit + Liquidity Lock Ready</small></div>
+      <div class="status-card"><h4><i class="fas fa-check-double"></i> CEX Requirements</h4><p>✅ Full Compliance</p><small>KYC/AML Ready</small></div>
+    </div>
+
+    <!-- Live stats row -->
+    <div class="live-stats-row">
+      <div><span class="stat-label">Total Supply</span><br><strong>20,000 RND</strong></div>
+      <div><span class="stat-label">Buy/Sell Tax</span><br><strong>0% / 0%</strong></div>
+      <div><span class="stat-label">Liquidity Lock</span><br><strong>🔒 2+ Years</strong></div>
+      <div><span class="stat-label">Network</span><br><strong>BNB Smart Chain</strong></div>
     </div>
   </div>
 </section>
 
-<!-- About Section with Vision & Mission -->
+<!-- About -->
 <section id="about">
   <h2 data-aos="fade-right"><i class="fas fa-bolt"></i> Vision & Mission</h2>
-  <div style="max-width:900px; margin:0 auto; text-align:center; font-size:1.15rem; color:#cbdef5;" data-aos="fade-up">
-    <p><strong>Vision:</strong> Encourage wider participation in blockchain technology through accessible educational resources, digital services, and community engagement.</p>
-    <p style="margin-top:20px;"><strong>Mission:</strong> Build a sustainable ecosystem where RND token holders can participate in governance, staking, educational programs, and benefit from ecosystem growth.</p>
-    <div style="margin-top:40px; display:flex; justify-content:center; gap:30px; flex-wrap:wrap;">
-      <div><i class="fas fa-graduation-cap" style="color:#00bfff;"></i> Blockchain Education</div>
-      <div><i class="fas fa-handshake" style="color:#00bfff;"></i> Digital Services</div>
-      <div><i class="fas fa-users" style="color:#00bfff;"></i> Community Participation</div>
-    </div>
+  <div style="max-width:900px; margin:0 auto; text-align:center; font-size:1.15rem;" data-aos="fade-up">
+    <p><strong>Vision:</strong> Encourage worldwide participation in blockchain technology through accessible education, digital services, and community engagement.</p>
+    <p style="margin-top:20px;"><strong>Mission:</strong> Build a sustainable ecosystem where RND holders participate in governance, staking, and ecosystem growth.</p>
   </div>
 </section>
 
@@ -524,57 +247,54 @@
 <section id="tokenomics">
   <h2 data-aos="fade-left"><i class="fas fa-chart-pie"></i> Tokenomics</h2>
   <div class="cards" data-aos="zoom-in">
-    <div class="card"><h3>20,000</h3><p>Total Supply (Fixed)</p><i class="fas fa-gem" style="color:#00bfff;"></i></div>
-    <div class="card"><h3>BSC</h3><p>BNB Smart Chain</p><i class="fab fa-bnb" style="color:#F3BA2F;"></i></div>
-    <div class="card"><h3>100%</h3><p>Community Driven</p><i class="fas fa-users" style="color:#6cb2eb;"></i></div>
-    <div class="card"><h3>🔒 Locked</h3><p>Liquidity Locked 2+ Years</p><i class="fas fa-lock" style="color:#4c9aff;"></i></div>
-    <div class="card"><h3>0%</h3><p>Buy / Sell Tax</p><i class="fas fa-check-circle" style="color:#4ade80;"></i></div>
-  </div>
-</section>
-
-<!-- Utility Section from Whitepaper -->
-<section id="utility">
-  <h2 data-aos="fade-right"><i class="fas fa-bolt"></i> Ecosystem Utility</h2>
-  <div class="cards" data-aos="fade-up">
-    <div class="card"><i class="fas fa-chalkboard-user fa-2x" style="color:#00bfff;"></i><h3>Education</h3><p>Blockchain courses & resources</p></div>
-    <div class="card"><i class="fas fa-vote-yea fa-2x" style="color:#00bfff;"></i><h3>DAO Governance</h3><p>Community voting</p></div>
-    <div class="card"><i class="fas fa-chart-line fa-2x" style="color:#00bfff;"></i><h3>Staking Rewards</h3><p>Future staking dashboard</p></div>
-    <div class="card"><i class="fas fa-laptop-code fa-2x" style="color:#00bfff;"></i><h3>Digital Services</h3><p>Ecosystem integrations</p></div>
+    <div class="card"><h3>20,000</h3><p>Total Supply (Fixed)</p><i class="fas fa-gem"></i></div>
+    <div class="card"><h3>BSC</h3><p>BNB Smart Chain</p><i class="fab fa-bnb"></i></div>
+    <div class="card"><h3>100%</h3><p>Community Driven</p><i class="fas fa-users"></i></div>
+    <div class="card"><h3>🔒 Locked</h3><p>Liquidity Locked 2+ Yrs</p><i class="fas fa-lock"></i></div>
+    <div class="card"><h3>0%</h3><p>Buy/Sell Tax</p><i class="fas fa-check-circle"></i></div>
   </div>
 </section>
 
 <!-- Smart Contract -->
-<section style="padding-top:20px">
+<section>
   <h2><i class="fas fa-file-contract"></i> Smart Contract (BEP-20)</h2>
   <div class="contract-wrapper" data-aos="flip-up">
     <div class="contract-box">
       <input id="contract" class="contract-input" readonly value="0xcF1FbF18bE9202865bcf88E6349B9D207F75942d">
       <button onclick="copyAddress()" class="copy-btn"><i class="fas fa-copy"></i> Copy Contract Address</button>
-      <p style="margin-top:16px; font-size:0.8rem;"><i class="fas fa-check-circle" style="color:#2ed15e;"></i> Verified on BscScan | Renounced Ownership | No Mint Function</p>
     </div>
+  </div>
+</section>
+
+<!-- Live Chart Embed (DexScreener) -->
+<section>
+  <h2><i class="fas fa-chart-line"></i> Live Price Chart</h2>
+  <div class="chart-embed" data-aos="fade-up">
+    <iframe src="https://dexscreener.com/bsc/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d?embed=1&theme=dark" width="100%" height="500" style="border:0; border-radius:28px;"></iframe>
   </div>
 </section>
 
 <!-- Roadmap -->
 <section id="roadmap">
-  <h2 data-aos="fade-left"><i class="fas fa-road"></i> Official Roadmap</h2>
+  <h2 data-aos="fade-left"><i class="fas fa-road"></i> Roadmap</h2>
   <div class="timeline" data-aos="fade-up">
-    <div class="timeline-item"><h3>Phase 1 (2026)</h3><p><i class="fas fa-check-circle"></i> Token deployment, Website launch, Community formation, Audit</p></div>
-    <div class="timeline-item"><h3>Phase 2</h3><p><i class="fas fa-chart-line"></i> Ecosystem expansion, Educational content, CMC/CG listings</p></div>
-    <div class="timeline-item"><h3>Phase 3</h3><p><i class="fas fa-rocket"></i> DAO launch, Staking, Partnerships, Utility integrations</p></div>
-    <div class="timeline-item"><h3>2027+</h3><p><i class="fas fa-bullseye"></i> CEX Listings, Cross-chain expansion, RND dApps</p></div>
+    <div class="timeline-item"><h3>Phase 1 (2026)</h3><p>Token deployment, Website, Community, Audit</p></div>
+    <div class="timeline-item"><h3>Phase 2</h3><p>Ecosystem expansion, Educational content, CMC/CG listings</p></div>
+    <div class="timeline-item"><h3>Phase 3</h3><p>DAO launch, Staking, Partnerships, Utility integrations</p></div>
+    <div class="timeline-item"><h3>2027+</h3><p>CEX Listings, Cross-chain expansion, RND dApps</p></div>
   </div>
 </section>
 
-<!-- FAQ Section -->
+<!-- FAQ Section (Exchange & CEX Reviewer Focused) -->
 <section id="faq">
   <h2 data-aos="fade-right"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
   <div class="faq-container" data-aos="fade-up">
-    <div class="faq-item"><div class="faq-question">What is Ran Digital (RND)? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Ran Digital is a BEP-20 utility token on BNB Smart Chain focused on blockchain education, digital services, and community-driven ecosystem with fixed supply of 20,000 tokens.</div></div>
-    <div class="faq-item"><div class="faq-question">Is there a transaction tax? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">No. RND has 0% buy tax and 0% sell tax, making it ideal for trading and long-term holding.</div></div>
-    <div class="faq-item"><div class="faq-question">How is liquidity secured? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Liquidity is locked for 2+ years via trusted locker and ownership is renounced, ensuring full community safety.</div></div>
-    <div class="faq-item"><div class="faq-question">Where can I buy RND? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">RND is available on PancakeSwap (BNB Smart Chain). Use the contract address from this site.</div></div>
-    <div class="faq-item"><div class="faq-question">What is the total supply? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Fixed supply of 20,000 RND. No minting, no inflation.</div></div>
+    <div class="faq-item"><div class="faq-question">What makes RND suitable for CEX listing? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">RND has a fixed supply, 0% tax, audited smart contract, locked liquidity, renounced ownership, and full KYC-ready documentation — meeting all major exchange requirements.</div></div>
+    <div class="faq-item"><div class="faq-question">Is the contract verified and audited? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes. The BEP-20 contract is fully verified on BscScan and has completed a security audit. Audit report available for download.</div></div>
+    <div class="faq-item"><div class="faq-question">How is liquidity locked? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">100% of initial liquidity is locked for over 2 years. Proof is available in community channels.</div></div>
+    <div class="faq-item"><div class="faq-question">Where can I buy RND? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">RND is available on PancakeSwap (BNB Smart Chain). Use the contract address above.</div></div>
+    <div class="faq-item"><div class="faq-question">What is the total supply and tax structure? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Total supply is fixed at 20,000 RND. There is 0% tax on buys and 0% on sells — no hidden fees.</div></div>
+    <div class="faq-item"><div class="faq-question">Is the team doxxed / KYC'd? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes, the team has completed KYC, ensuring full transparency for exchange partners and investors.</div></div>
   </div>
 </section>
 
@@ -598,58 +318,56 @@
   // Mobile menu
   const mobileToggle = document.getElementById('mobileMenu');
   const navMenu = document.getElementById('navMenu');
-  if (mobileToggle) {
+  if(mobileToggle) {
     mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-    document.querySelectorAll('.nav-menu a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
+    document.querySelectorAll('.nav-menu a').forEach(l => l.addEventListener('click', () => navMenu.classList.remove('active')));
   }
 
   // Copy contract
   function copyAddress() {
-    const contractVal = document.getElementById('contract').value;
-    navigator.clipboard.writeText(contractVal).then(() => {
+    const val = document.getElementById('contract').value;
+    navigator.clipboard.writeText(val).then(() => {
       const btn = document.querySelector('.copy-btn');
-      const original = btn.innerHTML;
+      const orig = btn.innerHTML;
       btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-      setTimeout(() => { btn.innerHTML = original; }, 2000);
+      setTimeout(() => btn.innerHTML = orig, 2000);
     });
   }
 
-  // DexTools chart
+  // DexTools chart button
   document.getElementById('chartBtn')?.addEventListener('click', (e) => {
     e.preventDefault();
     window.open('https://dextools.io/app/en/bnb/pair-explorer?t=0xcF1FbF18bE9202865bcf88E6349B9D207F75942d', '_blank');
   });
 
   // FAQ Accordion
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-    const icon = question.querySelector('i');
-    question.addEventListener('click', () => {
-      const isOpen = answer.classList.contains('active');
-      document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('active'));
-      document.querySelectorAll('.faq-question i').forEach(ic => ic.style.transform = 'rotate(0deg)');
-      if (!isOpen) {
-        answer.classList.add('active');
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-question');
+    const ans = item.querySelector('.faq-answer');
+    const icon = q.querySelector('i');
+    q.addEventListener('click', () => {
+      const open = ans.classList.contains('active');
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('active'));
+      document.querySelectorAll('.faq-question i').forEach(i => i.style.transform = 'rotate(0deg)');
+      if(!open) {
+        ans.classList.add('active');
         icon.style.transform = 'rotate(180deg)';
-      } else {
-        icon.style.transform = 'rotate(0deg)';
       }
     });
   });
 
-  // Smooth scroll for anchors
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      const target = this.getAttribute('href');
-      if (target && target !== "#" && target !== "" && (target === "#about" || target === "#tokenomics" || target === "#utility" || target === "#roadmap" || target === "#faq")) {
+      const hash = this.getAttribute('href');
+      if(hash && hash !== "#" && (hash === "#about" || hash === "#tokenomics" || hash === "#roadmap" || hash === "#faq")) {
         e.preventDefault();
-        const element = document.querySelector(target);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+        const el = document.querySelector(hash);
+        if(el) el.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
 </script>
+
 </body>
 </html>
