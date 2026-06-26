@@ -13,14 +13,14 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <!-- ============================================================ -->
-    <!-- html2pdf.js — Direct PDF generation                          -->
-    <!-- ============================================================ -->
+    <!-- html2pdf.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js">
     </script>
 
     <style>
-        /* ----- RESET & BASE ----- */
+        /* =============================================================
+                   RESET & BASE
+                ============================================================= */
         * {
             margin: 0;
             padding: 0;
@@ -37,7 +37,9 @@
             min-height: 100vh;
         }
 
-        /* ----- BUTTON ----- */
+        /* =============================================================
+                   TOOLBAR
+                ============================================================= */
         .toolbar {
             display: flex;
             gap: 0.8rem;
@@ -47,6 +49,14 @@
             width: 100%;
             max-width: 1200px;
             padding: 0 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 215, 0, 0.08);
         }
 
         .download-btn {
@@ -135,38 +145,44 @@
             display: block;
         }
 
-        /* ----- WHITEPAPER CONTAINER ----- */
+        /* =============================================================
+                   WHITEPAPER CONTAINER — EXACT A4 WIDTH
+                ============================================================= */
         #whitepaper {
-            max-width: 1200px;
-            width: 100%;
+            width: 210mm;
+            margin: 0 auto;
             background: #0a0a0a;
             color: #ffffff;
-            padding: 0.8rem;
-            border-radius: 12px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
             font-family: 'Inter', sans-serif;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
         }
 
-        /* ----- PAGES ----- */
+        /* =============================================================
+                   PAGE — EXACT A4 SIZE (210mm × 297mm)
+                ============================================================= */
         .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm;
+            margin: 0;
             background: #0f0f0f;
-            border-radius: 16px;
-            padding: 1.5rem 1.2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: inset 0 0 0 1px rgba(255, 215, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.6);
             position: relative;
-            break-inside: avoid;
+            box-sizing: border-box;
             page-break-after: always;
+            break-after: page;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.05);
         }
 
+        /* Last page — no border */
         .page:last-child {
-            margin-bottom: 0;
+            border-bottom: none;
         }
 
         .page-number {
             position: absolute;
-            bottom: 0.6rem;
-            right: 1.2rem;
+            bottom: 10mm;
+            right: 15mm;
             font-size: 0.6rem;
             color: #555;
             font-weight: 600;
@@ -176,9 +192,9 @@
         .section-title {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 1.6rem;
+            font-size: 2rem;
             text-align: center;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #ffd700, #50c878);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -204,14 +220,21 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
         }
 
-        /* ----- COVER PAGE (Mobile Optimized) ----- */
+        /* =============================================================
+                   COVER PAGE
+                ============================================================= */
         .cover {
-            background: radial-gradient(ellipse at 50% 30%, rgba(80, 200, 120, 0.10), transparent 70%), #0a0a0a;
+            background: radial-gradient(ellipse at 50% 30%, rgba(80, 200, 120, 0.12), transparent 70%), #0a0a0a;
             text-align: center;
-            padding: 1.8rem 1rem 1.5rem;
+            padding: 15mm;
             border: 1px solid rgba(255, 215, 0, 0.15);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 297mm;
         }
 
         .cover .laser {
@@ -226,14 +249,14 @@
         }
 
         .cover .coin {
-            font-size: 3.8rem;
+            font-size: 5rem;
             display: block;
-            margin: 0.3rem auto 0.3rem;
-            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.3));
+            margin: 0.3rem auto;
+            filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.3));
         }
 
         .cover .globe {
-            font-size: 2.5rem;
+            font-size: 3rem;
             display: block;
             margin: 0.1rem auto;
             opacity: 0.5;
@@ -244,10 +267,10 @@
             background: rgba(255, 215, 0, 0.10);
             border: 1px solid rgba(255, 215, 0, 0.2);
             border-radius: 40px;
-            padding: 0.3rem 1.2rem;
+            padding: 0.4rem 1.5rem;
             font-weight: 600;
-            font-size: 0.7rem;
-            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
             color: #ffd700;
             margin-top: 0.5rem;
         }
@@ -255,9 +278,9 @@
         .cover h1 {
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: 2.4rem;
-            letter-spacing: 1px;
-            margin: 0.3rem 0 0.1rem;
+            font-size: 3.2rem;
+            letter-spacing: 2px;
+            margin: 0.3rem 0;
         }
         .cover h1 span {
             background: linear-gradient(135deg, #ffd700, #ffaa00);
@@ -266,16 +289,16 @@
             background-clip: text;
         }
         .cover .subtitle {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #b0b0b0;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             font-weight: 300;
         }
         .cover .version {
             color: #666;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             margin-top: 1rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         .cover .qr-placeholder {
@@ -283,23 +306,25 @@
             background: #1a1a1a;
             border: 1px solid #333;
             border-radius: 10px;
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 1.2rem;
             margin-top: 1rem;
             font-size: 0.7rem;
             color: #888;
         }
 
-        /* ----- TOKENOMICS PIE (Mobile) ----- */
+        /* =============================================================
+                   TOKENOMICS PIE
+                ============================================================= */
         .pie-chart {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.2rem;
+            gap: 1.5rem;
             align-items: center;
             justify-content: center;
         }
         .pie {
-            width: 150px;
-            height: 150px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             background: conic-gradient(
                 #4a7cf7 0% 20%,
@@ -316,7 +341,7 @@
         .pie-legend {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.3rem 1rem;
+            gap: 0.3rem 1.2rem;
             font-size: 0.75rem;
             color: #ccc;
         }
@@ -348,17 +373,14 @@
             background: linear-gradient(90deg, #ffd700, #50c878);
         }
 
-        /* ----- STAKING (Mobile Grid) ----- */
+        /* =============================================================
+                   STAKING
+                ============================================================= */
         .staking-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin-top: 1rem;
-        }
-        @media (min-width: 600px) {
-            .staking-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
         }
         .staking-card {
             background: rgba(255, 255, 255, 0.03);
@@ -389,7 +411,9 @@
             margin-top: 0.3rem;
         }
 
-        /* ----- REFERRAL TREE (Mobile) ----- */
+        /* =============================================================
+                   REFERRAL TREE
+                ============================================================= */
         .tree {
             display: flex;
             flex-direction: column;
@@ -398,7 +422,7 @@
         }
         .tree-row {
             display: flex;
-            gap: 0.8rem;
+            gap: 1rem;
             flex-wrap: wrap;
             justify-content: center;
             margin: 0.15rem 0;
@@ -407,17 +431,17 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 215, 0, 0.12);
             border-radius: 30px;
-            padding: 0.3rem 1.2rem;
-            min-width: 70px;
+            padding: 0.4rem 1.5rem;
+            min-width: 80px;
             text-align: center;
         }
         .tree-node .lvl {
             font-weight: 700;
             color: #ffd700;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
         }
         .tree-node .pct {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #50c878;
         }
@@ -427,7 +451,9 @@
             margin: 0.05rem 0;
         }
 
-        /* ----- ROADMAP (Mobile) ----- */
+        /* =============================================================
+                   ROADMAP
+                ============================================================= */
         .roadmap-horizontal {
             display: flex;
             flex-wrap: wrap;
@@ -443,33 +469,28 @@
             padding: 0.5rem 0.8rem;
             border-radius: 10px;
             border: 1px solid rgba(255, 215, 0, 0.06);
-            min-width: 60px;
-            flex: 1 0 auto;
-            max-width: 120px;
+            min-width: 70px;
         }
         .roadmap-step .icon {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
         }
         .roadmap-step .label {
             font-weight: 600;
             color: #ddd;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
         }
         .roadmap-step .date {
             color: #666;
             font-size: 0.6rem;
         }
 
-        /* ----- FAQ (Mobile) ----- */
+        /* =============================================================
+                   FAQ
+                ============================================================= */
         .faq-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 0.6rem;
-        }
-        @media (min-width: 600px) {
-            .faq-grid {
-                grid-template-columns: 1fr 1fr;
-            }
         }
         .faq-item {
             background: rgba(255, 255, 255, 0.03);
@@ -489,18 +510,15 @@
             margin-top: 0.15rem;
         }
 
-        /* ----- FUTURE UTILITY (Mobile) ----- */
+        /* =============================================================
+                   FUTURE UTILITY
+                ============================================================= */
         .utility-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 0.6rem;
             text-align: center;
             margin: 1rem 0;
-        }
-        @media (min-width: 500px) {
-            .utility-grid {
-                grid-template-columns: repeat(6, 1fr);
-            }
         }
         .utility-item {
             background: rgba(255, 255, 255, 0.03);
@@ -509,27 +527,24 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
         .utility-item .icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             display: block;
         }
         .utility-item .label {
             color: #bbb;
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             margin-top: 0.15rem;
         }
 
-        /* ----- GAMING (Mobile) ----- */
+        /* =============================================================
+                   GAMING
+                ============================================================= */
         .gaming-hero {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 0.6rem;
             text-align: center;
             margin: 1rem 0;
-        }
-        @media (min-width: 500px) {
-            .gaming-hero {
-                grid-template-columns: repeat(6, 1fr);
-            }
         }
         .gaming-hero .item {
             background: rgba(255, 255, 255, 0.04);
@@ -538,15 +553,17 @@
             border: 1px solid rgba(255, 215, 0, 0.06);
         }
         .gaming-hero .item .icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
         .gaming-hero .item .label {
             color: #aaa;
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             margin-top: 0.1rem;
         }
 
-        /* ----- QR FOOTER ----- */
+        /* =============================================================
+                   QR FOOTER
+                ============================================================= */
         .qr-box {
             background: #1a1a1a;
             border: 1px solid #333;
@@ -557,28 +574,36 @@
             display: inline-block;
         }
 
-        /* ============================================================ */
-        /* RESPONSIVE BREAKPOINTS                                       */
-        /* ============================================================ */
-        @media (max-width: 480px) {
-            body {
-                padding: 0.5rem 0.3rem;
-            }
+        /* =============================================================
+                   RESPONSIVE (Mobile View)
+                ============================================================= */
+        @media (max-width: 800px) {
             #whitepaper {
-                padding: 0.3rem;
-                border-radius: 8px;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0;
             }
+
             .page {
-                padding: 1rem 0.8rem;
+                width: 100%;
+                min-height: auto;
+                padding: 1.2rem 1rem;
                 border-radius: 12px;
                 margin-bottom: 1rem;
+                border: 1px solid rgba(255, 215, 0, 0.05);
             }
+
+            .cover {
+                min-height: auto;
+                padding: 2rem 1rem;
+            }
+
             .section-title {
-                font-size: 1.3rem;
-                margin-bottom: 0.8rem;
+                font-size: 1.4rem;
             }
+
             .cover h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .cover .coin {
                 font-size: 3rem;
@@ -586,49 +611,43 @@
             .cover .globe {
                 font-size: 2rem;
             }
-            .cover .subtitle {
-                font-size: 0.8rem;
+
+            .staking-grid {
+                grid-template-columns: 1fr;
             }
-            .glass-card {
-                padding: 0.8rem 0.6rem;
+
+            .faq-grid {
+                grid-template-columns: 1fr;
             }
+
+            .utility-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gaming-hero {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
             .pie {
-                width: 120px;
-                height: 120px;
+                width: 130px;
+                height: 130px;
             }
+
             .pie-legend {
                 font-size: 0.65rem;
                 gap: 0.2rem 0.6rem;
             }
-            .staking-card .duration {
-                font-size: 1.1rem;
-            }
-            .staking-card .bonus {
-                font-size: 1.4rem;
-            }
-            .download-btn,
-            .print-btn {
-                font-size: 0.85rem;
-                padding: 0.7rem 1.2rem;
-                min-width: 140px;
-            }
-            .toolbar {
-                gap: 0.5rem;
-            }
-            .page-number {
-                font-size: 0.5rem;
-                bottom: 0.4rem;
-                right: 0.8rem;
-            }
+
             .tree-node {
-                min-width: 55px;
-                padding: 0.2rem 0.8rem;
+                min-width: 60px;
+                padding: 0.3rem 0.8rem;
             }
             .tree-node .pct {
                 font-size: 1rem;
             }
+
             .roadmap-step {
-                min-width: 50px;
+                min-width: 55px;
                 padding: 0.3rem 0.5rem;
             }
             .roadmap-step .icon {
@@ -637,153 +656,297 @@
             .roadmap-step .label {
                 font-size: 0.6rem;
             }
-            .faq-item .q {
-                font-size: 0.75rem;
+
+            .page-number {
+                bottom: 5mm;
+                right: 8mm;
+                font-size: 0.5rem;
             }
-            .faq-item .a {
-                font-size: 0.7rem;
+
+            .toolbar {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.6rem;
+                position: relative;
             }
-            .gaming-hero .item .icon,
+            .download-btn,
+            .print-btn {
+                width: 100%;
+                max-width: 100%;
+                min-width: unset;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding: 0.8rem 0.6rem;
+            }
+            .section-title {
+                font-size: 1.1rem;
+            }
+            .cover h1 {
+                font-size: 1.5rem;
+            }
+            .cover .coin {
+                font-size: 2.2rem;
+            }
+            .cover .globe {
+                font-size: 1.5rem;
+            }
+            .cover .subtitle {
+                font-size: 0.8rem;
+            }
+            .cover .bnb-badge {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.8rem;
+            }
+            .glass-card {
+                padding: 0.6rem 0.5rem;
+            }
+            .utility-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.3rem;
+            }
             .utility-item .icon {
                 font-size: 1.4rem;
             }
-            .gaming-hero .item .label,
             .utility-item .label {
                 font-size: 0.5rem;
             }
-        }
-
-        @media (min-width: 768px) {
-            .page {
-                padding: 2.5rem 2.5rem;
+            .gaming-hero {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.3rem;
             }
-            .section-title {
-                font-size: 2.2rem;
+            .gaming-hero .item .icon {
+                font-size: 1.4rem;
             }
-            .cover h1 {
-                font-size: 3.8rem;
-            }
-            .cover .coin {
-                font-size: 6rem;
-            }
-            .cover .globe {
-                font-size: 3.5rem;
+            .gaming-hero .item .label {
+                font-size: 0.5rem;
             }
             .pie {
-                width: 200px;
-                height: 200px;
+                width: 100px;
+                height: 100px;
             }
-            .staking-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .pie-legend {
+                font-size: 0.55rem;
+                gap: 0.1rem 0.4rem;
             }
-            .faq-grid {
-                grid-template-columns: 1fr 1fr;
+            .pie-legend .dot {
+                width: 8px;
+                height: 8px;
             }
-            .utility-grid {
-                grid-template-columns: repeat(6, 1fr);
+            .staking-card {
+                padding: 0.8rem 0.5rem;
             }
-            .gaming-hero {
-                grid-template-columns: repeat(6, 1fr);
+            .staking-card .duration {
+                font-size: 1rem;
+            }
+            .staking-card .bonus {
+                font-size: 1.3rem;
+            }
+            .faq-item {
+                padding: 0.5rem 0.6rem;
+            }
+            .faq-item .q {
+                font-size: 0.7rem;
+            }
+            .faq-item .a {
+                font-size: 0.65rem;
+            }
+            .tree-node {
+                min-width: 50px;
+                padding: 0.2rem 0.6rem;
+            }
+            .tree-node .pct {
+                font-size: 0.8rem;
+            }
+            .tree-node .lvl {
+                font-size: 0.55rem;
+            }
+            .roadmap-step {
+                min-width: 45px;
+                padding: 0.2rem 0.4rem;
+            }
+            .roadmap-step .icon {
+                font-size: 1rem;
+            }
+            .roadmap-step .label {
+                font-size: 0.5rem;
+            }
+            .roadmap-step .date {
+                font-size: 0.5rem;
+            }
+            .page-number {
+                font-size: 0.4rem;
+                bottom: 3mm;
+                right: 5mm;
             }
         }
 
-        /* ============================================================ */
-        /* PRINT STYLES — For PDF generation                           */
-        /* ============================================================ */
+        /* =============================================================
+                   PRINT STYLES — PERFECT A4 PDF
+                ============================================================= */
         @media print {
-            body {
-                background: #fff !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
+            /* Hide toolbar and status */
             .toolbar {
                 display: none !important;
             }
             .status-msg {
                 display: none !important;
             }
-            #whitepaper {
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                padding: 0.3in !important;
-                max-width: 100% !important;
+
+            /* Reset body for print */
+            body {
                 background: #fff !important;
+                padding: 0 !important;
                 margin: 0 !important;
             }
-            .page {
+
+            /* Whitepaper container — full A4 width */
+            #whitepaper {
+                width: 210mm !important;
+                max-width: 210mm !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                background: #fff !important;
                 box-shadow: none !important;
-                border: 1px solid #ddd !important;
-                page-break-after: always !important;
-                break-inside: avoid !important;
+                border-radius: 0 !important;
+            }
+
+            /* Each page — EXACT A4 SIZE (210mm × 297mm) */
+            .page {
+                width: 210mm !important;
+                height: 297mm !important;
+                min-height: 297mm !important;
+                padding: 12mm 14mm !important;
+                margin: 0 !important;
+                border: none !important;
+                border-radius: 0 !important;
                 background: #fff !important;
                 color: #000 !important;
-                border-radius: 0 !important;
-                margin-bottom: 0 !important;
-                padding: 1.2rem 1.5rem !important;
-            }
-            .page .page-number {
-                color: #999 !important;
-            }
-            .glass-card {
-                background: #f9f9f9 !important;
-                border-color: #ddd !important;
                 box-shadow: none !important;
-                backdrop-filter: none !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                overflow: hidden !important;
+                box-sizing: border-box !important;
             }
+
+            /* Cover page specific */
             .cover {
-                background: #f5f5f5 !important;
-                border-color: #ddd !important;
+                background: #f8f8f8 !important;
+                border: none !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                min-height: 297mm !important;
+                height: 297mm !important;
             }
+
+            .cover .laser {
+                display: none !important;
+            }
+
             .cover h1 span {
                 -webkit-text-fill-color: #b8860b !important;
                 background: none !important;
                 color: #b8860b !important;
             }
+
+            /* Section titles */
             .section-title {
                 -webkit-text-fill-color: #b8860b !important;
                 background: none !important;
                 color: #b8860b !important;
             }
+
+            /* Text colors */
             .text-gold {
                 color: #b8860b !important;
             }
             .text-emerald {
                 color: #2e7d32 !important;
             }
+
+            /* Glass cards in print */
+            .glass-card {
+                background: #f5f5f5 !important;
+                border: 1px solid #ddd !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+            }
+
+            /* Staking cards */
             .staking-card {
                 border-color: #ccc !important;
                 background: #f5f5f5 !important;
             }
+            .staking-card .duration {
+                color: #b8860b !important;
+            }
+            .staking-card .bonus {
+                color: #2e7d32 !important;
+            }
+
+            /* Tree nodes */
             .tree-node {
                 border-color: #ccc !important;
                 background: #f5f5f5 !important;
             }
+            .tree-node .lvl {
+                color: #b8860b !important;
+            }
+            .tree-node .pct {
+                color: #2e7d32 !important;
+            }
+
+            /* QR box */
             .qr-box {
                 border-color: #ccc !important;
                 background: #f5f5f5 !important;
             }
+
+            /* Gaming & Utility items */
             .gaming-hero .item,
             .utility-item {
                 border-color: #ddd !important;
                 background: #f5f5f5 !important;
             }
+
+            /* Roadmap steps */
             .roadmap-step {
                 border-color: #ddd !important;
                 background: #f5f5f5 !important;
             }
+
+            /* FAQ items */
             .faq-item {
                 border-color: #ddd !important;
                 background: #f5f5f5 !important;
             }
-            .pie {
-                box-shadow: none !important;
+            .faq-item .q {
+                color: #b8860b !important;
             }
+
+            /* Progress bars */
             .progress-bar {
                 background: #ddd !important;
             }
             .progress-bar .fill {
                 background: #b8860b !important;
             }
+
+            /* Pie chart */
+            .pie {
+                box-shadow: none !important;
+            }
+
+            /* Page numbers */
+            .page-number {
+                color: #999 !important;
+            }
+
+            /* Cover elements */
             .cover .bnb-badge {
                 border-color: #b8860b !important;
                 color: #b8860b !important;
@@ -793,39 +956,26 @@
                 border-color: #ccc !important;
                 background: #f5f5f5 !important;
             }
-            .cover .laser {
-                display: none !important;
-            }
-            .page p,
-            .page li,
-            .page span,
-            .page div:not(.cover):not(.section-title) {
-                color: #222 !important;
-            }
-            .page h4,
-            .page h3,
-            .page .label,
-            .page .lock,
-            .page .min-invest {
-                color: #222 !important;
-            }
-            .page .duration,
-            .page .lvl,
-            .page .q {
-                color: #b8860b !important;
-            }
-            .page .bonus,
-            .page .pct {
-                color: #2e7d32 !important;
-            }
             .cover .subtitle {
                 color: #555 !important;
             }
             .cover .version {
                 color: #999 !important;
             }
-            .page-number {
-                color: #999 !important;
+
+            /* General text colors */
+            .page p,
+            .page li,
+            .page span,
+            .page .label,
+            .page .lock,
+            .page .min-invest,
+            .page .a {
+                color: #222 !important;
+            }
+            .page h4,
+            .page h3 {
+                color: #222 !important;
             }
         }
     </style>
@@ -859,12 +1009,12 @@
             <div class="subtitle">(RND)</div>
             <div style="font-size:1rem; color:#aaa; margin-top:0.1rem;">The Future of Digital Utility</div>
             <div style="margin-top:1.2rem; border-top:1px solid rgba(255,215,0,0.15); width:50%; margin-left:auto; margin-right:auto;"></div>
-            <div style="font-size:1.2rem; font-weight:700; letter-spacing:4px; margin-top:0.8rem; color:#fff;">OFFICIAL WHITEPAPER</div>
-            <div style="font-size:0.8rem; color:#888; letter-spacing:3px;">Version 1.0 &nbsp;·&nbsp; 2026</div>
+            <div style="font-size:1.4rem; font-weight:700; letter-spacing:6px; margin-top:0.8rem; color:#fff;">OFFICIAL WHITEPAPER</div>
+            <div style="font-size:0.85rem; color:#888; letter-spacing:4px;">Version 1.0 &nbsp;·&nbsp; 2026</div>
             <div class="qr-placeholder">
                 <i class="bi bi-qr-code"></i> &nbsp; QR CODE
             </div>
-            <div style="margin-top:0.8rem; font-size:0.65rem; color:#444; letter-spacing:2px;">randigital.in</div>
+            <div style="margin-top:0.8rem; font-size:0.7rem; color:#444; letter-spacing:2px;">randigital.in</div>
             <div class="page-number">01 / 24</div>
         </div>
 
@@ -1330,23 +1480,23 @@
         </div>
 
         <!-- =================== PAGE 24 : THANK YOU =================== -->
-        <div class="page" style="text-align:center; display:flex; flex-direction:column; justify-content:center; min-height:350px;">
-            <div style="font-size:4rem; display:block; margin:0 auto; filter:drop-shadow(0 0 40px rgba(255,215,0,0.2));">🪙</div>
-            <h1 style="font-family:'Poppins',sans-serif; font-weight:800; font-size:2.2rem; margin:0.3rem 0; background:linear-gradient(135deg,#ffd700,#50c878); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
+        <div class="page" style="text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:297mm;">
+            <div style="font-size:5rem; display:block; margin:0 auto; filter:drop-shadow(0 0 40px rgba(255,215,0,0.2));">🪙</div>
+            <h1 style="font-family:'Poppins',sans-serif; font-weight:800; font-size:3rem; margin:0.3rem 0; background:linear-gradient(135deg,#ffd700,#50c878); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
                 JOIN THE FUTURE
             </h1>
-            <div style="font-size:1rem; color:#aaa; letter-spacing:3px;">RAN DIGITAL (RND)</div>
-            <div style="font-size:0.8rem; color:#666; margin-bottom:0.8rem;">The Future of Digital Utility</div>
-            <div style="display:inline-block; background:rgba(255,215,0,0.05); border-radius:40px; padding:0.3rem 1.5rem; border:1px solid rgba(255,215,0,0.10);">
-                <span style="color:#888; font-size:0.7rem;">🌐</span> <span style="color:#ffd700; font-size:0.8rem;">randigital.in</span>
+            <div style="font-size:1.2rem; color:#aaa; letter-spacing:4px;">RAN DIGITAL (RND)</div>
+            <div style="font-size:0.9rem; color:#666; margin-bottom:0.8rem;">The Future of Digital Utility</div>
+            <div style="display:inline-block; background:rgba(255,215,0,0.05); border-radius:40px; padding:0.4rem 1.8rem; border:1px solid rgba(255,215,0,0.10);">
+                <span style="color:#888; font-size:0.7rem;">🌐</span> <span style="color:#ffd700; font-size:0.85rem;">randigital.in</span>
             </div>
             <div style="margin-top:0.6rem;">
                 <span class="qr-box"><i class="bi bi-qr-code"></i> &nbsp; QR CODE</span>
             </div>
-            <div style="display:flex; gap:0.8rem; justify-content:center; margin-top:1rem; flex-wrap:wrap; color:#888; font-size:0.65rem;">
+            <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem; flex-wrap:wrap; color:#888; font-size:0.7rem;">
                 <span>📱 Telegram</span><span>🐦 Twitter</span><span>📘 Facebook</span><span>▶️ YouTube</span><span>💬 WhatsApp</span>
             </div>
-            <div style="margin-top:1.2rem; border-top:1px solid rgba(255,255,255,0.04); padding-top:0.8rem; color:#444; font-size:0.6rem;">
+            <div style="margin-top:1.2rem; border-top:1px solid rgba(255,255,255,0.04); padding-top:0.8rem; color:#444; font-size:0.7rem;">
                 © 2026 RND. All Rights Reserved.
             </div>
             <div class="page-number">24 / 24</div>
@@ -1369,53 +1519,54 @@
                 if (isGenerating) return;
                 isGenerating = true;
 
-                // Disable button and show spinner + status
                 btn.disabled = true;
                 spinner.style.display = 'inline-block';
                 btn.querySelector('i').style.display = 'none';
-                statusMsg.textContent = '⏳ Generating PDF... Please wait (this may take 5-10 seconds).';
+                statusMsg.textContent = '⏳ Generating PDF... Please wait (5-10 seconds).';
                 statusMsg.className = 'status-msg show';
 
-                // PDF options - optimized for mobile
+                // PERFECT A4 PDF SETTINGS
                 const opt = {
-                    margin: [0.3, 0.3, 0.3, 0.3],
+                    margin: 0,
                     filename: 'RND_Whitepaper_2026.pdf',
-                    image: { type: 'jpeg', quality: 0.95 },
+                    image: {
+                        type: 'jpeg',
+                        quality: 1
+                    },
                     html2canvas: {
-                        scale: 1.8,
+                        scale: 3,
                         useCORS: true,
-                        letterRendering: true,
+                        scrollY: 0,
                         logging: false,
-                        width: 1200,
-                        height: 1600
+                        width: 210 * 3.78, // 210mm in pixels at scale 3
+                        height: 297 * 3.78 // 297mm in pixels at scale 3
                     },
                     jsPDF: {
-                        unit: 'in',
+                        unit: 'mm',
                         format: 'a4',
                         orientation: 'portrait'
                     },
-                    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                    pagebreak: {
+                        mode: ['css', 'legacy']
+                    }
                 };
 
-                // Generate PDF
                 html2pdf()
                     .set(opt)
                     .from(element)
                     .save()
                     .then(function() {
-                        // Success
                         statusMsg.textContent = '✅ PDF downloaded successfully!';
                         statusMsg.className = 'status-msg show';
                         resetButton();
                     })
                     .catch(function(err) {
                         console.error('PDF Error:', err);
-                        statusMsg.textContent = '❌ PDF generation failed. Using fallback: Click "Print / Save" button.';
+                        statusMsg.textContent = '❌ PDF generation failed. Use "Print / Save" button.';
                         statusMsg.className = 'status-msg show';
                         resetButton();
-                        // Try fallback
                         setTimeout(function() {
-                            if (confirm('PDF generation failed. Would you like to use the Print/Save as PDF option instead?')) {
+                            if (confirm('PDF generation failed. Would you like to use Print/Save as PDF instead?')) {
                                 window.print();
                             }
                         }, 500);
@@ -1427,15 +1578,13 @@
                 spinner.style.display = 'none';
                 btn.querySelector('i').style.display = 'inline-block';
                 isGenerating = false;
-                // Auto-hide status after 8 seconds
                 setTimeout(function() {
                     statusMsg.className = 'status-msg';
                 }, 8000);
             }
 
-            // Handle any errors from html2pdf loading
+            // Check if library loaded
             if (typeof html2pdf === 'undefined') {
-                console.warn('html2pdf library not loaded');
                 statusMsg.textContent = '⚠️ Library loading. Please wait or use Print/Save.';
                 statusMsg.className = 'status-msg show';
                 setTimeout(function() {
@@ -1445,7 +1594,6 @@
         })();
     </script>
 
-    <!-- Fallback: if html2pdf fails completely, show print option -->
     <noscript>
         <div style="color:#ffd700; text-align:center; padding:1rem; background:rgba(255,215,0,0.05); border-radius:12px; margin:1rem 0;">
             ⚠️ JavaScript is disabled. Please use your browser's Print > Save as PDF option.
