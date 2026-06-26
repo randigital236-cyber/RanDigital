@@ -484,46 +484,349 @@
             display: inline-block;
         }
 
-        /* ----- RESPONSIVE ----- */
+        /* ============================================================ */
+        /* RESPONSIVE — FIXED FOR PERFECT MOBILE VIEW                  */
+        /* ============================================================ */
         @media (max-width: 768px) {
-            #whitepaper {
-                padding: 1rem;
+            body {
+                padding: 0.5rem;
             }
+
+            #whitepaper {
+                padding: 0.5rem;
+                border-radius: 8px;
+            }
+
             .page {
+                padding: 1.2rem 0.8rem;
+                margin-bottom: 1rem;
+                border-radius: 12px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+
+            /* Cover page */
+            .cover {
                 padding: 1.5rem 1rem;
             }
             .cover h1 {
-                font-size: 2.4rem;
+                font-size: 2rem;
             }
-            .faq-grid {
-                grid-template-columns: 1fr;
+            .cover .coin {
+                font-size: 3.5rem;
             }
-            .pie-chart {
-                flex-direction: column;
+            .cover .globe {
+                font-size: 2.2rem;
             }
-            .pie-legend {
-                grid-template-columns: 1fr 1fr;
+            .cover .subtitle {
+                font-size: 1rem;
             }
-            .section-title {
-                font-size: 1.6rem;
+            .cover .bnb-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 1rem;
             }
-            .roadmap-horizontal {
-                gap: 0.5rem;
+            .cover .version {
+                font-size: 0.7rem;
+                margin-top: 0.8rem;
             }
-            .roadmap-step {
-                min-width: 70px;
-                padding: 0.5rem 0.8rem;
+            .cover .qr-placeholder {
+                font-size: 0.6rem;
+                padding: 0.3rem 0.8rem;
+                margin-top: 0.8rem;
             }
+
+            /* Glass cards */
+            .glass-card {
+                padding: 0.8rem 0.8rem;
+            }
+
+            /* Grid layouts */
             .staking-grid {
                 grid-template-columns: 1fr;
+                gap: 0.8rem;
+                margin-top: 0.8rem;
             }
+            .staking-card {
+                padding: 1rem 0.8rem;
+            }
+            .staking-card .duration {
+                font-size: 1.2rem;
+            }
+            .staking-card .bonus {
+                font-size: 1.6rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .faq-item {
+                padding: 0.6rem 0.8rem;
+            }
+            .faq-item .q {
+                font-size: 0.8rem;
+            }
+            .faq-item .a {
+                font-size: 0.75rem;
+            }
+
+            .utility-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+                margin: 0.8rem 0;
+            }
+            .utility-item {
+                padding: 0.5rem 0.2rem;
+            }
+            .utility-item .icon {
+                font-size: 1.8rem;
+            }
+            .utility-item .label {
+                font-size: 0.6rem;
+            }
+
+            .gaming-hero {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+                margin: 0.8rem 0;
+            }
+            .gaming-hero .item {
+                padding: 0.6rem 0.2rem;
+            }
+            .gaming-hero .item .icon {
+                font-size: 1.8rem;
+            }
+            .gaming-hero .item .label {
+                font-size: 0.6rem;
+            }
+
+            .pie-chart {
+                gap: 1rem;
+                flex-direction: column;
+            }
+            .pie {
+                width: 140px;
+                height: 140px;
+            }
+            .pie-legend {
+                font-size: 0.7rem;
+                gap: 0.3rem 0.8rem;
+            }
+            .pie-legend .dot {
+                width: 9px;
+                height: 9px;
+            }
+
+            .tree {
+                margin: 0.8rem 0;
+            }
+            .tree-row {
+                gap: 0.8rem;
+            }
+            .tree-node {
+                padding: 0.3rem 1rem;
+                min-width: 60px;
+            }
+            .tree-node .pct {
+                font-size: 1.2rem;
+            }
+            .tree-node .lvl {
+                font-size: 0.6rem;
+            }
+            .tree-connector {
+                font-size: 0.8rem;
+            }
+
+            .roadmap-horizontal {
+                gap: 0.4rem 0.8rem;
+                margin-top: 0.8rem;
+            }
+            .roadmap-step {
+                padding: 0.4rem 0.6rem;
+                min-width: 60px;
+            }
+            .roadmap-step .icon {
+                font-size: 1.4rem;
+            }
+            .roadmap-step .label {
+                font-size: 0.7rem;
+            }
+            .roadmap-step .date {
+                font-size: 0.6rem;
+            }
+
+            .page-number {
+                font-size: 0.55rem;
+                bottom: 0.6rem;
+                right: 1rem;
+            }
+
             .toolbar {
                 flex-direction: column;
                 align-items: center;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
             }
             .download-btn {
                 width: 100%;
                 justify-content: center;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            /* Typography fixes */
+            .page p {
+                font-size: 0.85rem !important;
+                line-height: 1.5 !important;
+            }
+            .page .glass-card p {
+                font-size: 0.85rem !important;
+            }
+            .page .glass-card ul li {
+                font-size: 0.8rem !important;
+            }
+            .page h3 {
+                font-size: 0.9rem !important;
+            }
+            .page h4 {
+                font-size: 0.8rem !important;
+            }
+
+            /* Last page thank you */
+            .page:last-child {
+                min-height: 300px !important;
+            }
+            .page:last-child h1 {
+                font-size: 2.2rem !important;
+            }
+            .page:last-child .coin {
+                font-size: 3.5rem !important;
+            }
+            .page:last-child div[style*="font-size:1.4rem"] {
+                font-size: 1rem !important;
+            }
+        }
+
+        /* Extra small phones */
+        @media (max-width: 400px) {
+            .page {
+                padding: 0.8rem 0.5rem;
+            }
+            .section-title {
+                font-size: 1.1rem;
+            }
+            .cover h1 {
+                font-size: 1.6rem;
+            }
+            .cover .coin {
+                font-size: 2.8rem;
+            }
+            .cover .globe {
+                font-size: 1.8rem;
+            }
+            .cover .subtitle {
+                font-size: 0.8rem;
+            }
+            .cover .bnb-badge {
+                font-size: 0.55rem;
+                padding: 0.15rem 0.7rem;
+            }
+            .glass-card {
+                padding: 0.5rem 0.5rem;
+            }
+            .pie {
+                width: 110px;
+                height: 110px;
+            }
+            .pie-legend {
+                font-size: 0.6rem;
+                gap: 0.2rem 0.4rem;
+            }
+            .pie-legend .dot {
+                width: 7px;
+                height: 7px;
+            }
+            .utility-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.3rem;
+            }
+            .utility-item .icon {
+                font-size: 1.4rem;
+            }
+            .utility-item .label {
+                font-size: 0.5rem;
+            }
+            .gaming-hero {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.3rem;
+            }
+            .gaming-hero .item .icon {
+                font-size: 1.4rem;
+            }
+            .gaming-hero .item .label {
+                font-size: 0.5rem;
+            }
+            .tree-node {
+                padding: 0.2rem 0.6rem;
+                min-width: 45px;
+            }
+            .tree-node .pct {
+                font-size: 0.9rem;
+            }
+            .tree-node .lvl {
+                font-size: 0.5rem;
+            }
+            .roadmap-step {
+                padding: 0.3rem 0.4rem;
+                min-width: 50px;
+            }
+            .roadmap-step .icon {
+                font-size: 1.1rem;
+            }
+            .roadmap-step .label {
+                font-size: 0.6rem;
+            }
+            .roadmap-step .date {
+                font-size: 0.5rem;
+            }
+            .faq-item .q {
+                font-size: 0.7rem;
+            }
+            .faq-item .a {
+                font-size: 0.65rem;
+            }
+            .page p {
+                font-size: 0.75rem !important;
+            }
+            .page .glass-card p {
+                font-size: 0.75rem !important;
+            }
+            .page h3 {
+                font-size: 0.8rem !important;
+            }
+            .page h4 {
+                font-size: 0.7rem !important;
+            }
+            .page-number {
+                font-size: 0.45rem;
+                bottom: 0.4rem;
+                right: 0.6rem;
+            }
+            .download-btn {
+                font-size: 0.85rem;
+                padding: 0.6rem 1rem;
+            }
+            .page:last-child h1 {
+                font-size: 1.8rem !important;
+            }
+            .page:last-child .coin {
+                font-size: 2.8rem !important;
+            }
+            .page:last-child div[style*="font-size:1.4rem"] {
+                font-size: 0.9rem !important;
             }
         }
 
