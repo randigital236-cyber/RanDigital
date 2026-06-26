@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RND Whitepaper — Direct PDF Download</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>RND Whitepaper — Ran Digital</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,7 +16,7 @@
     <!-- ============================================================ -->
     <!-- html2pdf.js — Direct PDF generation                          -->
     <!-- ============================================================ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js">
     </script>
 
     <style>
@@ -33,38 +33,46 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem 1rem;
+            padding: 1rem 0.8rem;
+            min-height: 100vh;
         }
 
         /* ----- BUTTON ----- */
         .toolbar {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 0.5rem;
         }
 
         .download-btn {
             background: linear-gradient(135deg, #ffd700, #e6c200);
             color: #0a0a0a;
             border: none;
-            padding: 1rem 3rem;
+            padding: 0.9rem 2rem;
             border-radius: 60px;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
-            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.25);
             transition: 0.3s;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.6rem;
+            flex: 1;
+            justify-content: center;
+            min-width: 180px;
+            max-width: 320px;
         }
         .download-btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 12px 48px rgba(255, 215, 0, 0.5);
+            transform: scale(1.03);
+            box-shadow: 0 12px 48px rgba(255, 215, 0, 0.4);
         }
         .download-btn:disabled {
             opacity: 0.6;
@@ -72,17 +80,59 @@
             transform: none;
         }
 
+        .print-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex: 1;
+            justify-content: center;
+            min-width: 180px;
+            max-width: 320px;
+        }
+        .print-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.03);
+        }
+
         .spinner {
             display: none;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border: 3px solid rgba(0, 0, 0, 0.1);
             border-radius: 50%;
             border-top-color: #0a0a0a;
             animation: spin 0.8s linear infinite;
+            flex-shrink: 0;
         }
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .status-msg {
+            color: #ffd700;
+            font-size: 0.8rem;
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0.3rem;
+            min-height: 1.5rem;
+            display: none;
+        }
+        .status-msg.show {
+            display: block;
         }
 
         /* ----- WHITEPAPER CONTAINER ----- */
@@ -91,8 +141,8 @@
             width: 100%;
             background: #0a0a0a;
             color: #ffffff;
-            padding: 2rem 2.5rem;
-            border-radius: 16px;
+            padding: 0.8rem;
+            border-radius: 12px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
             font-family: 'Inter', sans-serif;
         }
@@ -100,9 +150,9 @@
         /* ----- PAGES ----- */
         .page {
             background: #0f0f0f;
-            border-radius: 20px;
-            padding: 2.5rem 2.5rem;
-            margin-bottom: 2.5rem;
+            border-radius: 16px;
+            padding: 1.5rem 1.2rem;
+            margin-bottom: 1.5rem;
             box-shadow: inset 0 0 0 1px rgba(255, 215, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.6);
             position: relative;
             break-inside: avoid;
@@ -115,9 +165,9 @@
 
         .page-number {
             position: absolute;
-            bottom: 1rem;
-            right: 2rem;
-            font-size: 0.75rem;
+            bottom: 0.6rem;
+            right: 1.2rem;
+            font-size: 0.6rem;
             color: #555;
             font-weight: 600;
             letter-spacing: 1px;
@@ -126,9 +176,9 @@
         .section-title {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
             background: linear-gradient(135deg, #ffd700, #50c878);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -148,18 +198,18 @@
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 215, 0, 0.12);
-            border-radius: 20px;
-            padding: 2rem 2rem;
+            border: 1px solid rgba(255, 215, 0, 0.10);
+            border-radius: 16px;
+            padding: 1.2rem 1rem;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
         }
 
-        /* ----- COVER PAGE ----- */
+        /* ----- COVER PAGE (Mobile Optimized) ----- */
         .cover {
-            background: radial-gradient(ellipse at 50% 30%, rgba(80, 200, 120, 0.12), transparent 70%), #0a0a0a;
+            background: radial-gradient(ellipse at 50% 30%, rgba(80, 200, 120, 0.10), transparent 70%), #0a0a0a;
             text-align: center;
-            padding: 3rem 2rem 2rem;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 1.8rem 1rem 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.15);
             position: relative;
             overflow: hidden;
         }
@@ -170,44 +220,44 @@
             left: -20%;
             width: 140%;
             height: 200%;
-            background: linear-gradient(135deg, transparent 40%, rgba(80, 200, 120, 0.15) 50%, transparent 60%);
+            background: linear-gradient(135deg, transparent 40%, rgba(80, 200, 120, 0.08) 50%, transparent 60%);
             transform: rotate(-25deg);
             pointer-events: none;
         }
 
         .cover .coin {
-            font-size: 6rem;
+            font-size: 3.8rem;
             display: block;
-            margin: 0.5rem auto 0.5rem;
-            filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.4));
+            margin: 0.3rem auto 0.3rem;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.3));
         }
 
         .cover .globe {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             display: block;
-            margin: 0.2rem auto;
-            opacity: 0.6;
+            margin: 0.1rem auto;
+            opacity: 0.5;
         }
 
         .cover .bnb-badge {
             display: inline-block;
-            background: rgba(255, 215, 0, 0.12);
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(255, 215, 0, 0.10);
+            border: 1px solid rgba(255, 215, 0, 0.2);
             border-radius: 40px;
-            padding: 0.4rem 2rem;
+            padding: 0.3rem 1.2rem;
             font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
             color: #ffd700;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
 
         .cover h1 {
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: 3.8rem;
-            letter-spacing: 2px;
-            margin: 0.5rem 0 0.2rem;
+            font-size: 2.4rem;
+            letter-spacing: 1px;
+            margin: 0.3rem 0 0.1rem;
         }
         .cover h1 span {
             background: linear-gradient(135deg, #ffd700, #ffaa00);
@@ -216,40 +266,40 @@
             background-clip: text;
         }
         .cover .subtitle {
-            font-size: 1.4rem;
+            font-size: 1rem;
             color: #b0b0b0;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             font-weight: 300;
         }
         .cover .version {
             color: #666;
-            font-size: 0.9rem;
-            margin-top: 1.5rem;
-            letter-spacing: 3px;
+            font-size: 0.7rem;
+            margin-top: 1rem;
+            letter-spacing: 2px;
         }
 
         .cover .qr-placeholder {
             display: inline-block;
             background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 12px;
-            padding: 0.6rem 1.2rem;
-            margin-top: 1.5rem;
-            font-size: 0.8rem;
+            border-radius: 10px;
+            padding: 0.4rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.7rem;
             color: #888;
         }
 
-        /* ----- TOKENOMICS PIE ----- */
+        /* ----- TOKENOMICS PIE (Mobile) ----- */
         .pie-chart {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.2rem;
             align-items: center;
             justify-content: center;
         }
         .pie {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             background: conic-gradient(
                 #4a7cf7 0% 20%,
@@ -260,34 +310,36 @@
                 #ff6b6b 76% 88%,
                 #dfe6e9 88% 100%
             );
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.10);
+            flex-shrink: 0;
         }
         .pie-legend {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.5rem 1.5rem;
-            font-size: 0.9rem;
+            gap: 0.3rem 1rem;
+            font-size: 0.75rem;
             color: #ccc;
         }
         .pie-legend span {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
         .pie-legend .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
             display: inline-block;
+            flex-shrink: 0;
         }
 
         /* Progress bars */
         .progress-bar {
             width: 100%;
-            height: 8px;
+            height: 6px;
             background: #222;
             border-radius: 20px;
-            margin: 0.3rem 0 0.6rem;
+            margin: 0.2rem 0 0.4rem;
             overflow: hidden;
         }
         .progress-bar .fill {
@@ -296,239 +348,347 @@
             background: linear-gradient(90deg, #ffd700, #50c878);
         }
 
-        /* ----- STAKING ----- */
+        /* ----- STAKING (Mobile Grid) ----- */
         .staking-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        @media (min-width: 600px) {
+            .staking-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         .staking-card {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            border-radius: 16px;
-            padding: 1.8rem 1.2rem;
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            border-radius: 14px;
+            padding: 1.2rem 0.8rem;
             text-align: center;
-            transition: 0.3s;
         }
         .staking-card .duration {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             color: #ffd700;
         }
         .staking-card .bonus {
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: #50c878;
-            margin: 0.3rem 0;
+            margin: 0.2rem 0;
         }
         .staking-card .lock {
             color: #999;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         .staking-card .min-invest {
             color: #666;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
         }
 
-        /* ----- REFERRAL TREE ----- */
+        /* ----- REFERRAL TREE (Mobile) ----- */
         .tree {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
         }
         .tree-row {
             display: flex;
-            gap: 2rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
             justify-content: center;
-            margin: 0.2rem 0;
+            margin: 0.15rem 0;
         }
         .tree-node {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 40px;
-            padding: 0.5rem 1.8rem;
-            min-width: 100px;
+            border: 1px solid rgba(255, 215, 0, 0.12);
+            border-radius: 30px;
+            padding: 0.3rem 1.2rem;
+            min-width: 70px;
             text-align: center;
         }
         .tree-node .lvl {
             font-weight: 700;
             color: #ffd700;
-            font-size: 0.8rem;
+            font-size: 0.65rem;
         }
         .tree-node .pct {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #50c878;
         }
         .tree-connector {
             color: #333;
-            font-size: 1.2rem;
-            margin: 0.1rem 0;
+            font-size: 0.8rem;
+            margin: 0.05rem 0;
         }
 
-        /* ----- ROADMAP ----- */
+        /* ----- ROADMAP (Mobile) ----- */
         .roadmap-horizontal {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0.8rem 1.5rem;
-            margin-top: 1.5rem;
+            gap: 0.5rem 0.8rem;
+            margin-top: 1rem;
         }
         .roadmap-step {
             display: flex;
             flex-direction: column;
             align-items: center;
             background: rgba(255, 255, 255, 0.03);
-            padding: 0.8rem 1.2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 215, 0, 0.08);
-            min-width: 100px;
+            padding: 0.5rem 0.8rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            min-width: 60px;
+            flex: 1 0 auto;
+            max-width: 120px;
         }
         .roadmap-step .icon {
-            font-size: 2rem;
+            font-size: 1.4rem;
         }
         .roadmap-step .label {
             font-weight: 600;
             color: #ddd;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
         }
         .roadmap-step .date {
             color: #666;
-            font-size: 0.75rem;
+            font-size: 0.6rem;
         }
 
-        /* ----- FAQ ----- */
+        /* ----- FAQ (Mobile) ----- */
         .faq-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            grid-template-columns: 1fr;
+            gap: 0.6rem;
+        }
+        @media (min-width: 600px) {
+            .faq-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         .faq-item {
             background: rgba(255, 255, 255, 0.03);
-            padding: 1rem 1.2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
         .faq-item .q {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             color: #ffd700;
-            font-size: 0.95rem;
+            font-size: 0.8rem;
         }
         .faq-item .a {
             color: #bbb;
-            font-size: 0.9rem;
-            margin-top: 0.2rem;
+            font-size: 0.8rem;
+            margin-top: 0.15rem;
         }
 
-        /* ----- FUTURE UTILITY ----- */
+        /* ----- FUTURE UTILITY (Mobile) ----- */
         .utility-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
             text-align: center;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
+        }
+        @media (min-width: 500px) {
+            .utility-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
         }
         .utility-item {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 1rem 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 0.6rem 0.3rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
         }
         .utility-item .icon {
-            font-size: 2.8rem;
+            font-size: 1.8rem;
             display: block;
         }
         .utility-item .label {
             color: #bbb;
-            font-size: 0.8rem;
-            margin-top: 0.3rem;
+            font-size: 0.6rem;
+            margin-top: 0.15rem;
         }
 
-        /* ----- GAMING ----- */
+        /* ----- GAMING (Mobile) ----- */
         .gaming-hero {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
             text-align: center;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
+        }
+        @media (min-width: 500px) {
+            .gaming-hero {
+                grid-template-columns: repeat(6, 1fr);
+            }
         }
         .gaming-hero .item {
             background: rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 1.2rem 0.5rem;
-            border: 1px solid rgba(255, 215, 0, 0.08);
+            border-radius: 12px;
+            padding: 0.8rem 0.3rem;
+            border: 1px solid rgba(255, 215, 0, 0.06);
         }
         .gaming-hero .item .icon {
-            font-size: 2.8rem;
+            font-size: 1.8rem;
         }
         .gaming-hero .item .label {
             color: #aaa;
-            font-size: 0.8rem;
-            margin-top: 0.2rem;
+            font-size: 0.6rem;
+            margin-top: 0.1rem;
         }
 
         /* ----- QR FOOTER ----- */
         .qr-box {
             background: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 12px;
-            padding: 0.6rem 1.8rem;
-            font-size: 0.8rem;
+            border-radius: 10px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.7rem;
             color: #888;
             display: inline-block;
         }
 
-        /* ----- RESPONSIVE ----- */
-        @media (max-width: 768px) {
+        /* ============================================================ */
+        /* RESPONSIVE BREAKPOINTS                                       */
+        /* ============================================================ */
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem 0.3rem;
+            }
             #whitepaper {
-                padding: 1rem;
+                padding: 0.3rem;
+                border-radius: 8px;
             }
             .page {
-                padding: 1.5rem 1rem;
-            }
-            .cover h1 {
-                font-size: 2.4rem;
-            }
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-            .pie-chart {
-                flex-direction: column;
-            }
-            .pie-legend {
-                grid-template-columns: 1fr 1fr;
+                padding: 1rem 0.8rem;
+                border-radius: 12px;
+                margin-bottom: 1rem;
             }
             .section-title {
-                font-size: 1.6rem;
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
             }
-            .roadmap-horizontal {
-                gap: 0.5rem;
+            .cover h1 {
+                font-size: 1.8rem;
             }
-            .roadmap-step {
-                min-width: 70px;
-                padding: 0.5rem 0.8rem;
+            .cover .coin {
+                font-size: 3rem;
             }
-            .staking-grid {
-                grid-template-columns: 1fr;
+            .cover .globe {
+                font-size: 2rem;
+            }
+            .cover .subtitle {
+                font-size: 0.8rem;
+            }
+            .glass-card {
+                padding: 0.8rem 0.6rem;
+            }
+            .pie {
+                width: 120px;
+                height: 120px;
+            }
+            .pie-legend {
+                font-size: 0.65rem;
+                gap: 0.2rem 0.6rem;
+            }
+            .staking-card .duration {
+                font-size: 1.1rem;
+            }
+            .staking-card .bonus {
+                font-size: 1.4rem;
+            }
+            .download-btn,
+            .print-btn {
+                font-size: 0.85rem;
+                padding: 0.7rem 1.2rem;
+                min-width: 140px;
             }
             .toolbar {
-                flex-direction: column;
-                align-items: center;
+                gap: 0.5rem;
             }
-            .download-btn {
-                width: 100%;
-                justify-content: center;
+            .page-number {
+                font-size: 0.5rem;
+                bottom: 0.4rem;
+                right: 0.8rem;
+            }
+            .tree-node {
+                min-width: 55px;
+                padding: 0.2rem 0.8rem;
+            }
+            .tree-node .pct {
+                font-size: 1rem;
+            }
+            .roadmap-step {
+                min-width: 50px;
+                padding: 0.3rem 0.5rem;
+            }
+            .roadmap-step .icon {
+                font-size: 1.2rem;
+            }
+            .roadmap-step .label {
+                font-size: 0.6rem;
+            }
+            .faq-item .q {
+                font-size: 0.75rem;
+            }
+            .faq-item .a {
+                font-size: 0.7rem;
+            }
+            .gaming-hero .item .icon,
+            .utility-item .icon {
+                font-size: 1.4rem;
+            }
+            .gaming-hero .item .label,
+            .utility-item .label {
+                font-size: 0.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .page {
+                padding: 2.5rem 2.5rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .cover h1 {
+                font-size: 3.8rem;
+            }
+            .cover .coin {
+                font-size: 6rem;
+            }
+            .cover .globe {
+                font-size: 3.5rem;
+            }
+            .pie {
+                width: 200px;
+                height: 200px;
+            }
+            .staking-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .faq-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .utility-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            .gaming-hero {
+                grid-template-columns: repeat(6, 1fr);
             }
         }
 
         /* ============================================================ */
-        /* PRINT STYLES — Used by html2pdf internally                    */
+        /* PRINT STYLES — For PDF generation                           */
         /* ============================================================ */
         @media print {
             body {
@@ -537,6 +697,9 @@
                 margin: 0 !important;
             }
             .toolbar {
+                display: none !important;
+            }
+            .status-msg {
                 display: none !important;
             }
             #whitepaper {
@@ -661,6 +824,9 @@
             .cover .version {
                 color: #999 !important;
             }
+            .page-number {
+                color: #999 !important;
+            }
         }
     </style>
 </head>
@@ -672,7 +838,11 @@
             <i class="bi bi-filetype-pdf"></i> Download PDF
             <span class="spinner" id="spinner"></span>
         </button>
+        <button class="print-btn" onclick="window.print()">
+            <i class="bi bi-printer"></i> Print / Save
+        </button>
     </div>
+    <div class="status-msg" id="statusMsg">⏳ Generating PDF... Please wait.</div>
 
     <!-- ============================================================ -->
     <!-- WHITEPAPER                                                   -->
@@ -687,14 +857,14 @@
             <div class="bnb-badge">⚡ BNB SMART CHAIN</div>
             <h1>RAN <span>DIGITAL</span></h1>
             <div class="subtitle">(RND)</div>
-            <div style="font-size:1.2rem; color:#aaa; margin-top:0.2rem;">The Future of Digital Utility</div>
-            <div style="margin-top:2rem; border-top:1px solid rgba(255,215,0,0.2); width:60%; margin-left:auto; margin-right:auto;"></div>
-            <div style="font-size:1.8rem; font-weight:700; letter-spacing:6px; margin-top:1.2rem; color:#fff;">OFFICIAL WHITEPAPER</div>
-            <div style="font-size:1rem; color:#888; letter-spacing:4px;">Version 1.0 &nbsp;·&nbsp; 2026</div>
+            <div style="font-size:1rem; color:#aaa; margin-top:0.1rem;">The Future of Digital Utility</div>
+            <div style="margin-top:1.2rem; border-top:1px solid rgba(255,215,0,0.15); width:50%; margin-left:auto; margin-right:auto;"></div>
+            <div style="font-size:1.2rem; font-weight:700; letter-spacing:4px; margin-top:0.8rem; color:#fff;">OFFICIAL WHITEPAPER</div>
+            <div style="font-size:0.8rem; color:#888; letter-spacing:3px;">Version 1.0 &nbsp;·&nbsp; 2026</div>
             <div class="qr-placeholder">
                 <i class="bi bi-qr-code"></i> &nbsp; QR CODE
             </div>
-            <div style="margin-top:1.2rem; font-size:0.8rem; color:#444; letter-spacing:2px;">randigital.in</div>
+            <div style="margin-top:0.8rem; font-size:0.65rem; color:#444; letter-spacing:2px;">randigital.in</div>
             <div class="page-number">01 / 24</div>
         </div>
 
@@ -702,7 +872,7 @@
         <div class="page">
             <div class="section-title">Executive Summary</div>
             <div class="glass-card">
-                <p style="font-size:1.05rem; line-height:1.8; color:#ddd;">
+                <p style="font-size:0.95rem; line-height:1.7; color:#ddd;">
                     <strong>RAN DIGITAL (RND)</strong> is a next-generation utility token built on the
                     <span class="text-gold">BNB Smart Chain</span>, designed to bridge the gap between digital assets
                     and real-world applications. With a limited supply of only <strong>20,000 tokens</strong>,
@@ -710,26 +880,25 @@
                     tokens across multiple platforms and services.
                 </p>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem;">
                 <div class="glass-card">
-                    <h3 style="color:#ffd700; font-family:'Poppins',sans-serif;">🎯 Vision</h3>
-                    <p style="color:#bbb; font-size:0.95rem;">To create a comprehensive digital ecosystem where utility meets innovation, empowering users worldwide with seamless access to blockchain-based services.</p>
+                    <h3 style="color:#ffd700; font-family:'Poppins',sans-serif; font-size:0.9rem;">🎯 Vision</h3>
+                    <p style="color:#bbb; font-size:0.8rem;">To create a comprehensive digital ecosystem where utility meets innovation, empowering users worldwide.</p>
                 </div>
                 <div class="glass-card">
-                    <h3 style="color:#50c878; font-family:'Poppins',sans-serif;">🚀 Mission</h3>
-                    <ul style="color:#bbb; font-size:0.9rem; list-style:none; padding-left:0;">
+                    <h3 style="color:#50c878; font-family:'Poppins',sans-serif; font-size:0.9rem;">🚀 Mission</h3>
+                    <ul style="color:#bbb; font-size:0.8rem; list-style:none; padding-left:0;">
                         <li>✓ Democratize access to blockchain utilities</li>
                         <li>✓ Build sustainable community-driven growth</li>
                         <li>✓ Deliver tangible value through diverse use cases</li>
-                        <li>✓ Foster innovation in digital payments &amp; gaming</li>
                     </ul>
                 </div>
             </div>
-            <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:1.5rem;">
-                <span style="background:rgba(255,215,0,0.08); padding:0.4rem 1.2rem; border-radius:40px; border:1px solid rgba(255,215,0,0.15); color:#ccc; font-size:0.85rem;">🟢 Transparency</span>
-                <span style="background:rgba(255,215,0,0.08); padding:0.4rem 1.2rem; border-radius:40px; border:1px solid rgba(255,215,0,0.15); color:#ccc; font-size:0.85rem;">🟢 Innovation</span>
-                <span style="background:rgba(255,215,0,0.08); padding:0.4rem 1.2rem; border-radius:40px; border:1px solid rgba(255,215,0,0.15); color:#ccc; font-size:0.85rem;">🟢 Community</span>
-                <span style="background:rgba(255,215,0,0.08); padding:0.4rem 1.2rem; border-radius:40px; border:1px solid rgba(255,215,0,0.15); color:#ccc; font-size:0.85rem;">🟢 Sustainability</span>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; margin-top:1rem;">
+                <span style="background:rgba(255,215,0,0.08); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(255,215,0,0.10); color:#ccc; font-size:0.7rem;">🟢 Transparency</span>
+                <span style="background:rgba(255,215,0,0.08); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(255,215,0,0.10); color:#ccc; font-size:0.7rem;">🟢 Innovation</span>
+                <span style="background:rgba(255,215,0,0.08); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(255,215,0,0.10); color:#ccc; font-size:0.7rem;">🟢 Community</span>
+                <span style="background:rgba(255,215,0,0.08); padding:0.2rem 0.8rem; border-radius:40px; border:1px solid rgba(255,215,0,0.10); color:#ccc; font-size:0.7rem;">🟢 Sustainability</span>
             </div>
             <div class="page-number">02 / 24</div>
         </div>
@@ -737,21 +906,21 @@
         <!-- =================== PAGE 3 : VISION & MISSION =================== -->
         <div class="page">
             <div class="section-title">Vision &amp; Mission</div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                 <div class="glass-card" style="text-align:center;">
-                    <div style="font-size:3rem; margin-bottom:0.5rem;">🌍</div>
-                    <h3 style="color:#ffd700; font-family:'Poppins',sans-serif;">Our Vision</h3>
-                    <p style="color:#bbb; font-size:0.95rem; margin-top:0.5rem;">Encourage worldwide participation in blockchain technology through accessible education, digital services, and community engagement.</p>
+                    <div style="font-size:2.5rem; margin-bottom:0.3rem;">🌍</div>
+                    <h3 style="color:#ffd700; font-family:'Poppins',sans-serif; font-size:0.9rem;">Our Vision</h3>
+                    <p style="color:#bbb; font-size:0.8rem; margin-top:0.3rem;">Encourage worldwide participation in blockchain technology through accessible education, digital services, and community engagement.</p>
                 </div>
                 <div class="glass-card" style="text-align:center;">
-                    <div style="font-size:3rem; margin-bottom:0.5rem;">🚀</div>
-                    <h3 style="color:#50c878; font-family:'Poppins',sans-serif;">Our Mission</h3>
-                    <p style="color:#bbb; font-size:0.95rem; margin-top:0.5rem;">Build a sustainable ecosystem where RND holders participate in governance, staking, and ecosystem growth.</p>
+                    <div style="font-size:2.5rem; margin-bottom:0.3rem;">🚀</div>
+                    <h3 style="color:#50c878; font-family:'Poppins',sans-serif; font-size:0.9rem;">Our Mission</h3>
+                    <p style="color:#bbb; font-size:0.8rem; margin-top:0.3rem;">Build a sustainable ecosystem where RND holders participate in governance, staking, and ecosystem growth.</p>
                 </div>
             </div>
-            <div style="margin-top:1.5rem; text-align:center; background:rgba(255,215,0,0.04); border-radius:16px; padding:1.2rem; border:1px solid rgba(255,215,0,0.06);">
-                <span style="font-weight:600; color:#ffd700;">Core Values</span>
-                <div style="display:flex; gap:1.5rem; flex-wrap:wrap; justify-content:center; margin-top:0.5rem; color:#ccc; font-size:0.9rem;">
+            <div style="margin-top:1rem; text-align:center; background:rgba(255,215,0,0.03); border-radius:12px; padding:0.8rem; border:1px solid rgba(255,215,0,0.05);">
+                <span style="font-weight:600; color:#ffd700; font-size:0.8rem;">Core Values</span>
+                <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:0.3rem; color:#ccc; font-size:0.75rem;">
                     <span>💡 Innovation</span>
                     <span>⚡ Utility</span>
                     <span>🌱 Sustainable Growth</span>
@@ -765,20 +934,20 @@
         <div class="page">
             <div class="section-title">Token Overview</div>
             <div class="glass-card" style="text-align:center;">
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; max-width:600px; margin:0 auto;">
-                    <div><span style="color:#888;">Network</span><br><strong style="color:#fff;">BNB Smart Chain</strong></div>
-                    <div><span style="color:#888;">Token</span><br><strong style="color:#ffd700;">RND</strong></div>
-                    <div><span style="color:#888;">Supply</span><br><strong style="color:#fff;">20,000</strong></div>
-                    <div><span style="color:#888;">Type</span><br><strong style="color:#50c878;">Utility Token</strong></div>
-                    <div><span style="color:#888;">Standard</span><br><strong style="color:#fff;">BEP20</strong></div>
-                    <div><span style="color:#888;">Tax</span><br><strong style="color:#50c878;">0% / 0%</strong></div>
-                    <div><span style="color:#888;">Liquidity Lock</span><br><strong style="color:#fff;">2+ Years</strong></div>
-                    <div><span style="color:#888;">Audit</span><br><strong style="color:#50c878;">✅ Completed</strong></div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; max-width:500px; margin:0 auto;">
+                    <div><span style="color:#888; font-size:0.7rem;">Network</span><br><strong style="color:#fff; font-size:0.85rem;">BNB Smart Chain</strong></div>
+                    <div><span style="color:#888; font-size:0.7rem;">Token</span><br><strong style="color:#ffd700; font-size:0.85rem;">RND</strong></div>
+                    <div><span style="color:#888; font-size:0.7rem;">Supply</span><br><strong style="color:#fff; font-size:0.85rem;">20,000</strong></div>
+                    <div><span style="color:#888; font-size:0.7rem;">Type</span><br><strong style="color:#50c878; font-size:0.85rem;">Utility Token</strong></div>
+                    <div><span style="color:#888; font-size:0.7rem;">Standard</span><br><strong style="color:#fff; font-size:0.85rem;">BEP20</strong></div>
+                    <div><span style="color:#888; font-size:0.7rem;">Tax</span><br><strong style="color:#50c878; font-size:0.85rem;">0% / 0%</strong></div>
+                    <div><span style="color:#888; font-size:0.7rem;">Liquidity Lock</span><br><strong style="color:#fff; font-size:0.85rem;">2+ Years</strong></div>
+                    <div><span style="color:#888; font-size:0.7rem;">Audit</span><br><strong style="color:#50c878; font-size:0.85rem;">✅ Completed</strong></div>
                 </div>
             </div>
-            <div style="margin-top:1.5rem; background:rgba(255,255,255,0.03); border-radius:12px; padding:1rem; text-align:center; border:1px solid rgba(255,215,0,0.08);">
-                <span style="color:#888;">Contract:</span>
-                <span style="color:#ffd700; font-size:0.85rem; word-break:break-all;">0xcF1FbF18bE9202865bcf88E6349B9D207F75942d</span>
+            <div style="margin-top:1rem; background:rgba(255,255,255,0.02); border-radius:10px; padding:0.6rem; text-align:center; border:1px solid rgba(255,215,0,0.06);">
+                <span style="color:#888; font-size:0.65rem;">Contract:</span>
+                <span style="color:#ffd700; font-size:0.7rem; word-break:break-all;">0xcF1FbF18bE9202865bcf88E6349B9D207F75942d</span>
             </div>
             <div class="page-number">04 / 24</div>
         </div>
@@ -798,14 +967,14 @@
                     <span><span class="dot" style="background:#dfe6e9;"></span> Treasury 12%</span>
                 </div>
             </div>
-            <div style="margin-top:1.5rem;">
-                <div><span style="color:#bbb;">Reserve</span> <span style="float:right;color:#fff;">20%</span><div class="progress-bar"><div class="fill" style="width:20%;"></div></div></div>
-                <div><span style="color:#bbb;">Liquidity</span> <span style="float:right;color:#fff;">16%</span><div class="progress-bar"><div class="fill" style="width:16%;"></div></div></div>
-                <div><span style="color:#bbb;">Marketing</span> <span style="float:right;color:#fff;">14%</span><div class="progress-bar"><div class="fill" style="width:14%;"></div></div></div>
-                <div><span style="color:#bbb;">Development</span> <span style="float:right;color:#fff;">12%</span><div class="progress-bar"><div class="fill" style="width:12%;"></div></div></div>
-                <div><span style="color:#bbb;">Community</span> <span style="float:right;color:#fff;">14%</span><div class="progress-bar"><div class="fill" style="width:14%;"></div></div></div>
-                <div><span style="color:#bbb;">Ecosystem</span> <span style="float:right;color:#fff;">12%</span><div class="progress-bar"><div class="fill" style="width:12%;"></div></div></div>
-                <div><span style="color:#bbb;">Treasury</span> <span style="float:right;color:#fff;">12%</span><div class="progress-bar"><div class="fill" style="width:12%;"></div></div></div>
+            <div style="margin-top:1rem;">
+                <div style="font-size:0.75rem;"><span style="color:#bbb;">Reserve</span> <span style="float:right;color:#fff;">20%</span><div class="progress-bar"><div class="fill" style="width:20%;"></div></div></div>
+                <div style="font-size:0.75rem;"><span style="color:#bbb;">Liquidity</span> <span style="float:right;color:#fff;">16%</span><div class="progress-bar"><div class="fill" style="width:16%;"></div></div></div>
+                <div style="font-size:0.75rem;"><span style="color:#bbb;">Marketing</span> <span style="float:right;color:#fff;">14%</span><div class="progress-bar"><div class="fill" style="width:14%;"></div></div></div>
+                <div style="font-size:0.75rem;"><span style="color:#bbb;">Development</span> <span style="float:right;color:#fff;">12%</span><div class="progress-bar"><div class="fill" style="width:12%;"></div></div></div>
+                <div style="font-size:0.75rem;"><span style="color:#bbb;">Community</span> <span style="float:right;color:#fff;">14%</span><div class="progress-bar"><div class="fill" style="width:14%;"></div></div></div>
+                <div style="font-size:0.75rem;"><span style="color:#bbb;">Ecosystem</span> <span style="float:right;color:#fff;">12%</span><div class="progress-bar"><div class="fill" style="width:12%;"></div></div></div>
+                <div style="font-size:0.75rem;"><span style="color:#bbb;">Treasury</span> <span style="float:right;color:#fff;">12%</span><div class="progress-bar"><div class="fill" style="width:12%;"></div></div></div>
             </div>
             <div class="page-number">05 / 24</div>
         </div>
@@ -813,31 +982,31 @@
         <!-- =================== PAGE 6 : WHY RND? =================== -->
         <div class="page">
             <div class="section-title">Why RND?</div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-                <div class="glass-card" style="text-align:center; padding:1.2rem;">
-                    <div style="font-size:2.2rem;">✅</div>
-                    <h4 style="color:#ffd700;">Only 20,000 Supply</h4>
-                    <p style="color:#888; font-size:0.85rem;">Maximum Scarcity for Value</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+                <div class="glass-card" style="text-align:center; padding:0.8rem 0.5rem;">
+                    <div style="font-size:1.6rem;">✅</div>
+                    <h4 style="color:#ffd700; font-size:0.85rem;">Only 20,000 Supply</h4>
+                    <p style="color:#888; font-size:0.7rem;">Maximum Scarcity for Value</p>
                 </div>
-                <div class="glass-card" style="text-align:center; padding:1.2rem;">
-                    <div style="font-size:2.2rem;">✅</div>
-                    <h4 style="color:#50c878;">Utility Token</h4>
-                    <p style="color:#888; font-size:0.85rem;">Real-World Applications</p>
+                <div class="glass-card" style="text-align:center; padding:0.8rem 0.5rem;">
+                    <div style="font-size:1.6rem;">✅</div>
+                    <h4 style="color:#50c878; font-size:0.85rem;">Utility Token</h4>
+                    <p style="color:#888; font-size:0.7rem;">Real-World Applications</p>
                 </div>
-                <div class="glass-card" style="text-align:center; padding:1.2rem;">
-                    <div style="font-size:2.2rem;">✅</div>
-                    <h4 style="color:#ffd700;">Community Driven</h4>
-                    <p style="color:#888; font-size:0.85rem;">Powered by Users</p>
+                <div class="glass-card" style="text-align:center; padding:0.8rem 0.5rem;">
+                    <div style="font-size:1.6rem;">✅</div>
+                    <h4 style="color:#ffd700; font-size:0.85rem;">Community Driven</h4>
+                    <p style="color:#888; font-size:0.7rem;">Powered by Users</p>
                 </div>
-                <div class="glass-card" style="text-align:center; padding:1.2rem;">
-                    <div style="font-size:2.2rem;">✅</div>
-                    <h4 style="color:#50c878;">Blockchain Ecosystem</h4>
-                    <p style="color:#888; font-size:0.85rem;">BNB Smart Chain</p>
+                <div class="glass-card" style="text-align:center; padding:0.8rem 0.5rem;">
+                    <div style="font-size:1.6rem;">✅</div>
+                    <h4 style="color:#50c878; font-size:0.85rem;">Blockchain Ecosystem</h4>
+                    <p style="color:#888; font-size:0.7rem;">BNB Smart Chain</p>
                 </div>
-                <div class="glass-card" style="text-align:center; padding:1.2rem; grid-column:1/3;">
-                    <div style="font-size:2.2rem;">✅</div>
-                    <h4 style="color:#ffd700;">Long Term Vision</h4>
-                    <p style="color:#888; font-size:0.85rem;">Sustainable Growth Strategy</p>
+                <div class="glass-card" style="text-align:center; padding:0.8rem 0.5rem; grid-column:1/3;">
+                    <div style="font-size:1.6rem;">✅</div>
+                    <h4 style="color:#ffd700; font-size:0.85rem;">Long Term Vision</h4>
+                    <p style="color:#888; font-size:0.7rem;">Sustainable Growth Strategy</p>
                 </div>
             </div>
             <div class="page-number">06 / 24</div>
@@ -846,11 +1015,11 @@
         <!-- =================== PAGE 7 : MARKET OPPORTUNITY =================== -->
         <div class="page">
             <div class="section-title">Market Opportunity</div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-                <div class="glass-card"><span style="color:#ffd700; font-weight:700;">📈 Blockchain</span><br><span style="font-size:1.6rem; font-weight:700;">$XXB</span><div class="progress-bar"><div class="fill" style="width:75%;"></div></div><span style="color:#888;">75% Growth</span></div>
-                <div class="glass-card"><span style="color:#50c878; font-weight:700;">🎮 Gaming</span><br><span style="font-size:1.6rem; font-weight:700;">$XXXB</span><div class="progress-bar"><div class="fill" style="width:60%;"></div></div><span style="color:#888;">60% Adoption</span></div>
-                <div class="glass-card"><span style="color:#ffd700; font-weight:700;">💳 Digital Payments</span><br><span style="font-size:1.6rem; font-weight:700;">$XXT</span><div class="progress-bar"><div class="fill" style="width:85%;"></div></div><span style="color:#888;">85% Growth</span></div>
-                <div class="glass-card"><span style="color:#50c878; font-weight:700;">🤖 AI &amp; Web3</span><br><span style="font-size:1.6rem; font-weight:700;">$XXB</span><div class="progress-bar"><div class="fill" style="width:55%;"></div></div><span style="color:#888;">55% Projected</span></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+                <div class="glass-card" style="padding:0.8rem;"><span style="color:#ffd700; font-weight:700; font-size:0.8rem;">📈 Blockchain</span><br><span style="font-size:1.2rem; font-weight:700;">$XXB</span><div class="progress-bar"><div class="fill" style="width:75%;"></div></div><span style="color:#888; font-size:0.65rem;">75% Growth</span></div>
+                <div class="glass-card" style="padding:0.8rem;"><span style="color:#50c878; font-weight:700; font-size:0.8rem;">🎮 Gaming</span><br><span style="font-size:1.2rem; font-weight:700;">$XXXB</span><div class="progress-bar"><div class="fill" style="width:60%;"></div></div><span style="color:#888; font-size:0.65rem;">60% Adoption</span></div>
+                <div class="glass-card" style="padding:0.8rem;"><span style="color:#ffd700; font-weight:700; font-size:0.8rem;">💳 Digital Payments</span><br><span style="font-size:1.2rem; font-weight:700;">$XXT</span><div class="progress-bar"><div class="fill" style="width:85%;"></div></div><span style="color:#888; font-size:0.65rem;">85% Growth</span></div>
+                <div class="glass-card" style="padding:0.8rem;"><span style="color:#50c878; font-weight:700; font-size:0.8rem;">🤖 AI &amp; Web3</span><br><span style="font-size:1.2rem; font-weight:700;">$XXB</span><div class="progress-bar"><div class="fill" style="width:55%;"></div></div><span style="color:#888; font-size:0.65rem;">55% Projected</span></div>
             </div>
             <div class="page-number">07 / 24</div>
         </div>
@@ -858,26 +1027,26 @@
         <!-- =================== PAGE 8 : THE PROBLEM =================== -->
         <div class="page">
             <div class="section-title">The Problem</div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-                <div class="glass-card" style="border-left:4px solid #ff6b6b;">
-                    <div style="font-size:2rem;">💰</div>
-                    <h4 style="color:#ff6b6b;">High Fees</h4>
-                    <p style="color:#bbb; font-size:0.9rem;">Up to 5% transaction fees + hidden banking charges</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+                <div class="glass-card" style="border-left:3px solid #ff6b6b; padding:0.6rem 0.6rem;">
+                    <div style="font-size:1.4rem;">💰</div>
+                    <h4 style="color:#ff6b6b; font-size:0.8rem;">High Fees</h4>
+                    <p style="color:#bbb; font-size:0.7rem;">Up to 5% transaction fees + hidden charges</p>
                 </div>
-                <div class="glass-card" style="border-left:4px solid #ff9f43;">
-                    <div style="font-size:2rem;">⏰</div>
-                    <h4 style="color:#ff9f43;">Slow Transactions</h4>
-                    <p style="color:#bbb; font-size:0.9rem;">2-5 business days settlement time</p>
+                <div class="glass-card" style="border-left:3px solid #ff9f43; padding:0.6rem 0.6rem;">
+                    <div style="font-size:1.4rem;">⏰</div>
+                    <h4 style="color:#ff9f43; font-size:0.8rem;">Slow Transactions</h4>
+                    <p style="color:#bbb; font-size:0.7rem;">2-5 business days settlement time</p>
                 </div>
-                <div class="glass-card" style="border-left:4px solid #a29bfe;">
-                    <div style="font-size:2rem;">❌</div>
-                    <h4 style="color:#a29bfe;">No Rewards</h4>
-                    <p style="color:#bbb; font-size:0.9rem;">Zero benefits for system participants</p>
+                <div class="glass-card" style="border-left:3px solid #a29bfe; padding:0.6rem 0.6rem;">
+                    <div style="font-size:1.4rem;">❌</div>
+                    <h4 style="color:#a29bfe; font-size:0.8rem;">No Rewards</h4>
+                    <p style="color:#bbb; font-size:0.7rem;">Zero benefits for participants</p>
                 </div>
-                <div class="glass-card" style="border-left:4px solid #4a7cf7;">
-                    <div style="font-size:2rem;">🔒</div>
-                    <h4 style="color:#4a7cf7;">Limited Utility</h4>
-                    <p style="color:#bbb; font-size:0.9rem;">Restricted use cases and limited access</p>
+                <div class="glass-card" style="border-left:3px solid #4a7cf7; padding:0.6rem 0.6rem;">
+                    <div style="font-size:1.4rem;">🔒</div>
+                    <h4 style="color:#4a7cf7; font-size:0.8rem;">Limited Utility</h4>
+                    <p style="color:#bbb; font-size:0.7rem;">Restricted use cases and access</p>
                 </div>
             </div>
             <div class="page-number">08 / 24</div>
@@ -887,15 +1056,15 @@
         <div class="page">
             <div class="section-title">Our Solution</div>
             <div style="text-align:center;">
-                <div style="display:inline-block; background:rgba(255,215,0,0.06); border-radius:60px; padding:0.6rem 2.5rem; border:1px solid rgba(255,215,0,0.15); font-weight:700; font-size:1.2rem; color:#ffd700;">RND Ecosystem</div>
+                <div style="display:inline-block; background:rgba(255,215,0,0.05); border-radius:40px; padding:0.3rem 1.5rem; border:1px solid rgba(255,215,0,0.10); font-weight:700; font-size:0.9rem; color:#ffd700;">RND Ecosystem</div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-top:1.5rem;">
-                <div class="glass-card" style="text-align:center;"><span style="font-size:2.5rem;">👥</span><h4 style="color:#ffd700;">Community</h4><p style="color:#888; font-size:0.85rem;">Engagement &amp; Growth</p></div>
-                <div class="glass-card" style="text-align:center;"><span style="font-size:2.5rem;">⭐</span><h4 style="color:#50c878;">Staking</h4><p style="color:#888; font-size:0.85rem;">Rewards System</p></div>
-                <div class="glass-card" style="text-align:center;"><span style="font-size:2.5rem;">🎮</span><h4 style="color:#ffd700;">Gaming</h4><p style="color:#888; font-size:0.85rem;">Platform Integration</p></div>
-                <div class="glass-card" style="text-align:center;"><span style="font-size:2.5rem;">⚡</span><h4 style="color:#50c878;">Utilities</h4><p style="color:#888; font-size:0.85rem;">Real-World Apps</p></div>
-                <div class="glass-card" style="text-align:center;"><span style="font-size:2.5rem;">🎁</span><h4 style="color:#ffd700;">Rewards</h4><p style="color:#888; font-size:0.85rem;">User Benefits</p></div>
-                <div class="glass-card" style="text-align:center;"><span style="font-size:2.5rem;">🚀</span><h4 style="color:#50c878;">Growth</h4><p style="color:#888; font-size:0.85rem;">Ecosystem Expansion</p></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; margin-top:1rem;">
+                <div class="glass-card" style="text-align:center; padding:0.6rem 0.3rem;"><span style="font-size:1.6rem;">👥</span><h4 style="color:#ffd700; font-size:0.75rem;">Community</h4><p style="color:#888; font-size:0.6rem;">Engagement &amp; Growth</p></div>
+                <div class="glass-card" style="text-align:center; padding:0.6rem 0.3rem;"><span style="font-size:1.6rem;">⭐</span><h4 style="color:#50c878; font-size:0.75rem;">Staking</h4><p style="color:#888; font-size:0.6rem;">Rewards System</p></div>
+                <div class="glass-card" style="text-align:center; padding:0.6rem 0.3rem;"><span style="font-size:1.6rem;">🎮</span><h4 style="color:#ffd700; font-size:0.75rem;">Gaming</h4><p style="color:#888; font-size:0.6rem;">Platform Integration</p></div>
+                <div class="glass-card" style="text-align:center; padding:0.6rem 0.3rem;"><span style="font-size:1.6rem;">⚡</span><h4 style="color:#50c878; font-size:0.75rem;">Utilities</h4><p style="color:#888; font-size:0.6rem;">Real-World Apps</p></div>
+                <div class="glass-card" style="text-align:center; padding:0.6rem 0.3rem;"><span style="font-size:1.6rem;">🎁</span><h4 style="color:#ffd700; font-size:0.75rem;">Rewards</h4><p style="color:#888; font-size:0.6rem;">User Benefits</p></div>
+                <div class="glass-card" style="text-align:center; padding:0.6rem 0.3rem;"><span style="font-size:1.6rem;">🚀</span><h4 style="color:#50c878; font-size:0.75rem;">Growth</h4><p style="color:#888; font-size:0.6rem;">Ecosystem Expansion</p></div>
             </div>
             <div class="page-number">09 / 24</div>
         </div>
@@ -903,14 +1072,14 @@
         <!-- =================== PAGE 10 : STAKING PLANS =================== -->
         <div class="page">
             <div class="section-title">Staking Plans</div>
-            <p style="text-align:center; color:#aaa; margin-bottom:1.2rem;">RND allocation is calculated automatically using the live market price.</p>
+            <p style="text-align:center; color:#aaa; font-size:0.75rem; margin-bottom:0.8rem;">RND allocation is calculated automatically using the live market price.</p>
             <div class="staking-grid">
                 <div class="staking-card"><div class="duration">6 Months</div><div class="bonus">25% Bonus</div><div class="lock">🔒 Lock: 180 Days</div><div class="min-invest">From $10</div></div>
                 <div class="staking-card"><div class="duration">12 Months</div><div class="bonus">60% Bonus</div><div class="lock">🔒 Lock: 365 Days</div><div class="min-invest">From $100</div></div>
                 <div class="staking-card"><div class="duration">18 Months</div><div class="bonus">100% Bonus</div><div class="lock">🔒 Lock: 540 Days</div><div class="min-invest">From $200</div></div>
             </div>
-            <div style="background:rgba(80,200,120,0.08); border-radius:12px; padding:0.8rem; text-align:center; border:1px solid rgba(80,200,120,0.15); margin-top:1rem;">
-                <span style="color:#50c878;">💡</span> <span style="color:#bbb;">Higher Investment = Higher Rewards &nbsp;|&nbsp; Longer Lock = Better Bonus</span>
+            <div style="background:rgba(80,200,120,0.06); border-radius:10px; padding:0.5rem; text-align:center; border:1px solid rgba(80,200,120,0.10); margin-top:0.8rem;">
+                <span style="color:#50c878; font-size:0.8rem;">💡</span> <span style="color:#bbb; font-size:0.7rem;">Higher Investment = Higher Rewards | Longer Lock = Better Bonus</span>
             </div>
             <div class="page-number">10 / 24</div>
         </div>
@@ -918,18 +1087,18 @@
         <!-- =================== PAGE 11 : DAILY RELEASE =================== -->
         <div class="page">
             <div class="section-title">Daily Release Process</div>
-            <div style="display:flex; flex-direction:column; align-items:center; gap:0.4rem; margin:1rem 0;">
-                <div class="glass-card" style="padding:0.6rem 2rem; width:fit-content;">🛒 Buy Package → Select Plan</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.6rem 2rem; width:fit-content;">🔒 Locked Wallet → Tokens Locked</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.6rem 2rem; width:fit-content;">📅 Daily Release → Regular Distribution</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.6rem 2rem; width:fit-content;">💎 RND Wallet → Accumulating Rewards</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.6rem 2rem; width:fit-content; border-color:#50c878;">💸 Withdrawal → User Access</div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:0.2rem; margin:0.5rem 0;">
+                <div class="glass-card" style="padding:0.3rem 1rem; width:fit-content; font-size:0.8rem;">🛒 Buy Package → Select Plan</div>
+                <span style="color:#555; font-size:0.8rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1rem; width:fit-content; font-size:0.8rem;">🔒 Locked Wallet → Tokens Locked</div>
+                <span style="color:#555; font-size:0.8rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1rem; width:fit-content; font-size:0.8rem;">📅 Daily Release → Regular Distribution</div>
+                <span style="color:#555; font-size:0.8rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1rem; width:fit-content; font-size:0.8rem;">💎 RND Wallet → Accumulating Rewards</div>
+                <span style="color:#555; font-size:0.8rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1rem; width:fit-content; border-color:#50c878; font-size:0.8rem;">💸 Withdrawal → User Access</div>
             </div>
-            <div style="display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center; color:#888; font-size:0.85rem;">
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; color:#888; font-size:0.7rem;">
                 <span>✅ Daily release</span><span>✅ Transparent tracking</span><span>✅ User-controlled withdrawal</span>
             </div>
             <div class="page-number">11 / 24</div>
@@ -939,7 +1108,7 @@
         <div class="page">
             <div class="section-title">Referral System</div>
             <div class="tree">
-                <div class="tree-row"><div class="tree-node"><span class="lvl">YOU</span><br><span style="color:#ffd700;">⭐</span></div></div>
+                <div class="tree-row"><div class="tree-node"><span class="lvl">YOU</span><br><span style="color:#ffd700; font-size:1rem;">⭐</span></div></div>
                 <div class="tree-connector">⬇</div>
                 <div class="tree-row"><div class="tree-node"><span class="lvl">Level 1</span><br><span class="pct">8%</span></div></div>
                 <div class="tree-connector">⬇</div>
@@ -949,25 +1118,25 @@
                 <div class="tree-connector">⬇</div>
                 <div class="tree-row"><div class="tree-node"><span class="lvl">Level 4</span><br><span class="pct">1%</span></div><div class="tree-node"><span class="lvl">Level 5</span><br><span class="pct">1%</span></div></div>
             </div>
-            <div style="text-align:center; color:#888; font-size:0.9rem;">5-Level Network Diagram</div>
+            <div style="text-align:center; color:#888; font-size:0.7rem;">5-Level Network Diagram</div>
             <div class="page-number">12 / 24</div>
         </div>
 
         <!-- =================== PAGE 13 : REVENUE MODEL =================== -->
         <div class="page">
             <div class="section-title">Revenue Model</div>
-            <div style="display:flex; flex-direction:column; align-items:center; gap:0.3rem;">
-                <div class="glass-card" style="padding:0.5rem 2rem;">👥 Users</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.5rem 2rem;">⭐ Staking</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.5rem 2rem;">📈 Community Growth</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.5rem 2rem;">💰 Platform Revenue</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.5rem 2rem;">🛠️ Development</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.5rem 2rem; border-color:#50c878;">🌍 Ecosystem Expansion</div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:0.2rem;">
+                <div class="glass-card" style="padding:0.3rem 1.2rem; font-size:0.8rem;">👥 Users</div>
+                <span style="color:#555; font-size:0.7rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1.2rem; font-size:0.8rem;">⭐ Staking</div>
+                <span style="color:#555; font-size:0.7rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1.2rem; font-size:0.8rem;">📈 Community Growth</div>
+                <span style="color:#555; font-size:0.7rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1.2rem; font-size:0.8rem;">💰 Platform Revenue</div>
+                <span style="color:#555; font-size:0.7rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1.2rem; font-size:0.8rem;">🛠️ Development</div>
+                <span style="color:#555; font-size:0.7rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1.2rem; border-color:#50c878; font-size:0.8rem;">🌍 Ecosystem Expansion</div>
             </div>
             <div class="page-number">13 / 24</div>
         </div>
@@ -983,7 +1152,7 @@
                 <div class="item"><span class="icon">🏆</span><div class="label">Tournament</div></div>
                 <div class="item"><span class="icon">📊</span><div class="label">Leaderboard</div></div>
             </div>
-            <div style="display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center; color:#888; font-size:0.9rem;">
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; color:#888; font-size:0.7rem;">
                 <span>🎮 Play-to-Earn</span><span>🖼️ NFT Collectibles</span><span>🏆 Tournaments</span><span>📊 Leaderboards</span>
             </div>
             <div class="page-number">14 / 24</div>
@@ -1000,8 +1169,8 @@
                 <div class="utility-item"><span class="icon">🎁</span><div class="label">Rewards</div></div>
                 <div class="utility-item"><span class="icon">🌍</span><div class="label">Community</div></div>
             </div>
-            <div style="background:rgba(255,215,0,0.04); border-radius:12px; padding:1rem; border-left:4px solid #ffd700; margin-top:0.5rem;">
-                <p style="color:#888; font-size:0.85rem;">⚠️ These are future development goals and depend on technical progress, partnerships, and applicable requirements.</p>
+            <div style="background:rgba(255,215,0,0.03); border-radius:10px; padding:0.6rem; border-left:3px solid #ffd700; margin-top:0.3rem;">
+                <p style="color:#888; font-size:0.65rem;">⚠️ These are future development goals and depend on technical progress, partnerships, and applicable requirements.</p>
             </div>
             <div class="page-number">15 / 24</div>
         </div>
@@ -1009,18 +1178,18 @@
         <!-- =================== PAGE 16 : SECURITY =================== -->
         <div class="page">
             <div class="section-title">Security</div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-                <div class="glass-card"><span style="font-size:2rem;">🔒</span><h4 style="color:#ffd700;">Smart Contract</h4><p style="color:#888; font-size:0.85rem;">Audited &amp; Verified</p></div>
-                <div class="glass-card"><span style="font-size:2rem;">⛓️</span><h4 style="color:#50c878;">BNB Chain</h4><p style="color:#888; font-size:0.85rem;">Secure Blockchain Foundation</p></div>
-                <div class="glass-card"><span style="font-size:2rem;">📊</span><h4 style="color:#ffd700;">Transparent Transactions</h4><p style="color:#888; font-size:0.85rem;">On-Chain Verification</p></div>
-                <div class="glass-card"><span style="font-size:2rem;">💼</span><h4 style="color:#50c878;">Secure Wallet Integration</h4><p style="color:#888; font-size:0.85rem;">Industry Standard Protocols</p></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+                <div class="glass-card" style="padding:0.6rem;"><span style="font-size:1.4rem;">🔒</span><h4 style="color:#ffd700; font-size:0.75rem;">Smart Contract</h4><p style="color:#888; font-size:0.65rem;">Audited &amp; Verified</p></div>
+                <div class="glass-card" style="padding:0.6rem;"><span style="font-size:1.4rem;">⛓️</span><h4 style="color:#50c878; font-size:0.75rem;">BNB Chain</h4><p style="color:#888; font-size:0.65rem;">Secure Blockchain Foundation</p></div>
+                <div class="glass-card" style="padding:0.6rem;"><span style="font-size:1.4rem;">📊</span><h4 style="color:#ffd700; font-size:0.75rem;">Transparent Transactions</h4><p style="color:#888; font-size:0.65rem;">On-Chain Verification</p></div>
+                <div class="glass-card" style="padding:0.6rem;"><span style="font-size:1.4rem;">💼</span><h4 style="color:#50c878; font-size:0.75rem;">Secure Wallet Integration</h4><p style="color:#888; font-size:0.65rem;">Industry Standard Protocols</p></div>
             </div>
-            <div style="display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center; margin-top:1rem;">
-                <span style="background:rgba(80,200,120,0.12); padding:0.3rem 1rem; border-radius:40px; color:#50c878; font-size:0.8rem;">✅ Audit</span>
-                <span style="background:rgba(255,215,0,0.12); padding:0.3rem 1rem; border-radius:40px; color:#ffd700; font-size:0.8rem;">✅ BNB Chain</span>
-                <span style="background:rgba(80,200,120,0.12); padding:0.3rem 1rem; border-radius:40px; color:#50c878; font-size:0.8rem;">✅ Secure Wallet</span>
-                <span style="background:rgba(255,215,0,0.12); padding:0.3rem 1rem; border-radius:40px; color:#ffd700; font-size:0.8rem;">✅ KYC</span>
-                <span style="background:rgba(80,200,120,0.12); padding:0.3rem 1rem; border-radius:40px; color:#50c878; font-size:0.8rem;">✅ Liquidity Locked</span>
+            <div style="display:flex; gap:0.4rem; flex-wrap:wrap; justify-content:center; margin-top:0.6rem;">
+                <span style="background:rgba(80,200,120,0.10); padding:0.15rem 0.6rem; border-radius:40px; color:#50c878; font-size:0.6rem;">✅ Audit</span>
+                <span style="background:rgba(255,215,0,0.10); padding:0.15rem 0.6rem; border-radius:40px; color:#ffd700; font-size:0.6rem;">✅ BNB Chain</span>
+                <span style="background:rgba(80,200,120,0.10); padding:0.15rem 0.6rem; border-radius:40px; color:#50c878; font-size:0.6rem;">✅ Secure Wallet</span>
+                <span style="background:rgba(255,215,0,0.10); padding:0.15rem 0.6rem; border-radius:40px; color:#ffd700; font-size:0.6rem;">✅ KYC</span>
+                <span style="background:rgba(80,200,120,0.10); padding:0.15rem 0.6rem; border-radius:40px; color:#50c878; font-size:0.6rem;">✅ Liquidity Locked</span>
             </div>
             <div class="page-number">16 / 24</div>
         </div>
@@ -1037,7 +1206,7 @@
                 <div class="roadmap-step"><span class="icon">🌍</span><span class="label">Global</span><span class="date">Q4 2026</span></div>
                 <div class="roadmap-step"><span class="icon">🤝</span><span class="label">Partnerships</span><span class="date">2027+</span></div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-top:1.5rem; font-size:0.85rem; color:#bbb;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; margin-top:0.8rem; font-size:0.65rem; color:#bbb;">
                 <div>✅ Phase 1: Token Deployment, Website, Community</div>
                 <div>✅ Phase 2: Ecosystem Expansion, CMC/CG Listings</div>
                 <div>✅ Phase 3: DAO Launch, Staking, Partnerships</div>
@@ -1049,19 +1218,19 @@
         <!-- =================== PAGE 18 : EXCHANGE STRATEGY =================== -->
         <div class="page">
             <div class="section-title">Exchange Strategy</div>
-            <div style="display:flex; flex-direction:column; align-items:center; gap:0.3rem;">
-                <div class="glass-card" style="padding:0.5rem 2rem;">📊 DEX → PancakeSwap</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.5rem 2rem;">📈 Tracking Sites → CMC / CG / DexScreener</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.5rem 2rem;">🏦 CEX Applications → Tier-1 Exchanges</div>
-                <span style="color:#555;">⬇</span>
-                <div class="glass-card" style="padding:0.5rem 2rem; border-color:#50c878;">💧 Liquidity Growth → Sustainable Market Depth</div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:0.2rem;">
+                <div class="glass-card" style="padding:0.3rem 1rem; font-size:0.75rem;">📊 DEX → PancakeSwap</div>
+                <span style="color:#555; font-size:0.7rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1rem; font-size:0.75rem;">📈 Tracking Sites → CMC / CG / DexScreener</div>
+                <span style="color:#555; font-size:0.7rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1rem; font-size:0.75rem;">🏦 CEX Applications → Tier-1 Exchanges</div>
+                <span style="color:#555; font-size:0.7rem;">⬇</span>
+                <div class="glass-card" style="padding:0.3rem 1rem; border-color:#50c878; font-size:0.75rem;">💧 Liquidity Growth → Sustainable Market Depth</div>
             </div>
-            <div style="display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center; margin-top:1rem;">
-                <span style="background:rgba(255,215,0,0.08); padding:0.3rem 1rem; border-radius:40px; color:#ccc; font-size:0.8rem;">✅ Full Compliance</span>
-                <span style="background:rgba(80,200,120,0.08); padding:0.3rem 1rem; border-radius:40px; color:#ccc; font-size:0.8rem;">✅ KYC/AML Ready</span>
-                <span style="background:rgba(255,215,0,0.08); padding:0.3rem 1rem; border-radius:40px; color:#ccc; font-size:0.8rem;">✅ Audit Completed</span>
+            <div style="display:flex; gap:0.4rem; flex-wrap:wrap; justify-content:center; margin-top:0.6rem;">
+                <span style="background:rgba(255,215,0,0.06); padding:0.15rem 0.6rem; border-radius:40px; color:#ccc; font-size:0.6rem;">✅ Full Compliance</span>
+                <span style="background:rgba(80,200,120,0.06); padding:0.15rem 0.6rem; border-radius:40px; color:#ccc; font-size:0.6rem;">✅ KYC/AML Ready</span>
+                <span style="background:rgba(255,215,0,0.06); padding:0.15rem 0.6rem; border-radius:40px; color:#ccc; font-size:0.6rem;">✅ Audit Completed</span>
             </div>
             <div class="page-number">18 / 24</div>
         </div>
@@ -1069,15 +1238,15 @@
         <!-- =================== PAGE 19 : COMMUNITY GROWTH =================== -->
         <div class="page">
             <div class="section-title">Community Growth</div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(100px,1fr)); gap:1rem; text-align:center;">
-                <div class="glass-card" style="padding:0.8rem;"><span style="font-size:2rem;">📱</span><div style="color:#bbb; font-size:0.8rem;">Telegram</div></div>
-                <div class="glass-card" style="padding:0.8rem;"><span style="font-size:2rem;">📘</span><div style="color:#bbb; font-size:0.8rem;">Facebook</div></div>
-                <div class="glass-card" style="padding:0.8rem;"><span style="font-size:2rem;">🐦</span><div style="color:#bbb; font-size:0.8rem;">Twitter</div></div>
-                <div class="glass-card" style="padding:0.8rem;"><span style="font-size:2rem;">▶️</span><div style="color:#bbb; font-size:0.8rem;">YouTube</div></div>
-                <div class="glass-card" style="padding:0.8rem;"><span style="font-size:2rem;">💬</span><div style="color:#bbb; font-size:0.8rem;">WhatsApp</div></div>
-                <div class="glass-card" style="padding:0.8rem;"><span style="font-size:2rem;">👥</span><div style="color:#bbb; font-size:0.8rem;">Referral</div></div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem; text-align:center;">
+                <div class="glass-card" style="padding:0.4rem;"><span style="font-size:1.6rem;">📱</span><div style="color:#bbb; font-size:0.6rem;">Telegram</div></div>
+                <div class="glass-card" style="padding:0.4rem;"><span style="font-size:1.6rem;">📘</span><div style="color:#bbb; font-size:0.6rem;">Facebook</div></div>
+                <div class="glass-card" style="padding:0.4rem;"><span style="font-size:1.6rem;">🐦</span><div style="color:#bbb; font-size:0.6rem;">Twitter</div></div>
+                <div class="glass-card" style="padding:0.4rem;"><span style="font-size:1.6rem;">▶️</span><div style="color:#bbb; font-size:0.6rem;">YouTube</div></div>
+                <div class="glass-card" style="padding:0.4rem;"><span style="font-size:1.6rem;">💬</span><div style="color:#bbb; font-size:0.6rem;">WhatsApp</div></div>
+                <div class="glass-card" style="padding:0.4rem;"><span style="font-size:1.6rem;">👥</span><div style="color:#bbb; font-size:0.6rem;">Referral</div></div>
             </div>
-            <div style="display:flex; gap:1.5rem; flex-wrap:wrap; justify-content:center; margin-top:1rem; color:#888; font-size:0.9rem;">
+            <div style="display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center; margin-top:0.6rem; color:#888; font-size:0.65rem;">
                 <span>👥 Growing community</span><span>📈 Increasing engagement</span><span>🔗 Expanding referral network</span><span>🌍 Global reach</span>
             </div>
             <div class="page-number">19 / 24</div>
@@ -1087,16 +1256,16 @@
         <div class="page">
             <div class="section-title">Why Limited Supply?</div>
             <div style="text-align:center;">
-                <div style="display:inline-block; background:rgba(255,215,0,0.06); border-radius:60px; padding:0.6rem 2.5rem; border:1px solid rgba(255,215,0,0.2);">
-                    <span style="font-size:2.8rem; font-weight:800; color:#ffd700;">20,000</span>
-                    <span style="color:#888; display:block; font-size:0.9rem;">Maximum Supply</span>
+                <div style="display:inline-block; background:rgba(255,215,0,0.05); border-radius:40px; padding:0.4rem 1.5rem; border:1px solid rgba(255,215,0,0.12);">
+                    <span style="font-size:2rem; font-weight:800; color:#ffd700;">20,000</span>
+                    <span style="color:#888; display:block; font-size:0.7rem;">Maximum Supply</span>
                 </div>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
-                <div class="glass-card" style="border-left:4px solid #ffd700;"><span style="font-size:2rem;">📉</span><h4 style="color:#ffd700;">Scarcity</h4><p style="color:#888; font-size:0.85rem;">Limited Supply Creates Value</p></div>
-                <div class="glass-card" style="border-left:4px solid #50c878;"><span style="font-size:2rem;">📈</span><h4 style="color:#50c878;">Demand</h4><p style="color:#888; font-size:0.85rem;">Utility Drives Interest</p></div>
-                <div class="glass-card" style="border-left:4px solid #ffd700;"><span style="font-size:2rem;">⚡</span><h4 style="color:#ffd700;">Utility</h4><p style="color:#888; font-size:0.85rem;">Real-World Applications</p></div>
-                <div class="glass-card" style="border-left:4px solid #50c878;"><span style="font-size:2rem;">🌱</span><h4 style="color:#50c878;">Community Growth</h4><p style="color:#888; font-size:0.85rem;">Sustainable Ecosystem</p></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-top:1rem;">
+                <div class="glass-card" style="border-left:3px solid #ffd700; padding:0.6rem;"><span style="font-size:1.4rem;">📉</span><h4 style="color:#ffd700; font-size:0.75rem;">Scarcity</h4><p style="color:#888; font-size:0.65rem;">Limited Supply Creates Value</p></div>
+                <div class="glass-card" style="border-left:3px solid #50c878; padding:0.6rem;"><span style="font-size:1.4rem;">📈</span><h4 style="color:#50c878; font-size:0.75rem;">Demand</h4><p style="color:#888; font-size:0.65rem;">Utility Drives Interest</p></div>
+                <div class="glass-card" style="border-left:3px solid #ffd700; padding:0.6rem;"><span style="font-size:1.4rem;">⚡</span><h4 style="color:#ffd700; font-size:0.75rem;">Utility</h4><p style="color:#888; font-size:0.65rem;">Real-World Applications</p></div>
+                <div class="glass-card" style="border-left:3px solid #50c878; padding:0.6rem;"><span style="font-size:1.4rem;">🌱</span><h4 style="color:#50c878; font-size:0.75rem;">Community Growth</h4><p style="color:#888; font-size:0.65rem;">Sustainable Ecosystem</p></div>
             </div>
             <div class="page-number">20 / 24</div>
         </div>
@@ -1122,13 +1291,13 @@
         <!-- =================== PAGE 22 : LEGAL DISCLAIMER =================== -->
         <div class="page">
             <div class="section-title">Legal Disclaimer</div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-                <div class="glass-card" style="border-left:4px solid #ff6b6b;"><span style="font-size:2rem;">⚖️</span><h4 style="color:#ff6b6b;">Utility Token</h4><p style="color:#888; font-size:0.85rem;">Not an investment or security.</p></div>
-                <div class="glass-card" style="border-left:4px solid #ff9f43;"><span style="font-size:2rem;">📊</span><h4 style="color:#ff9f43;">No Financial Advice</h4><p style="color:#888; font-size:0.85rem;">Not financial or investment advice.</p></div>
-                <div class="glass-card" style="border-left:4px solid #ffd700;"><span style="font-size:2rem;">⚠️</span><h4 style="color:#ffd700;">Market Risk</h4><p style="color:#888; font-size:0.85rem;">Significant market risk involved.</p></div>
-                <div class="glass-card" style="border-left:4px solid #50c878;"><span style="font-size:2rem;">🔍</span><h4 style="color:#50c878;">DYOR</h4><p style="color:#888; font-size:0.85rem;">Always Do Your Own Research.</p></div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
+                <div class="glass-card" style="border-left:3px solid #ff6b6b; padding:0.6rem;"><span style="font-size:1.4rem;">⚖️</span><h4 style="color:#ff6b6b; font-size:0.75rem;">Utility Token</h4><p style="color:#888; font-size:0.65rem;">Not an investment or security.</p></div>
+                <div class="glass-card" style="border-left:3px solid #ff9f43; padding:0.6rem;"><span style="font-size:1.4rem;">📊</span><h4 style="color:#ff9f43; font-size:0.75rem;">No Financial Advice</h4><p style="color:#888; font-size:0.65rem;">Not financial or investment advice.</p></div>
+                <div class="glass-card" style="border-left:3px solid #ffd700; padding:0.6rem;"><span style="font-size:1.4rem;">⚠️</span><h4 style="color:#ffd700; font-size:0.75rem;">Market Risk</h4><p style="color:#888; font-size:0.65rem;">Significant market risk involved.</p></div>
+                <div class="glass-card" style="border-left:3px solid #50c878; padding:0.6rem;"><span style="font-size:1.4rem;">🔍</span><h4 style="color:#50c878; font-size:0.75rem;">DYOR</h4><p style="color:#888; font-size:0.65rem;">Always Do Your Own Research.</p></div>
             </div>
-            <div style="background:rgba(255,215,0,0.03); border-radius:12px; padding:1rem; margin-top:1rem; text-align:center; border:1px solid rgba(255,215,0,0.06); color:#888; font-size:0.85rem;">
+            <div style="background:rgba(255,215,0,0.02); border-radius:10px; padding:0.6rem; margin-top:0.6rem; text-align:center; border:1px solid rgba(255,215,0,0.04); color:#888; font-size:0.65rem;">
                 📋 This document is for informational purposes. Users must comply with local regulations. No guarantees of returns.
             </div>
             <div class="page-number">22 / 24</div>
@@ -1137,47 +1306,47 @@
         <!-- =================== PAGE 23 : TEAM VISION + CONTACT =================== -->
         <div class="page">
             <div class="section-title">Team Vision &amp; Contact</div>
-            <div class="glass-card" style="text-align:center; font-style:italic; color:#ddd; font-size:1.1rem; font-family:'Montserrat',sans-serif;">
+            <div class="glass-card" style="text-align:center; font-style:italic; color:#ddd; font-size:0.9rem; font-family:'Montserrat',sans-serif; padding:0.8rem;">
                 "Our team is committed to building a long-term blockchain ecosystem focused on innovation, utility, and sustainable growth."
             </div>
-            <div style="display:flex; gap:1.5rem; justify-content:center; margin:1.5rem 0; flex-wrap:wrap;">
-                <span style="background:rgba(255,215,0,0.06); padding:0.4rem 1.2rem; border-radius:40px; color:#ccc;">💡 Innovation</span>
-                <span style="background:rgba(80,200,120,0.06); padding:0.4rem 1.2rem; border-radius:40px; color:#ccc;">⚡ Utility</span>
-                <span style="background:rgba(255,215,0,0.06); padding:0.4rem 1.2rem; border-radius:40px; color:#ccc;">🌱 Sustainable</span>
+            <div style="display:flex; gap:0.8rem; justify-content:center; margin:0.8rem 0; flex-wrap:wrap;">
+                <span style="background:rgba(255,215,0,0.05); padding:0.2rem 0.8rem; border-radius:40px; color:#ccc; font-size:0.7rem;">💡 Innovation</span>
+                <span style="background:rgba(80,200,120,0.05); padding:0.2rem 0.8rem; border-radius:40px; color:#ccc; font-size:0.7rem;">⚡ Utility</span>
+                <span style="background:rgba(255,215,0,0.05); padding:0.2rem 0.8rem; border-radius:40px; color:#ccc; font-size:0.7rem;">🌱 Sustainable</span>
             </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; background:rgba(255,255,255,0.02); border-radius:16px; padding:1.2rem; border:1px solid rgba(255,215,0,0.06);">
-                <div><span style="color:#888;">🌐 Website</span><br><span style="color:#ffd700;">randigital.in</span></div>
-                <div><span style="color:#888;">📧 Email</span><br><span style="color:#50c878;">support@randigital.in</span></div>
-                <div><span style="color:#888;">📱 Telegram</span><br><span style="color:#ffd700;">@RanDigitalOfficial</span></div>
-                <div><span style="color:#888;">🐦 Twitter</span><br><span style="color:#50c878;">@RanDigitalRND</span></div>
-                <div style="grid-column:1/3; text-align:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:0.8rem;">
-                    <span style="color:#888;">📘 Facebook:</span> <span style="color:#bbb;">RanDigital - RND</span>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; background:rgba(255,255,255,0.02); border-radius:12px; padding:0.8rem; border:1px solid rgba(255,215,0,0.04);">
+                <div><span style="color:#888; font-size:0.6rem;">🌐 Website</span><br><span style="color:#ffd700; font-size:0.75rem;">randigital.in</span></div>
+                <div><span style="color:#888; font-size:0.6rem;">📧 Email</span><br><span style="color:#50c878; font-size:0.75rem;">support@randigital.in</span></div>
+                <div><span style="color:#888; font-size:0.6rem;">📱 Telegram</span><br><span style="color:#ffd700; font-size:0.75rem;">@RanDigitalOfficial</span></div>
+                <div><span style="color:#888; font-size:0.6rem;">🐦 Twitter</span><br><span style="color:#50c878; font-size:0.75rem;">@RanDigitalRND</span></div>
+                <div style="grid-column:1/3; text-align:center; border-top:1px solid rgba(255,255,255,0.04); padding-top:0.4rem;">
+                    <span style="color:#888; font-size:0.6rem;">📘 Facebook:</span> <span style="color:#bbb; font-size:0.7rem;">RanDigital - RND</span>
                 </div>
             </div>
-            <div style="text-align:center; margin-top:1rem;">
+            <div style="text-align:center; margin-top:0.6rem;">
                 <span class="qr-box"><i class="bi bi-qr-code"></i> &nbsp; SCAN QR</span>
             </div>
             <div class="page-number">23 / 24</div>
         </div>
 
         <!-- =================== PAGE 24 : THANK YOU =================== -->
-        <div class="page" style="text-align:center; display:flex; flex-direction:column; justify-content:center; min-height:500px;">
-            <div style="font-size:6rem; display:block; margin:0 auto; filter:drop-shadow(0 0 60px rgba(255,215,0,0.3));">🪙</div>
-            <h1 style="font-family:'Poppins',sans-serif; font-weight:800; font-size:3.5rem; margin:0.5rem 0; background:linear-gradient(135deg,#ffd700,#50c878); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
+        <div class="page" style="text-align:center; display:flex; flex-direction:column; justify-content:center; min-height:350px;">
+            <div style="font-size:4rem; display:block; margin:0 auto; filter:drop-shadow(0 0 40px rgba(255,215,0,0.2));">🪙</div>
+            <h1 style="font-family:'Poppins',sans-serif; font-weight:800; font-size:2.2rem; margin:0.3rem 0; background:linear-gradient(135deg,#ffd700,#50c878); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
                 JOIN THE FUTURE
             </h1>
-            <div style="font-size:1.4rem; color:#aaa; letter-spacing:4px;">RAN DIGITAL (RND)</div>
-            <div style="font-size:1rem; color:#666; margin-bottom:1.5rem;">The Future of Digital Utility</div>
-            <div style="display:inline-block; background:rgba(255,215,0,0.06); border-radius:40px; padding:0.5rem 2rem; border:1px solid rgba(255,215,0,0.15);">
-                <span style="color:#888;">🌐</span> <span style="color:#ffd700;">randigital.in</span>
+            <div style="font-size:1rem; color:#aaa; letter-spacing:3px;">RAN DIGITAL (RND)</div>
+            <div style="font-size:0.8rem; color:#666; margin-bottom:0.8rem;">The Future of Digital Utility</div>
+            <div style="display:inline-block; background:rgba(255,215,0,0.05); border-radius:40px; padding:0.3rem 1.5rem; border:1px solid rgba(255,215,0,0.10);">
+                <span style="color:#888; font-size:0.7rem;">🌐</span> <span style="color:#ffd700; font-size:0.8rem;">randigital.in</span>
             </div>
-            <div style="margin-top:1rem;">
+            <div style="margin-top:0.6rem;">
                 <span class="qr-box"><i class="bi bi-qr-code"></i> &nbsp; QR CODE</span>
             </div>
-            <div style="display:flex; gap:1.2rem; justify-content:center; margin-top:1.5rem; flex-wrap:wrap; color:#888;">
+            <div style="display:flex; gap:0.8rem; justify-content:center; margin-top:1rem; flex-wrap:wrap; color:#888; font-size:0.65rem;">
                 <span>📱 Telegram</span><span>🐦 Twitter</span><span>📘 Facebook</span><span>▶️ YouTube</span><span>💬 WhatsApp</span>
             </div>
-            <div style="margin-top:2rem; border-top:1px solid rgba(255,255,255,0.05); padding-top:1.2rem; color:#444; font-size:0.8rem;">
+            <div style="margin-top:1.2rem; border-top:1px solid rgba(255,255,255,0.04); padding-top:0.8rem; color:#444; font-size:0.6rem;">
                 © 2026 RND. All Rights Reserved.
             </div>
             <div class="page-number">24 / 24</div>
@@ -1192,31 +1361,40 @@
         (function() {
             const btn = document.getElementById('downloadBtn');
             const spinner = document.getElementById('spinner');
+            const statusMsg = document.getElementById('statusMsg');
             const element = document.getElementById('whitepaper');
+            let isGenerating = false;
 
             btn.addEventListener('click', function() {
-                // Disable button and show spinner
+                if (isGenerating) return;
+                isGenerating = true;
+
+                // Disable button and show spinner + status
                 btn.disabled = true;
                 spinner.style.display = 'inline-block';
                 btn.querySelector('i').style.display = 'none';
+                statusMsg.textContent = '⏳ Generating PDF... Please wait (this may take 5-10 seconds).';
+                statusMsg.className = 'status-msg show';
 
-                // PDF options
+                // PDF options - optimized for mobile
                 const opt = {
-                    margin:        [0.4, 0.4, 0.4, 0.4],
-                    filename:      'RND_Whitepaper_2026.pdf',
-                    image:         { type: 'jpeg', quality: 0.98 },
-                    html2canvas:   { 
-                        scale: 2, 
-                        useCORS: true, 
+                    margin: [0.3, 0.3, 0.3, 0.3],
+                    filename: 'RND_Whitepaper_2026.pdf',
+                    image: { type: 'jpeg', quality: 0.95 },
+                    html2canvas: {
+                        scale: 1.8,
+                        useCORS: true,
                         letterRendering: true,
-                        logging: false
+                        logging: false,
+                        width: 1200,
+                        height: 1600
                     },
-                    jsPDF:         { 
-                        unit: 'in', 
-                        format: 'a4', 
-                        orientation: 'portrait' 
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'a4',
+                        orientation: 'portrait'
                     },
-                    pagebreak:     { mode: ['avoid-all', 'css', 'legacy'] }
+                    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
                 };
 
                 // Generate PDF
@@ -1225,22 +1403,54 @@
                     .from(element)
                     .save()
                     .then(function() {
-                        // Success — reset button
-                        btn.disabled = false;
-                        spinner.style.display = 'none';
-                        btn.querySelector('i').style.display = 'inline-block';
+                        // Success
+                        statusMsg.textContent = '✅ PDF downloaded successfully!';
+                        statusMsg.className = 'status-msg show';
+                        resetButton();
                     })
                     .catch(function(err) {
                         console.error('PDF Error:', err);
-                        // Reset button
-                        btn.disabled = false;
-                        spinner.style.display = 'none';
-                        btn.querySelector('i').style.display = 'inline-block';
-                        alert('PDF generation failed. Please try again or use browser Print > Save as PDF.');
+                        statusMsg.textContent = '❌ PDF generation failed. Using fallback: Click "Print / Save" button.';
+                        statusMsg.className = 'status-msg show';
+                        resetButton();
+                        // Try fallback
+                        setTimeout(function() {
+                            if (confirm('PDF generation failed. Would you like to use the Print/Save as PDF option instead?')) {
+                                window.print();
+                            }
+                        }, 500);
                     });
             });
+
+            function resetButton() {
+                btn.disabled = false;
+                spinner.style.display = 'none';
+                btn.querySelector('i').style.display = 'inline-block';
+                isGenerating = false;
+                // Auto-hide status after 8 seconds
+                setTimeout(function() {
+                    statusMsg.className = 'status-msg';
+                }, 8000);
+            }
+
+            // Handle any errors from html2pdf loading
+            if (typeof html2pdf === 'undefined') {
+                console.warn('html2pdf library not loaded');
+                statusMsg.textContent = '⚠️ Library loading. Please wait or use Print/Save.';
+                statusMsg.className = 'status-msg show';
+                setTimeout(function() {
+                    statusMsg.className = 'status-msg';
+                }, 5000);
+            }
         })();
     </script>
+
+    <!-- Fallback: if html2pdf fails completely, show print option -->
+    <noscript>
+        <div style="color:#ffd700; text-align:center; padding:1rem; background:rgba(255,215,0,0.05); border-radius:12px; margin:1rem 0;">
+            ⚠️ JavaScript is disabled. Please use your browser's Print > Save as PDF option.
+        </div>
+    </noscript>
 
 </body>
 </html>
