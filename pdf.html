@@ -1,1 +1,25 @@
-pdf
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Downloading PDF...</title>
+</head>
+<body>
+
+<p style="text-align:center;font-family:Arial;margin-top:100px;">
+Preparing your download...
+</p>
+
+<a id="downloadLink" href="/RanDigital.pdf" download="RanDigital.pdf"></a>
+
+<script>
+document.getElementById("downloadLink").click();
+
+setTimeout(function () {
+    window.location.href = "/RanDigital.pdf";
+}, 500);
+</script>
+
+</body>
+</html>
