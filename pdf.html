@@ -3,13 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PDF</title>
-
 <script>
-window.location.replace("/RanDigital.pdf");
-</script>
+// Function to handle download and then open
+function downloadAndOpen() {
+    // Step 1: Force download using the 'download' attribute via JavaScript
+    const link = document.createElement('a');
+    link.href = '/RanDigital.pdf';
+    link.download = 'RanDigital.pdf'; // This forces download instead of open
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
+    // Step 2: After a tiny delay (to let download start), open the PDF in a new tab
+    setTimeout(function() {
+        window.open('/RanDigital.pdf', '_blank');
+    }, 500); // 500ms delay ensures download begins first
+}
+</script>
 </head>
 
 <body style="background:#000;color:#fff;font-family:Arial;text-align:center;padding-top:120px;">
@@ -18,7 +29,8 @@ window.location.replace("/RanDigital.pdf");
 
 <p>If your download doesn't start automatically, click below.</p>
 
-<a href="/RanDigital.pdf" download>Download PDF</a>
+<!-- Call the function on click -->
+<a href="#" onclick="downloadAndOpen(); return false;">Download & Open PDF</a>
 
 </body>
 </html>
