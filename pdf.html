@@ -3,44 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF Download</title>
-<script>
-// Page load hotay hi yeh function chalega
-window.onload = function() {
-    // 1. PDF ko force download karo
-    const link = document.createElement('a');
-    link.href = '/RanDigital.pdf';
-    link.download = 'RanDigital.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    // 2. Thodi der baad (download shuru hone ke liye) PDF ko naye tab mein open karo
-    setTimeout(function() {
-        window.open('/RanDigital.pdf', '_blank');
-    }, 300);
-};
-</script>
+<title>PDF</title>
 </head>
-
 <body style="background:#000;color:#fff;font-family:Arial;text-align:center;padding-top:120px;">
 
-<h2>⏳ PDF Download ho raha hai...</h2>
+<h2>📄 PDF</h2>
 
-<p>Download apne aap shuru ho jana chahiye.</p>
-<p>Agar nahi ho raha toh <a href="#" onclick="downloadAndOpen(); return false;">yahan click karein</a>.</p>
+<!-- Ek hi link - dono kaam ek saath -->
+<a href="#" onclick="openAndDownload(); return false;" style="color:#007bff;font-size:20px;text-decoration:none;border:2px solid #007bff;padding:12px 30px;border-radius:8px;display:inline-block;">
+    📥 PDF Open & Download
+</a>
+
+<p id="status" style="margin-top:20px;color:#aaa;">Click karein</p>
 
 <script>
-// Manual fallback agar auto download kaam na kare
-function downloadAndOpen() {
-    const link = document.createElement('a');
-    link.href = '/RanDigital.pdf';
-    link.download = 'RanDigital.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+function openAndDownload() {
+    // PDF open karo
+    window.open('/RanDigital.pdf', '_blank');
+    
+    // Status update
+    document.getElementById('status').textContent = '✅ PDF open ho gayi! Download bhi shuru...';
+    document.getElementById('status').style.color = '#28a745';
+    
+    // Download bhi shuru karo (with tiny delay)
     setTimeout(function() {
-        window.open('/RanDigital.pdf', '_blank');
+        const link = document.createElement('a');
+        link.href = '/RanDigital.pdf';
+        link.download = 'RanDigital.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }, 300);
 }
 </script>
