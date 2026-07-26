@@ -1,36 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF</title>
+<title>PDF Download</title>
 <script>
-// Function to handle download and then open
-function downloadAndOpen() {
-    // Step 1: Force download using the 'download' attribute via JavaScript
+// Page load hotay hi yeh function chalega
+window.onload = function() {
+    // 1. PDF ko force download karo
     const link = document.createElement('a');
     link.href = '/RanDigital.pdf';
-    link.download = 'RanDigital.pdf'; // This forces download instead of open
+    link.download = 'RanDigital.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
-    // Step 2: After a tiny delay (to let download start), open the PDF in a new tab
+    // 2. Thodi der baad (download shuru hone ke liye) PDF ko naye tab mein open karo
     setTimeout(function() {
         window.open('/RanDigital.pdf', '_blank');
-    }, 500); // 500ms delay ensures download begins first
-}
+    }, 300);
+};
 </script>
 </head>
 
 <body style="background:#000;color:#fff;font-family:Arial;text-align:center;padding-top:120px;">
 
-<h2>Preparing PDF...</h2>
+<h2>⏳ PDF Download ho raha hai...</h2>
 
-<p>If your download doesn't start automatically, click below.</p>
+<p>Download apne aap shuru ho jana chahiye.</p>
+<p>Agar nahi ho raha toh <a href="#" onclick="downloadAndOpen(); return false;">yahan click karein</a>.</p>
 
-<!-- Call the function on click -->
-<a href="#" onclick="downloadAndOpen(); return false;">Download & Open PDF</a>
+<script>
+// Manual fallback agar auto download kaam na kare
+function downloadAndOpen() {
+    const link = document.createElement('a');
+    link.href = '/RanDigital.pdf';
+    link.download = 'RanDigital.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(function() {
+        window.open('/RanDigital.pdf', '_blank');
+    }, 300);
+}
+</script>
 
 </body>
 </html>
