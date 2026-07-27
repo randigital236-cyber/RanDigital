@@ -1,41 +1,86 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF</title>
-</head>
-<body style="background:#000;color:#fff;font-family:Arial;text-align:center;padding-top:120px;">
+<title>PDF Download</title>
 
-<h2>📄 PDF</h2>
-
-<!-- Ek hi link - dono kaam ek saath -->
-<a href="#" onclick="openAndDownload(); return false;" style="color:#007bff;font-size:20px;text-decoration:none;border:2px solid #007bff;padding:12px 30px;border-radius:8px;display:inline-block;">
-    📥 PDF Open & Download
-</a>
-
-<p id="status" style="margin-top:20px;color:#aaa;">Click karein</p>
+<style>
+body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.box{
+    text-align:center;
+}
+h2{
+    font-size:32px;
+    margin-bottom:20px;
+}
+p{
+    color:#aaa;
+}
+a{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 35px;
+    background:#18c964;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:bold;
+}
+a:hover{
+    background:#13a653;
+}
+</style>
 
 <script>
-function openAndDownload() {
-    // PDF open karo
-    window.open('/RanDigital.pdf', '_blank');
-    
-    // Status update
-    document.getElementById('status').textContent = '✅ PDF open ho gayi! Download bhi shuru...';
-    document.getElementById('status').style.color = '#28a745';
-    
-    // Download bhi shuru karo (with tiny delay)
-    setTimeout(function() {
-        const link = document.createElement('a');
-        link.href = '/RanDigital.pdf';
-        link.download = 'RanDigital.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }, 300);
-}
+
+window.onload=function(){
+
+    const file="/RanDigital.pdf";
+
+    const link=document.createElement("a");
+
+    link.href=file;
+
+    link.download="RanDigital.pdf";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+};
+
 </script>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Preparing PDF...</h2>
+
+<p>If download doesn't start automatically,<br>click the button below.</p>
+
+<a href="/RanDigital.pdf" download>
+
+DOWNLOAD PDF
+
+</a>
+
+</div>
 
 </body>
 </html>
