@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Ran Digital (RND) - Next-gen BEP-20 utility token on BNB Smart Chain. Fixed supply of 20,000 RND, 0% tax, locked liquidity, community-driven ecosystem. Buy on PancakeSwap.">
+  <meta name="description" content="Ran Digital (RND) - Next-gen BEP-20 utility token on BNB Smart Chain. Ran Digital (RND) is a digital token on BNB Smart Chain. Review official project information and on-chain details before participating.">
   <meta name="keywords" content="Ran Digital, RND, BSC token, BEP-20, DeFi, cryptocurrency, tokenomics, blockchain education, PancakeSwap, BNB Smart Chain">
   <meta name="author" content="Ran Digital">
   <meta name="robots" content="index, follow">
   
   <!-- Open Graph / Social Media -->
   <meta property="og:title" content="Ran Digital (RND) | Next-Gen BEP-20 Utility Token">
-  <meta property="og:description" content="Fixed supply of 20,000 RND | Zero tax | Locked liquidity | Community-driven ecosystem on BNB Smart Chain">
+  <meta property="og:description" content="Ran Digital (RND) | Official project and token information">
   <meta property="og:image" content="https://randigital.in/og-image.png">
   <meta property="og:url" content="https://randigital.in">
   <meta property="og:type" content="website">
@@ -21,7 +21,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ran Digital (RND) - Scarce BEP-20 Token">
-  <meta name="twitter:description" content="20,000 total supply | 0% tax | Community owned">
+  <meta name="twitter:description" content="20,000 total supply | 0% tax | Community ecosystem">
   <meta name="twitter:image" content="https://randigital.in/twitter-image.png">
   
   <!-- Favicon -->
@@ -183,6 +183,15 @@
       section { padding: 60px 5%; }
       h2 { font-size: 2rem; }
     }
+  
+    a:focus-visible, button:focus-visible, .faq-question:focus-visible {
+      outline: 3px solid #7dd3fc;
+      outline-offset: 3px;
+    }
+    .faq-question { cursor: pointer; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
   </style>
 </head>
 <body>
@@ -190,11 +199,12 @@
 <div class="navbar">
   <div class="nav-container">
     <div class="logo"><i class="fas fa-microchip"></i> Ran Digital</div>
-    <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+    <button class="menu-toggle" id="mobileMenu" type="button" aria-label="Open navigation menu" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
     <ul class="nav-menu" id="navMenu">
       <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
       <li><a href="#tokenomics"><i class="fas fa-coins"></i> Tokenomics</a></li>
       <li><a href="#roadmap"><i class="fas fa-map"></i> Roadmap</a></li>
+      <li><a href="#team"><i class="fas fa-users"></i> Team</a></li>
       <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
       <li><a href="tokenomics.html" class="docs-link" target="_blank"><i class="fas fa-book-open"></i> Docs</a></li>
     </ul>
@@ -205,9 +215,9 @@
 <section class="hero">
   <div class="hero-content" data-aos="fade-up">
     <h1>Ran Digital <span style="color:#74d4ff;">(RND)</span></h1>
-    <p>Community‑driven | Fixed supply of 20,000 RND | Zero tax | Built on BNB Smart Chain</p>
+    <p>RND token on BNB Smart Chain | Check official contract details before trading</p>
     <div class="btn-group">
-      <a class="btn buy-btn" target="_blank" href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xcF1FbF18bE9202865bcf88E6349B9D207F75942d">
+      <a class="btn buy-btn" target="_blank" rel="noopener noreferrer" href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xcF1FbF18bE9202865bcf88E6349B9D207F75942d">
         <i class="fab fa-pancakeswap"></i> Buy on PancakeSwap
       </a>
       <a class="btn white-btn" href="#" id="chartBtn">
@@ -220,15 +230,15 @@
     
     <!-- Status Badges: Only CEX Readiness (Removed CoinGecko & CoinMarketCap) -->
     <div class="status-grid" data-aos="fade-up" data-aos-delay="100">
-      <div class="status-card"><h4><i class="fas fa-building"></i> CEX Listings</h4><p>🚀 Ready for Tier-1</p><small>Audit + Liquidity Lock Ready</small></div>
-      <div class="status-card"><h4><i class="fas fa-check-double"></i> CEX Requirements</h4><p>✅ Full Compliance</p><small>KYC/AML Ready</small></div>
+      <div class="status-card"><h4><i class="fas fa-building"></i> Exchange Listings</h4><p>Listing applications in progress</p><small>No exchange approval is guaranteed</small></div>
+      <div class="status-card"><h4><i class="fas fa-info-circle"></i> Project Status</h4><p>See official project updates</p><small>Features and compliance status may change</small></div>
     </div>
 
     <!-- Live stats row -->
     <div class="live-stats-row">
       <div><span class="stat-label">Total Supply</span><br><strong>20,000 RND</strong></div>
       <div><span class="stat-label">Buy/Sell Tax</span><br><strong>0% / 0%</strong></div>
-      <div><span class="stat-label">Liquidity Lock</span><br><strong>🔒 2+ Years</strong></div>
+      
       <div><span class="stat-label">Network</span><br><strong>BNB Smart Chain</strong></div>
     </div>
   </div>
@@ -250,7 +260,7 @@
     <div class="card"><h3>20,000</h3><p>Total Supply (Fixed)</p><i class="fas fa-gem"></i></div>
     <div class="card"><h3>BSC</h3><p>BNB Smart Chain</p><i class="fab fa-bnb"></i></div>
     <div class="card"><h3>100%</h3><p>Community Driven</p><i class="fas fa-users"></i></div>
-    <div class="card"><h3>🔒 Locked</h3><p>Liquidity Locked 2+ Yrs</p><i class="fas fa-lock"></i></div>
+    
     <div class="card"><h3>0%</h3><p>Buy/Sell Tax</p><i class="fas fa-check-circle"></i></div>
   </div>
 </section>
@@ -280,32 +290,47 @@
   <div class="timeline" data-aos="fade-up">
     <div class="timeline-item"><h3>Phase 1 (2026)</h3><p>Token deployment, Website, Community, Audit</p></div>
     <div class="timeline-item"><h3>Phase 2</h3><p>Ecosystem expansion, Educational content, CMC/CG listings</p></div>
-    <div class="timeline-item"><h3>Phase 3</h3><p>DAO launch, Staking, Partnerships, Utility integrations</p></div>
+    <div class="timeline-item"><h3>Phase 3</h3><p>Staking platform and ecosystem feature development (update status as appropriate)</p></div>
     <div class="timeline-item"><h3>2027+</h3><p>CEX Listings, Cross-chain expansion, RND dApps</p></div>
   </div>
 </section>
 
-<!-- FAQ Section (Exchange & CEX Reviewer Focused) -->
+
+<!-- Project & Development Team (privacy-preserving) -->
+<section id="team">
+  <h2><i class="fas fa-users" aria-hidden="true"></i> Project & Development</h2>
+  <div style="max-width:900px; margin:0 auto; text-align:center; font-size:1.05rem; line-height:1.8;" data-aos="fade-up">
+    <p>Ran Digital is maintained by a project team with development support. Individual team members' names are not published on this website.</p>
+    <div class="cards" style="margin-top:28px;">
+      <div class="card"><h3><i class="fas fa-tasks" aria-hidden="true"></i></h3><p><strong>Project Coordination</strong></p><p>Project planning and ecosystem updates.</p></div>
+      <div class="card"><h3><i class="fas fa-code" aria-hidden="true"></i></h3><p><strong>Development</strong></p><p>Website and platform development and maintenance.</p></div>
+      <div class="card"><h3><i class="fas fa-comments" aria-hidden="true"></i></h3><p><strong>Community</strong></p><p>Official announcements and community communications.</p></div>
+    </div>
+    <p style="margin-top:20px; color:#cbd5e6;">Team privacy does not mean that identity verification or KYC has been completed. Listing platforms may request additional evidence during review.</p>
+  </div>
+</section>
+
+<!-- FAQ Section -->
 <section id="faq">
   <h2 data-aos="fade-right"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
   <div class="faq-container" data-aos="fade-up">
-    <div class="faq-item"><div class="faq-question">What makes RND suitable for CEX listing? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">RND has a fixed supply, 0% tax, audited smart contract, locked liquidity, renounced ownership, and full KYC-ready documentation — meeting all major exchange requirements.</div></div>
-    <div class="faq-item"><div class="faq-question">Is the contract verified and audited? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes. The BEP-20 contract is fully verified on BscScan and has completed a security audit. Audit report available for download.</div></div>
-    <div class="faq-item"><div class="faq-question">How is liquidity locked? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">100% of initial liquidity is locked for over 2 years. Proof is available in community channels.</div></div>
+    <div class="faq-item"><div class="faq-question">What makes RND suitable for CEX listing? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">RND project information and contract details are published for review. Exchange listing decisions are made independently, and no listing approval is guaranteed.</div></div>
+    <div class="faq-item"><div class="faq-question">Is the contract verified and audited? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Check the contract verification status on BscScan. Do not treat contract verification as a security audit; publish an audit claim only when a verifiable report is available.</div></div>
+    
     <div class="faq-item"><div class="faq-question">Where can I buy RND? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">RND is available on PancakeSwap (BNB Smart Chain). Use the contract address above.</div></div>
     <div class="faq-item"><div class="faq-question">What is the total supply and tax structure? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Total supply is fixed at 20,000 RND. There is 0% tax on buys and 0% on sells — no hidden fees.</div></div>
-    <div class="faq-item"><div class="faq-question">Is the team doxxed / KYC'd? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes, the team has completed KYC, ensuring full transparency for exchange partners and investors.</div></div>
+    <div class="faq-item"><div class="faq-question">Is the team doxxed / KYC'd? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">The project does not publicly disclose individual team identities. Do not interpret this privacy choice as a claim that team KYC has been completed.</div></div>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
   <div class="social-links">
-    <a href="https://x.com/RanDigitalRND" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://t.me/RanDigitalOfficial" target="_blank"><i class="fab fa-telegram"></i></a>
-    <a href="https://www.facebook.com/profile.php?id=61590396932149" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://bscscan.com/token/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank"><i class="fas fa-search"></i></a>
-    <a href="https://github.com/randigital236-cyber/RanDigital" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://x.com/RanDigitalRND" target="_blank" rel="noopener noreferrer" aria-label="Ran Digital on X"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://t.me/RanDigitalOfficial" target="_blank" rel="noopener noreferrer" aria-label="Ran Digital on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61590396932149" target="_blank" rel="noopener noreferrer" aria-label="Ran Digital on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://bscscan.com/token/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" rel="noopener noreferrer" aria-label="View RND on BscScan"><i class="fas fa-search" aria-hidden="true"></i></a>
+    <a href="https://github.com/randigital236-cyber/RanDigital" target="_blank" rel="noopener noreferrer" aria-label="Ran Digital GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
   </div>
   <p>Ran Digital (RND) — Scarcity meets community. © 2026 | All rights reserved</p>
   <p style="margin-top:12px; font-size:0.75rem;">⚠️ Always DYOR. Cryptocurrency investments carry risk. <a href="tokenomics.html" style="color:#00bfff;">Read full Whitepaper</a></p>
@@ -319,14 +344,15 @@
   const mobileToggle = document.getElementById('mobileMenu');
   const navMenu = document.getElementById('navMenu');
   if(mobileToggle) {
-    mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    mobileToggle.addEventListener('click', () => { const isOpen = navMenu.classList.toggle('active'); mobileToggle.setAttribute('aria-expanded', String(isOpen)); });
     document.querySelectorAll('.nav-menu a').forEach(l => l.addEventListener('click', () => navMenu.classList.remove('active')));
   }
 
   // Copy contract
   function copyAddress() {
     const val = document.getElementById('contract').value;
-    navigator.clipboard.writeText(val).then(() => {
+    if (!navigator.clipboard) { window.prompt("Copy contract address:", val); return; }
+  navigator.clipboard.writeText(val).then(() => {
       const btn = document.querySelector('.copy-btn');
       const orig = btn.innerHTML;
       btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
