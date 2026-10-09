@@ -2,426 +2,197 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Ran Digital (RND) | Tokenomics & Official Docs</title>
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official Ran Digital (RND) token information, tokenomics, ecosystem status, contract details and roadmap.">
+  <meta name="theme-color" content="#080d18">
+  <title>Ran Digital (RND) | Tokenomics & Project Information</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-
-    body {
-      background: #0a0c12;
-      color: #f0f3fa;
-      overflow-x: hidden;
-    }
-
-    /* ========= MODERN SIDEBAR (fixed) ========= */
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 280px;
-      height: 100vh;
-      background: rgba(17, 22, 31, 0.96);
-      backdrop-filter: blur(12px);
-      border-right: 1px solid rgba(0, 191, 255, 0.35);
-      padding: 32px 20px;
-      z-index: 1100;
-      overflow-y: auto;
-      transition: all 0.3s ease;
-      box-shadow: 8px 0 28px rgba(0, 0, 0, 0.5);
-    }
-
-    .logo-area {
-      text-align: center;
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(0, 191, 255, 0.3);
-    }
-
-    .logo-icon {
-      font-size: 52px;
-      background: linear-gradient(145deg, #00e0ff, #3b82f6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 12px;
-    }
-
-    .logo-area h2 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #fff, #88d4ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .sidebar a {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
-      margin: 6px 0;
-      color: #d1def0;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.98rem;
-      border-radius: 60px;
-      transition: all 0.25s;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid transparent;
-    }
-
-    .sidebar a i {
-      width: 28px;
-      font-size: 1.2rem;
-      text-align: center;
-      color: #6bb5ff;
-    }
-
-    .sidebar a:hover {
-      background: rgba(0, 191, 255, 0.12);
-      border-color: rgba(0, 191, 255, 0.5);
-      color: white;
-      transform: translateX(4px);
-    }
-
-    .sidebar a.active {
-      background: linear-gradient(95deg, #00b4ff20, #2a6df420);
-      border-left: 3px solid #00bfff;
-    }
-
-    /* Main content area */
-    .main-docs {
-      margin-left: 280px;
-      padding: 48px 56px;
-      min-height: 100vh;
-    }
-
-    /* Header section */
-    .docs-header {
-      margin-bottom: 48px;
-      border-bottom: 2px solid rgba(0, 191, 255, 0.3);
-      padding-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-    }
-
-    .docs-header h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      background: linear-gradient(125deg, #fff, #7ad0ff, #2b9aff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.5px;
-    }
-
-    .badge {
-      background: #0f172a;
-      padding: 8px 20px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      border: 1px solid #00bfff60;
-    }
-
-    /* Cards styling */
-    .doc-card {
-      background: #11161f;
-      border-radius: 32px;
-      padding: 28px 32px;
-      margin-bottom: 32px;
-      border: 1px solid rgba(0, 191, 255, 0.2);
-      transition: all 0.3s;
-      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.4);
-    }
-
-    .doc-card:hover {
-      border-color: #00bfff80;
-      transform: translateY(-3px);
-      background: #131b28;
-    }
-
-    .doc-card h2 {
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: #8ad4ff;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .doc-card h2 i {
-      font-size: 1.8rem;
-      color: #00bfff;
-    }
-
-    /* Stat grid */
-    .stat-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-top: 16px;
-    }
-
-    .stat-item {
-      background: #0c111b;
-      border-radius: 24px;
-      flex: 1 1 200px;
-      padding: 20px 16px;
-      text-align: center;
-      border: 1px solid #2a3a5a;
-    }
-
-    .stat-number {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #00e4ff;
-      margin-bottom: 8px;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      color: #b2c9f0;
-    }
-
-    /* Utility tags */
-    .utility-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .utility-tag {
-      background: #0b111e;
-      border: 1px solid #2f496e;
-      border-radius: 60px;
-      padding: 10px 24px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Contract highlight */
-    .contract-block {
-      background: #090e17;
-      padding: 20px 28px;
-      border-radius: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      border: 1px solid #00bfff40;
-      margin: 16px 0 8px;
-    }
-
-    .contract-address {
-      font-family: monospace;
-      font-size: 1rem;
-      word-break: break-all;
-      color: #b9e2ff;
-    }
-
-    .copy-docs-btn {
-      background: #1a2538;
-      border: none;
-      border-radius: 40px;
-      padding: 10px 24px;
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-
-    .copy-docs-btn:hover {
-      background: #00bfff40;
-    }
-
-    /* Roadmap mini */
-    .roadmap-mini {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 16px;
-    }
-
-    .milestone {
-      background: #0c111e;
-      border-radius: 24px;
-      padding: 16px 20px;
-      flex: 1 1 180px;
-      border-left: 3px solid #00bfff;
-    }
-
-    footer {
-      margin-top: 48px;
-      text-align: center;
-      padding-top: 28px;
-      border-top: 1px solid rgba(0, 191, 255, 0.2);
-      color: #7c93b5;
-      font-size: 0.8rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        border-bottom: 1px solid #00bfff40;
-        padding: 20px;
-      }
-      .main-docs {
-        margin-left: 0;
-        padding: 32px 24px;
-      }
-      .sidebar a {
-        display: inline-flex;
-        width: auto;
-        margin: 6px 8px;
-      }
-      .docs-header h1 {
-        font-size: 2rem;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .main-docs {
-        padding: 20px 16px;
-      }
-      .doc-card {
-        padding: 20px;
-      }
-      .stat-number {
-        font-size: 1.6rem;
-      }
-    }
-  
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid #7dd3fc;
-      outline-offset: 3px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    }
+    :root{--bg:#080d18;--panel:#101827;--panel2:#0c1422;--line:rgba(91,190,255,.22);--text:#eef5ff;--muted:#a8b8ce;--blue:#39bfff;--cyan:#7ee7ff;--max:1180px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
+    body{margin:0;background:radial-gradient(ellipse at 70% -10%,#102d4a 0,transparent 42%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.65}
+    a{color:var(--cyan);text-decoration:none}
+    a:hover{color:#fff}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(8,13,24,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{max-width:var(--max);margin:auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;font-size:1.15rem;letter-spacing:-.03em;color:#fff;white-space:nowrap}
+    .brand span{color:var(--cyan)}
+    .navlinks{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .navlinks a{font-size:.9rem;font-weight:600;color:#c9d8eb}
+    .navlinks a:hover{color:var(--cyan)}
+    .navtoggle{display:none;background:transparent;color:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:1.1rem}
+    .wrap{width:min(var(--max),100% - 40px);margin-inline:auto}
+    .hero{padding:72px 0 40px;text-align:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:7px 13px;color:var(--cyan);font-size:.8rem;font-weight:700;background:#0c1929}
+    h1{font-size:clamp(2.25rem,5vw,4.4rem);line-height:1.08;letter-spacing:-.055em;margin:20px 0 18px}
+    h1 span{background:linear-gradient(100deg,#fff,#7ee7ff,#59aaff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{max-width:760px;margin:0 auto;color:var(--muted);font-size:1.08rem}
+    .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 18px;border-radius:12px;border:1px solid var(--line);font-weight:700;color:#f4fbff;background:#101c2d}
+    .btn.primary{background:linear-gradient(100deg,#079fe9,#3268e8);border-color:transparent}
+    .btn:hover{transform:translateY(-1px);color:#fff}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:34px auto 0;text-align:left}
+    .stat,.card{background:linear-gradient(145deg,rgba(18,29,46,.98),rgba(11,19,32,.98));border:1px solid var(--line);border-radius:18px;padding:22px}
+    .stat .label{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+    .stat strong{display:block;font-size:1.3rem;margin-top:5px;overflow-wrap:anywhere}
+    main section{padding:40px 0}
+    .section-head{margin-bottom:22px}
+    .section-head .kicker{color:var(--cyan);font-size:.78rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+    h2{font-size:clamp(1.6rem,3vw,2.25rem);line-height:1.2;letter-spacing:-.035em;margin:6px 0 8px}
+    .section-head p,.muted{color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .card h3{margin:0 0 8px;font-size:1.05rem}
+    .card p{color:var(--muted);margin:0}
+    .card .icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#0a2a43;color:var(--cyan);font-size:1.1rem;margin-bottom:15px}
+    .contract{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px;background:#070c14;border:1px solid var(--line);border-radius:14px;margin-top:14px}
+    code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;color:#d6f3ff}
+    .copy{border:0;border-radius:10px;background:#173653;color:#fff;font:inherit;font-weight:700;padding:10px 14px;cursor:pointer}
+    .taglist{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .tag{border:1px solid var(--line);background:#0b1727;border-radius:999px;padding:8px 12px;color:#dcecff;font-size:.88rem}
+    .roadmap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .phase{border-left:3px solid var(--blue)}
+    .phase b{display:block;color:var(--cyan);margin-bottom:8px}
+    .notice{border:1px solid rgba(255,196,87,.3);background:rgba(104,72,17,.14);border-radius:14px;padding:16px 18px;color:#e7d8b7}
+    .faq details{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:10px 0}
+    .faq summary{cursor:pointer;font-weight:700}
+    .faq details p{color:var(--muted);margin:12px 0 0}
+    footer{border-top:1px solid var(--line);margin-top:40px;padding:30px 0 38px;color:var(--muted);font-size:.9rem}
+    .footrow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+    .social{display:flex;gap:16px;flex-wrap:wrap}
+    @media(max-width:850px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}.navtoggle{display:block}.navlinks{display:none;position:absolute;top:64px;left:0;right:0;padding:18px 24px;background:#080d18;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}}
+    @media(max-width:560px){.wrap{width:min(var(--max),100% - 28px)}.nav{padding:12px 14px}.hero{padding:52px 0 24px}.stats,.grid,.roadmap{grid-template-columns:1fr}.stat,.card{padding:18px}.lead{font-size:1rem}.contract{align-items:stretch}.copy{width:100%}.actions .btn{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
   </style>
 </head>
 <body>
-
-<!-- ========= LEFT SIDEBAR (professional navigation for docs) ========= -->
-<div class="sidebar">
-  <div class="logo-area">
-    <div class="logo-icon">
-      <i class="fas fa-chart-line"></i>
+<header class="topbar">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="index.html">Ran Digital <span>· RND</span></a>
+    <button class="navtoggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+    <div class="navlinks" id="navLinks">
+      <a href="index.html">Home</a><a href="#tokenomics">Tokenomics</a><a href="#utility">Ecosystem</a><a href="#team">Project Team</a><a href="#roadmap">Roadmap</a><a href="#contract">Contract</a>
     </div>
-    <h2>Ran Digital</h2>
-    
-  </div>
-
-  <!-- ROADMAP SECTION (detailed) -->
-  <div id="roadmap-docs" class="doc-card">
-    <h2><i class="fas fa-road"></i> Official Roadmap</h2>
-    <div class="roadmap-mini">
-      <div class="milestone"><i class="fas fa-calendar-alt"></i> <strong>Q1 2026</strong><br>Token launch, fair distribution, smart contract audit, initial liquidity.</div>
-      <div class="milestone"><i class="fas fa-chart-line"></i> <strong>Q2 2026</strong><br>PancakeSwap official listing, CoinGecko/CMC applications, marketing wave.</div>
-      <div class="milestone"><i class="fas fa-users"></i> <strong>Q3 2026</strong><br>Community DAO launch, staking testnet, strategic partnerships.</div>
-      <div class="milestone"><i class="fas fa-bullseye"></i> <strong>2027</strong><br>CEX listings (LBank, BingX target), cross-chain expansion, RND utility dApps.</div>
+  </nav>
+</header>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Official project documentation</div>
+    <h1><span>Tokenomics & Project Information</span></h1>
+    <p class="lead">Clear information about the Ran Digital (RND) token, its reported ecosystem features, contract address and development roadmap. Always verify on-chain information independently.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> View on PancakeSwap</a>
+      <a class="btn" href="https://bscscan.com/token/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cube"></i> View on BscScan</a>
     </div>
-    <div class="disclaimer" style="margin-top: 28px; font-size: 0.7rem; opacity: 0.7; text-align: center;">
-      <i class="fas fa-chart-line"></i> Roadmap milestones are ambitious and may evolve based on community feedback & market conditions.
-    </div>
-  </div>
-
-  <!-- EXTRA: AUDIT & TRANSPARENCY CARD -->
-  <div class="doc-card" style="background: #0d131e;">
-    <h2><i class="fas fa-shield-virus"></i> Security & Transparency</h2>
-    <p><i class="fas fa-check-double"></i> ✅ Smart contract fully verified on BscScan.<br>
-    <i class="fas fa-ban"></i> ❌ No hidden taxes, no mint function, no honeypot.<br>
-    
-    <i class="fas fa-chart-line"></i> 📊 0% tax on buys & sells — ideal for long-term holding and trading.</p>
-    <div style="margin-top: 20px; background:#0a0f18; border-radius: 28px; padding: 14px; text-align: center;">
-      <i class="fas fa-file-alt"></i> <strong>Audit Report:</strong> Publish an audit claim only when a verifiable report link is available.
+    <div class="stats" id="tokenomics">
+      <div class="stat"><span class="label">Token</span><strong>Ran Digital (RND)</strong></div>
+      <div class="stat"><span class="label">Reported total supply</span><strong>20,000 RND</strong></div>
+      <div class="stat"><span class="label">Network</span><strong>BNB Smart Chain</strong></div>
+      <div class="stat"><span class="label">Token standard</span><strong>BEP-20</strong></div>
     </div>
   </div>
-
-  <footer>
-    <i class="fas fa-copyright"></i> Ran Digital (RND) — Scarcity meets next‑gen DeFi. <br>
-    <span style="font-size: 0.7rem;">Always DYOR. This documentation is for informational purposes only.</span>
-  </footer>
-</div>
-
+</header>
+<main class="wrap">
+  <section>
+    <div class="section-head"><span class="kicker">01 / Overview</span><h2>About Ran Digital</h2><p>Project goals and current ecosystem information.</p></div>
+    <div class="grid">
+      <article class="card"><div class="icon"><i class="fa-solid fa-compass"></i></div><h3>Vision</h3><p>Encourage participation in blockchain technology through accessible digital services, learning and community engagement.</p></article>
+      <article class="card"><div class="icon"><i class="fa-solid fa-people-group"></i></div><h3>Community</h3><p>Share project updates through official channels and provide clear information about current and planned features.</p></article>
+      <article class="card"><div class="icon"><i class="fa-solid fa-code"></i></div><h3>Development</h3><p>Continue improving the website and ecosystem features, with development status communicated as accurately as possible.</p></article>
+    </div>
+  </section>
+  <section id="utility">
+    <div class="section-head"><span class="kicker">02 / Ecosystem</span><h2>Token Utility & Features</h2><p>Current and planned features are identified separately.</p></div>
+    <div class="grid">
+      <article class="card"><div class="icon"><i class="fa-solid fa-layer-group"></i></div><h3>RND Token</h3><p>A BEP-20 token on BNB Smart Chain. Check the contract and current market details on-chain.</p></article>
+      <article class="card"><div class="icon"><i class="fa-solid fa-lock-open"></i></div><h3>Staking Platform</h3><p>The project reports that its staking platform has launched. Review the official platform and its terms before interacting.</p></article>
+      <article class="card"><div class="icon"><i class="fa-solid fa-gamepad"></i></div><h3>Gaming Platform</h3><p>Under development; availability and features may change as work progresses.</p></article>
+    </div>
+    <div class="taglist"><span class="tag">Community engagement</span><span class="tag">Ecosystem development</span><span class="tag">Future features subject to change</span></div>
+  </section>
+  <section id="contract">
+    <div class="section-head"><span class="kicker">03 / On-chain</span><h2>Smart Contract</h2><p>Confirm the contract address before buying or transferring tokens.</p></div>
+    <div class="card">
+      <h3>RND BEP-20 Contract Address</h3>
+      <div class="contract"><code id="contractAddress">0xcF1FbF18bE9202865bcf88E6349B9D207F75942d</code><button class="copy" id="copyBtn" type="button"><i class="fa-regular fa-copy"></i> Copy address</button></div>
+      <div class="actions" style="justify-content:flex-start"><a class="btn" href="https://bscscan.com/token/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" rel="noopener noreferrer">Open BscScan <i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="btn" href="https://www.geckoterminal.com/bsc" target="_blank" rel="noopener noreferrer">GeckoTerminal <i class="fa-solid fa-chart-line"></i></a></div>
+      <p class="muted" style="margin-top:14px">Contract verification on a block explorer is not the same as an independent security audit. Verify token functions, ownership and transaction details directly on-chain.</p>
+    </div>
+  </section>
+  <section id="team">
+    <div class="section-head"><span class="kicker">04 / Transparency</span><h2>Project & Development Team</h2><p>Individual team members' names are not published on this website.</p></div>
+    <div class="grid">
+      <article class="card"><div class="icon"><i class="fa-solid fa-list-check"></i></div><h3>Project Coordination</h3><p>Project planning, ecosystem priorities and official updates.</p></article>
+      <article class="card"><div class="icon"><i class="fa-solid fa-laptop-code"></i></div><h3>Development</h3><p>Website and platform development, maintenance and technical improvements.</p></article>
+      <article class="card"><div class="icon"><i class="fa-solid fa-comments"></i></div><h3>Community Communications</h3><p>Sharing announcements and responding through official project channels.</p></article>
+    </div>
+    <p class="muted" style="margin-top:14px">This privacy choice is not a claim that team identity verification or KYC has been completed. Listing platforms may request additional evidence during their review.</p>
+  </section>
+  <section id="roadmap">
+    <div class="section-head"><span class="kicker">05 / Roadmap</span><h2>Development Roadmap</h2><p>Roadmap items are plans, not guarantees of delivery or listing approval.</p></div>
+    <div class="roadmap">
+      <article class="card phase"><b>Phase 1 · Foundation</b><p>Token deployment, website and community foundations.</p></article>
+      <article class="card phase"><b>Phase 2 · Ecosystem</b><p>Improve project documentation and develop ecosystem features.</p></article>
+      <article class="card phase"><b>Phase 3 · Expansion</b><p>Continue staking and gaming ecosystem work, subject to development progress.</p></article>
+      <article class="card phase"><b>2027 · Future goals</b><p>Explore exchange applications and additional utility integrations. No listing is guaranteed.</p></article>
+    </div>
+  </section>
+  <section>
+    <div class="notice"><strong>Risk notice:</strong> Cryptocurrency assets are volatile and may lose value. A fixed supply does not guarantee price appreciation, liquidity, security or exchange listing. Do your own research and verify information independently.</div>
+  </section>
+  <section class="faq" id="faq">
+    <div class="section-head"><span class="kicker">06 / Help</span><h2>Frequently Asked Questions</h2></div>
+    <details><summary>Where can I verify the RND contract?</summary><p>Use the BscScan link above and compare the contract address carefully before interacting.</p></details>
+    <details><summary>Is the gaming platform live?</summary><p>The project currently describes the gaming platform as under development. Check official updates for changes.</p></details>
+    <details><summary>Does a fixed supply guarantee a higher token price?</summary><p>No. Token prices depend on market conditions and other factors. Fixed supply does not guarantee returns.</p></details>
+    <details><summary>Are individual team names published?</summary><p>No individual names are published on this website. This does not imply that private identity checks or KYC have been completed.</p></details>
+  </section>
+</main>
+<footer>
+  <div class="wrap footrow">
+    <div>© 2026 Ran Digital (RND). For information only; not financial advice.</div>
+    <div class="social">
+      <a href="https://x.com/RanDigitalRND" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+      <a href="https://t.me/RanDigitalOfficial" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.facebook.com/profile.php?id=61590396932149" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="mailto:support@randigital.in">Contact</a>
+    </div>
+  </div>
+</footer>
 <script>
-  // Copy contract functionality for docs page
-  const copyDocsBtn = document.getElementById('copyContractDocsBtn');
-  const contractAddr = "0xcF1FbF18bE9202865bcf88E6349B9D207F75942d";
-
-  if (copyDocsBtn) {
-    copyDocsBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(contractAddr).then(() => {
-        const originalHTML = copyDocsBtn.innerHTML;
-        copyDocsBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        setTimeout(() => {
-          copyDocsBtn.innerHTML = originalHTML;
-        }, 1800);
-      }).catch(() => {
-        alert("Copy manually: " + contractAddr);
-      });
-    });
-  }
-
-  // Smooth scroll for sidebar links (docs internal anchors)
-  document.querySelectorAll('.sidebar a.nav-docs, .sidebar a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId && targetId !== "#" && targetId.startsWith("#")) {
-        e.preventDefault();
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
   });
-
-  // Active link highlight on scroll
-  const sections = ['supply', 'distribution', 'utility', 'contract', 'roadmap-docs'];
-  const navItems = document.querySelectorAll('.sidebar a.nav-docs');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    for (let sec of sections) {
-      const element = document.getElementById(sec);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        if (rect.top <= 200 && rect.bottom >= 100) {
-          current = sec;
-          break;
-        }
+  links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const address = document.getElementById('contractAddress').textContent.trim();
+    const button = document.getElementById('copyBtn');
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(address);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = address; input.setAttribute('readonly', '');
+        input.style.position = 'fixed'; input.style.opacity = '0';
+        document.body.appendChild(input); input.select();
+        const ok = document.execCommand('copy'); input.remove();
+        if (!ok) throw new Error('copy failed');
       }
+      button.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+      setTimeout(() => button.innerHTML = '<i class="fa-regular fa-copy"></i> Copy address', 1800);
+    } catch {
+      window.prompt('Copy the contract address:', address);
     }
-    navItems.forEach(link => {
-      link.classList.remove('active');
-      const href = link.getAttribute('href');
-      if (href === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
   });
 </script>
 </body>
