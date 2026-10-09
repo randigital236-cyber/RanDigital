@@ -312,6 +312,14 @@
         font-size: 1.6rem;
       }
     }
+  
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid #7dd3fc;
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
   </style>
 </head>
 <body>
@@ -323,134 +331,7 @@
       <i class="fas fa-chart-line"></i>
     </div>
     <h2>Ran Digital</h2>
-    <p style="font-size: 0.7rem; margin-top: 6px; opacity: 0.7;">RND | Docs & Tokenomics</p>
-  </div>
-
-  <a href="index.html">
-    <i class="fas fa-home"></i> <span>🏠 Back to Home</span>
-  </a>
-  <a href="#supply" class="nav-docs">
-    <i class="fas fa-coins"></i> <span>Supply Overview</span>
-  </a>
-  <a href="#distribution" class="nav-docs">
-    <i class="fas fa-chart-pie"></i> <span>Distribution</span>
-  </a>
-  <a href="#utility" class="nav-docs">
-    <i class="fas fa-bolt"></i> <span>Token Utility</span>
-  </a>
-  <a href="#contract" class="nav-docs">
-    <i class="fas fa-file-contract"></i> <span>Smart Contract</span>
-  </a>
-  <a href="#roadmap-docs" class="nav-docs">
-    <i class="fas fa-road"></i> <span>Roadmap</span>
-  </a>
-  <a href="https://bscscan.com/token/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" rel="noopener">
-    <i class="fas fa-search"></i> <span>BscScan</span>
-  </a>
-  <a href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" rel="noopener">
-    <i class="fas fa-exchange-alt"></i> <span>PancakeSwap</span>
-  </a>
-  <div style="margin-top: 40px; padding: 12px; font-size: 0.7rem; text-align: center; border-top: 1px solid #2a3a55;">
-    <i class="fas fa-shield-alt"></i> Audited | LP Locked
-  </div>
-</div>
-
-<!-- ========= MAIN DOCS CONTENT ========= -->
-<div class="main-docs">
-  <div class="docs-header">
-    <h1><i class="fas fa-book-open"></i> Tokenomics & Official Docs</h1>
-    <div class="badge"><i class="fas fa-check-circle"></i> Verified BEP-20</div>
-  </div>
-
-  <!-- SUPPLY SECTION -->
-  <div id="supply" class="doc-card">
-    <h2><i class="fas fa-database"></i> Supply Information</h2>
-    <div class="stat-grid">
-      <div class="stat-item">
-        <div class="stat-number">20,000</div>
-        <div class="stat-label">Total Supply</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">20,000</div>
-        <div class="stat-label">Max Supply (fixed)</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">18</div>
-        <div class="stat-label">Decimals (BEP-20)</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">BNB Chain</div>
-        <div class="stat-label">Network</div>
-      </div>
-    </div>
-    <p style="margin-top: 24px; font-size: 1rem; color: #ccdefa;">
-      <i class="fas fa-check-circle" style="color: #2ed15e;"></i> <strong>Hyper-scarce fixed supply:</strong> Only 20,000 RND tokens will ever exist. No mint function, no inflationary mechanisms. 
-      Built on Binance Smart Chain (BEP-20) for near-zero fees and high-speed transactions.
-    </p>
-  </div>
-
-  <!-- DISTRIBUTION SECTION -->
-  <div id="distribution" class="doc-card">
-    <h2><i class="fas fa-chart-pie"></i> Distribution & Allocation</h2>
-    <div class="stat-grid">
-      <div class="stat-item">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Community & Liquidity</div>
-        <i class="fas fa-users" style="margin-top: 8px; color: #6bcbff;"></i>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">0%</div>
-        <div class="stat-label">Team / Presale Tax</div>
-        <i class="fas fa-tag" style="color:#4ade80;"></i>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">🔒 Locked</div>
-        <div class="stat-label">Liquidity (2+ years)</div>
-        <i class="fas fa-lock" style="color: #f5a623;"></i>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">Fair Launch</div>
-        <div class="stat-label">No Presale, No VC</div>
-      </div>
-    </div>
-    <p style="margin-top: 20px;">
-      Ran Digital launched with a 100% fair distribution. All tokens were added to liquidity pools with no private sales. 
-      <strong>Liquidity is locked for 2+ years</strong> and contract ownership is renounced, ensuring full community ownership and long-term stability.
-    </p>
-  </div>
-
-  <!-- UTILITY SECTION -->
-  <div id="utility" class="doc-card">
-    <h2><i class="fas fa-bolt"></i> Token Utility & Real-World Use</h2>
-    <div class="utility-tags">
-      <span class="utility-tag"><i class="fas fa-vote-yea"></i> DAO Governance</span>
-      <span class="utility-tag"><i class="fas fa-chart-line"></i> Staking Rewards (Future)</span>
-      <span class="utility-tag"><i class="fas fa-handshake"></i> Ecosystem Partnerships</span>
-      <span class="utility-tag"><i class="fas fa-globe"></i> Web3 dApp Integration</span>
-      <span class="utility-tag"><i class="fas fa-gem"></i> Scarcity-driven Value</span>
-      <span class="utility-tag"><i class="fas fa-crosshairs"></i> CEX Listing Fuel</span>
-    </div>
-    <p style="margin-top: 24px;">
-      RND is designed as a multi-utility asset: holders will participate in DAO voting to decide treasury allocations, future partnerships, and ecosystem expansion. 
-      Upcoming features include a staking dashboard, exclusive NFT access, and integration into a RND-powered launchpad. The fixed supply guarantees long-term appreciation aligned with community growth.
-    </p>
-  </div>
-
-  <!-- SMART CONTRACT SECTION -->
-  <div id="contract" class="doc-card">
-    <h2><i class="fas fa-file-code"></i> Smart Contract (BEP-20)</h2>
-    <div class="contract-block">
-      <code class="contract-address" id="contractAddress">0xcF1FbF18bE9202865bcf88E6349B9D207F75942d</code>
-      <button class="copy-docs-btn" id="copyContractDocsBtn"><i class="fas fa-copy"></i> Copy Address</button>
-    </div>
-    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px;">
-      <a href="https://bscscan.com/token/0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" target="_blank" style="color:#00bfff; text-decoration: none;"><i class="fas fa-external-link-alt"></i> View on BscScan</a>
-      <span><i class="fas fa-check-circle" style="color:#2ed15e;"></i> Verified Contract | Renounced Ownership</span>
-      <span><i class="fas fa-chart-simple"></i> 0% buy / 0% sell tax</span>
-    </div>
-    <p style="margin-top: 18px; font-size: 0.85rem; background:#0c111e; padding: 12px; border-radius: 20px;">
-      ✅ <strong>Security highlights:</strong> No hidden minting, no honeypot functions, liquidity locked via trusted locker, and ownership renounced.
-    </p>
+    
   </div>
 
   <!-- ROADMAP SECTION (detailed) -->
@@ -472,10 +353,10 @@
     <h2><i class="fas fa-shield-virus"></i> Security & Transparency</h2>
     <p><i class="fas fa-check-double"></i> ✅ Smart contract fully verified on BscScan.<br>
     <i class="fas fa-ban"></i> ❌ No hidden taxes, no mint function, no honeypot.<br>
-    <i class="fas fa-water"></i> 🔒 Liquidity locked for 730 days + ownership renounced.<br>
+    
     <i class="fas fa-chart-line"></i> 📊 0% tax on buys & sells — ideal for long-term holding and trading.</p>
     <div style="margin-top: 20px; background:#0a0f18; border-radius: 28px; padding: 14px; text-align: center;">
-      <i class="fas fa-file-alt"></i> <strong>Audit Report:</strong> Completed by SolidProof (available upon request in community channels)
+      <i class="fas fa-file-alt"></i> <strong>Audit Report:</strong> Publish an audit claim only when a verifiable report link is available.
     </div>
   </div>
 
