@@ -1,5 +1,6 @@
 /* =========================================================
    Ran Digital (RND) — Professional Blockchain UI
+   Fixed Navbar Version
    ========================================================= */
 
 /* ---------- Design Tokens ---------- */
@@ -32,10 +33,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 12px);
+}
 html, body { overflow-x: hidden; }
 
 body {
@@ -46,10 +50,13 @@ body {
   font-weight: 400;
   letter-spacing: -0.005em;
   position: relative;
+  padding-top: var(--nav-height);   /* ← content navbar के नीचे न छिपे */
 }
 
-/* Body scroll lock when mobile menu is open */
-body.nav-open { overflow: hidden; }
+/* Scroll lock जब mobile menu खुला हो */
+body.nav-open {
+  overflow: hidden;
+}
 
 /* ---------- Animated Background ---------- */
 .bg-orbs {
@@ -98,17 +105,20 @@ body.nav-open { overflow: hidden; }
   50% { transform: translate(40px, -30px) scale(1.08); }
 }
 
-/* ---------- Navbar ---------- */
+/* ---------- Navbar (Fixed) ---------- */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
-  background: rgba(6, 9, 18, 0.72);
+  background: rgba(6, 9, 18, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 0 clamp(16px, 6vw, 90px);
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 .nav-container {
   display: flex;
@@ -681,7 +691,7 @@ footer p { color: var(--text-dim); font-size: 0.9rem; }
 .disclaimer a { color: var(--cyan); text-decoration: none; }
 .disclaimer a:hover { text-decoration: underline; }
 
-/* ---------- Focus States (Accessibility) ---------- */
+/* ---------- Focus States ---------- */
 a:focus-visible,
 button:focus-visible,
 .faq-question:focus-visible,
@@ -701,25 +711,18 @@ button:focus-visible,
 }
 
 /* =========================================================
-   RESPONSIVE — Mobile Navbar (Final, hardened)
+   RESPONSIVE — Mobile Navbar (Fixed version)
    ========================================================= */
 
 /* ---------- Tablet / Mobile (≤960px) ---------- */
 @media (max-width: 960px) {
 
   .navbar {
-    width: 100%;
     padding-left: 16px;
     padding-right: 16px;
   }
 
   .nav-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    width: 100%;
     min-height: var(--nav-height);
     gap: 12px;
   }
@@ -808,7 +811,6 @@ button:focus-visible,
     text-align: left;
   }
 
-  /* Sections / layout */
   section { padding: 70px 20px; }
   h2 { margin-bottom: 40px; }
   .live-stats-row { gap: 28px; padding: 22px 24px; }
