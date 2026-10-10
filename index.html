@@ -56,7 +56,7 @@
         <span class="logo-text">Ran<span>Digital</span></span>
       </a>
 
-      <button class="menu-toggle" id="mobileMenu" type="button" aria-label="Open navigation menu" aria-expanded="false">
+      <button class="menu-toggle" id="mobileMenu" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navMenu">
         <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
 
@@ -67,7 +67,7 @@
           <li><a href="#roadmap"><i class="fas fa-map"></i> Roadmap</a></li>
           <li><a href="#team"><i class="fas fa-users"></i> Team</a></li>
           <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
-          <li><a href="rnd-tokenomics.html" class="docs-link" target="_blank"><i class="fas fa-book-open"></i> Docs</a></li>
+          <li><a href="rnd-tokenomics.html" class="docs-link" target="_blank" rel="noopener"><i class="fas fa-book-open"></i> Docs</a></li>
         </ul>
       </nav>
     </div>
@@ -87,7 +87,7 @@
         <a class="btn white-btn" href="#" id="chartBtn">
           <i class="fas fa-chart-simple"></i> Live Chart
         </a>
-        <a class="btn white-btn" id="whitepaperBtn" href="https://raw.githubusercontent.com/randigital236-cyber/RanDigital/main/RND_Whitepaper.pdf" target="_blank">
+        <a class="btn white-btn" id="whitepaperBtn" href="https://raw.githubusercontent.com/randigital236-cyber/RanDigital/main/RND_Whitepaper.pdf" target="_blank" rel="noopener">
           <i class="fas fa-file-pdf"></i> Whitepaper
         </a>
       </div>
@@ -140,8 +140,8 @@
     <h2><i class="fas fa-file-contract"></i> Smart Contract (BEP-20)</h2>
     <div class="contract-wrapper" data-aos="flip-up">
       <div class="contract-box">
-        <input id="contract" class="contract-input" readonly value="0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" />
-        <button onclick="copyAddress()" class="copy-btn"><i class="fas fa-copy"></i> Copy Contract Address</button>
+        <input id="contract" class="contract-input" readonly value="0xcF1FbF18bE9202865bcf88E6349B9D207F75942d" aria-label="RND contract address" />
+        <button onclick="copyAddress()" class="copy-btn" type="button"><i class="fas fa-copy"></i> Copy Contract Address</button>
       </div>
     </div>
   </section>
@@ -184,23 +184,23 @@
     <h2 data-aos="fade-right"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
     <div class="faq-container" data-aos="fade-up">
       <div class="faq-item">
-        <div class="faq-question">What makes RND suitable for CEX listing? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">What makes RND suitable for CEX listing? <i class="fas fa-chevron-down"></i></div>
         <div class="faq-answer">RND project information and contract details are published for review. Exchange listing decisions are made independently, and no listing approval is guaranteed.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">Is the contract verified and audited? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Is the contract verified and audited? <i class="fas fa-chevron-down"></i></div>
         <div class="faq-answer">Check the contract verification status on BscScan. Do not treat contract verification as a security audit; publish an audit claim only when a verifiable report is available.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">Where can I buy RND? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Where can I buy RND? <i class="fas fa-chevron-down"></i></div>
         <div class="faq-answer">RND is available on PancakeSwap (BNB Smart Chain). Use the contract address above.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">What is the total supply and tax structure? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">What is the total supply and tax structure? <i class="fas fa-chevron-down"></i></div>
         <div class="faq-answer">Total supply is fixed at 20,000 RND. There is 0% tax on buys and 0% on sells — no hidden fees.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">Is the team doxxed / KYC'd? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Is the team doxxed / KYC'd? <i class="fas fa-chevron-down"></i></div>
         <div class="faq-answer">The project does not publicly disclose individual team identities. Do not interpret this privacy choice as a claim that team KYC has been completed.</div>
       </div>
     </div>
