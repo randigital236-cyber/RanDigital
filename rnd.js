@@ -149,8 +149,13 @@ function showCopyFeedback() {
   });
 })();
 
-/* ---------- Smooth Scroll for Anchor Links ---------- */
+/* ---------- Smooth Scroll for Anchor Links (uses dynamic nav height) ---------- */
 (function initSmoothScroll() {
+  const navHeight = parseInt(
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--nav-height')
+  ) || 72;
+
   const allowedHashes = ['#about', '#tokenomics', '#roadmap', '#team', '#faq'];
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -160,8 +165,9 @@ function showCopyFeedback() {
         e.preventDefault();
         const target = document.querySelector(hash);
         if (target) {
-          const offset = 80;
-          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          const top = target.getBoundingClientRect().top
+                    + window.pageYOffset
+                    - navHeight - 8;
           window.scrollTo({ top, behavior: 'smooth' });
         }
       }
@@ -176,10 +182,10 @@ function showCopyFeedback() {
 
   const onScroll = () => {
     if (window.scrollY > 20) {
-      navbar.style.background = 'rgba(6, 9, 18, 0.92)';
+      navbar.style.background = 'rgba(6, 9, 18, 0.96)';
       navbar.style.boxShadow = '0 10px 30px -15px rgba(0, 0, 0, 0.6)';
     } else {
-      navbar.style.background = 'rgba(6, 9, 18, 0.72)';
+      navbar.style.background = 'rgba(6, 9, 18, 0.92)';
       navbar.style.boxShadow = 'none';
     }
   };
