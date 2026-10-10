@@ -1,6 +1,6 @@
 /* =========================================================
    Ran Digital (RND) — Tokenomics Page Styles
-   Consistent with the main rnd.css design system
+   Fixed Navbar Version
    ========================================================= */
 
 /* ---------- Design Tokens ---------- */
@@ -37,9 +37,10 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
+
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: calc(var(--nav-height) + 12px);
 }
 html, body { overflow-x: hidden; }
 
@@ -50,10 +51,13 @@ body {
   line-height: 1.65;
   letter-spacing: -0.005em;
   position: relative;
+  padding-top: var(--nav-height);   /* ← content navbar के नीचे न छिपे */
 }
 
-/* Body scroll lock when mobile menu is open */
-body.nav-open { overflow: hidden; }
+/* Scroll lock जब mobile menu खुला हो */
+body.nav-open {
+  overflow: hidden;
+}
 
 a { color: var(--cyan); text-decoration: none; transition: color 0.2s; }
 a:hover { color: #fff; }
@@ -105,17 +109,20 @@ a:hover { color: #fff; }
   50% { transform: translate(40px, -30px) scale(1.08); }
 }
 
-/* ---------- Navbar ---------- */
+/* ---------- Navbar (Fixed) ---------- */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
-  background: rgba(6, 9, 18, 0.72);
+  background: rgba(6, 9, 18, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 0 clamp(16px, 6vw, 90px);
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 .nav-container {
   display: flex;
@@ -683,25 +690,18 @@ summary:focus-visible {
 }
 
 /* =========================================================
-   RESPONSIVE — Mobile Navbar (Final, hardened)
+   RESPONSIVE — Mobile Navbar (Fixed version)
    ========================================================= */
 
 /* ---------- Tablet / Mobile (≤960px) ---------- */
 @media (max-width: 960px) {
 
   .navbar {
-    width: 100%;
     padding-left: 16px;
     padding-right: 16px;
   }
 
   .nav-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    width: 100%;
     min-height: var(--nav-height);
     gap: 12px;
   }
@@ -790,7 +790,6 @@ summary:focus-visible {
     text-align: left;
   }
 
-  /* Sections / layout */
   main section { padding: 36px 0; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
