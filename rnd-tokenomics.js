@@ -2,37 +2,52 @@
    Ran Digital (RND) — Tokenomics Page Interactions
    ========================================================= */
 
-/* ---------- Mobile Menu ---------- */
+/* ---------- Mobile Menu (with body scroll lock) ---------- */
 (function initMobileMenu() {
   const toggle = document.getElementById('mobileMenu');
   const links = document.getElementById('navMenu');
 
   if (!toggle || !links) return;
 
-  toggle.addEventListener('click', () => {
-    const isOpen = links.classList.toggle('active');
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.innerHTML = isOpen
-      ? '<i class="fas fa-times" aria-hidden="true"></i>'
-      : '<i class="fas fa-bars" aria-hidden="true"></i>';
+  const openMenu = () => {
+    links.classList.add('active');
+    document.body.classList.add('nav-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i>';
+  };
+
+  const closeMenu = () => {
+    links.classList.remove('active');
+    document.body.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+  };
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    links.classList.contains('active') ? closeMenu() : openMenu();
   });
 
-  // Close menu on link click
+  // Close on link click
   links.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      links.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   // Close on outside click
   document.addEventListener('click', (e) => {
     if (!links.contains(e.target) && !toggle.contains(e.target)) {
-      links.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+      closeMenu();
     }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // Close on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960) closeMenu();
   });
 })();
 
@@ -51,7 +66,6 @@
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(address);
       } else {
-        // Fallback for older browsers / non-secure contexts
         const input = document.createElement('textarea');
         input.value = address;
         input.setAttribute('readonly', '');
@@ -64,7 +78,6 @@
         if (!ok) throw new Error('copy failed');
       }
 
-      // Visual feedback
       copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied';
       copyBtn.style.background = 'linear-gradient(135deg, #00dbff, #3b82f6)';
       copyBtn.style.color = '#05070d';
